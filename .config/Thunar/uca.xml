@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+<action>
+	<icon>com.visualstudio.code</icon>
+	<name>Open with VSCode</name>
+	<unique-id>1650439303972734-1</unique-id>
+	<command>code %F</command>
+	<description>VSCode</description>
+	<patterns>*</patterns>
+	<directories/>
+	<other-files/>
+	<text-files/>
+</action>
+<action>
+	<icon>video-x-generic</icon>
+	<name>Open with ffplay</name>
+	<unique-id>1650439303972734-1</unique-id>
+	<command>ffplay %F</command>
+	<description>ffplay</description>
+	<patterns>*</patterns>
+	<audio-files/>
+	<image-files/>
+	<other-files/>
+	<video-files/>
+</action>
+<action>
+	<icon>application-x-zip</icon>
+	<name>zip -r DIR.zip</name>
+	<unique-id>1667665424660378-2</unique-id>
+	<command>zip -r %n.zip %N</command>
+	<description>Make a zip</description>
+	<patterns>*</patterns>
+	<directories/>
+	<audio-files/>
+	<image-files/>
+	<other-files/>
+	<text-files/>
+	<video-files/>
+</action>
+<action>
+	<icon>utilities-terminal</icon>
+	<name>Open Terminal Here</name>
+	<unique-id>1650292913034050-1</unique-id>
+	<command>gnome-terminal %f</command>
+	<description>Example for a custom action</description>
+	<patterns>*</patterns>
+	<startup-notify/>
+	<directories/>
+</action>
+<action>
+	<icon>application-pdf</icon>
+	<name>pdfarranger</name>
+	<unique-id>1678458431774121-1</unique-id>
+	<command>pdfarranger %F</command>
+	<description>pdfarranger</description>
+	<patterns>*</patterns>
+	<image-files/>
+	<other-files/>
+	<text-files/>
+</action>
+<action>
+	<icon>application-x-zip</icon>
+	<name>unzip -d DIR </name>
+	<unique-id>1706133223030976-1</unique-id>
+	<command>unzip -d %n_unzipped %F</command>
+	<description>Unzip</description>
+	<patterns>*.zip</patterns>
+	<audio-files/>
+	<image-files/>
+	<other-files/>
+	<text-files/>
+	<video-files/>
+</action>
+<action>
+	<icon>google-chrome</icon>
+	<name>google-chrome</name>
+	<unique-id>1706133235691439-2</unique-id>
+	<command>google-chrome %F</command>
+	<description>Open with chrome</description>
+	<patterns>*</patterns>
+	<directories/>
+	<audio-files/>
+	<image-files/>
+	<other-files/>
+	<text-files/>
+	<video-files/>
+</action>
+</actions>
