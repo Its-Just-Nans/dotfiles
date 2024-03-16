@@ -12,6 +12,10 @@ check_command() {
   fi
 }
 
+startAgent() {
+  eval "$(ssh-agent -s)"
+}
+
 server() {
   check_command "python"
   python -m http.server
@@ -335,4 +339,81 @@ str2pdf() {
   enscript -q -p temp.ps <<<"$1"
   ps2pdf temp.ps temp.pdf
   echo "$(pwd)/temp.pdf"
+}
+
+listGIT() {
+  list=$(ls -1)
+  show_onefetch=false
+  quiet=false
+  recursive=false
+  for oneArg in "$@"; do
+    if [ "$oneArg" = "-a" ]; then
+      show_onefetch=true
+    fi
+    if [ "$oneArg" = "-q" ]; then
+      quiet=true
+    fi
+    if [ "$oneArg" = "-r" ]; then
+      recursive=true
+    fi
+  done
+  for x in $list; do
+
+    if [ -d "$x" ]; then
+      if [ -d "$x/.git" ]; then
+        count=$(git --work-tree="$x" --git-dir="$x/.git" status --porcelain | wc -l)
+        current=$(git --git-dir="$x/.git" branch --show-current)
+        count2=$(git --git-dir="$x/.git" log "origin/$current..HEAD" | wc -l)
+        if [ "$show_onefetch" = true ]; then
+          onefetch "$x" || echo "no language detected in $x"
+        fi
+        if [ "$count" != "0" ] || [ "$count2" != "0" ]; then
+          echo -e "${COLOR_NC}${COLOR_BACK_BLUE}******************$x*********************"
+          git --work-tree="$x" --git-dir="$x/.git" status --porcelain
+          git --git-dir="$x/.git" log "origin/$current..HEAD"
+          echo -e "${COLOR_NC}"
+        else
+          if [ "$quiet" = false ]; then
+            echo -e "${COLOR_NC}${COLOR_BACK_GREEN}'$x' is good${COLOR_NC}"
+          fi
+        fi
+      else
+        echo -e "${COLOR_NC}${COLOR_BACK_RED}'$x' is not repo${COLOR_NC}"
+      fi
+      if [ "$recursive" = true ]; then
+        (
+          cd "$x" && listGIT "" && cd ..
+        )
+        echo "------------"
+      fi
+    fi
+  done
+}
+
+reloadNotesBackground() {
+  TEXT=$(nl -w1 -s' | ' <"$HOME/.local/share/backgrounds/notes.txt")
+  BACKGROUND_SAVE="$HOME/.local/share/backgrounds/background_save.png"
+  BACKGROUND="$HOME/.local/share/backgrounds/2022-05-15-16-41-55-background.png"
+  convert -font helvetica -fill blue -pointsize 15 -draw "text 5,50 '$TEXT'" "$BACKGROUND_SAVE" "$BACKGROUND"
+}
+
+na() {
+  if [ "$1" == "" ]; then
+    echo "Usage: $0 TEXT"
+    return
+  fi
+  echo "$1" >>~/.local/share/backgrounds/notes.txt
+  reloadNotesBackground
+}
+
+nd() {
+  if [ "$1" == "" ]; then
+    echo "Usage: $0 LINE"
+    return
+  fi
+  cp ~/.local/share/backgrounds/notes.txt ~/.local/share/backgrounds/notes.save.txt
+  sed -i "${1}d" ~/.local/share/backgrounds/notes.txt
+  echo "New file :"
+  cat ~/.local/share/backgrounds/notes.txt
+  reloadNotesBackground
 }
