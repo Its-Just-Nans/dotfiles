@@ -23,7 +23,7 @@ server() {
 
 phpserver() {
   check_command "php"
-  php -S localhost:8080
+  php -S localhost:8000
 }
 
 removeExtension() {
