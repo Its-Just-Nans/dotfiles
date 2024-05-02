@@ -119,6 +119,6 @@ fi
 . ~/.useful2.sh
 
 # pnpm
-export PNPM_HOME="/home/n4n5/.local/share/pnpm"
+export PNPM_HOME="$HOME/.local/share/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 # pnpm end
