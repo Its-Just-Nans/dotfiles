@@ -1,1 +1,15 @@
-/home/n4n5/.gitconfig
+[user]
+	signingKey = 79414EADC6D4B457
+	name = n4n5
+	email = its.just.n4n5@gmail.com
+[init]
+	defaultBranch = main
+[commit]
+	gpgSign = true
+[core]
+	editor = code
+[pull]
+	rebase = false
+[push]
+	followTags = true
+	autoSetupRemote = true
