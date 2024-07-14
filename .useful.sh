@@ -417,3 +417,23 @@ nd() {
   cat ~/.local/share/backgrounds/notes.txt
   reloadNotesBackground
 }
+
+makegif() {
+  # if num args < 2
+  if [ "$#" -lt 2 ]; then
+    echo "Usage makegif <input> <output> [fps] [scale]"
+    return
+  fi
+
+  fps="30"
+  if [ "$3" ]; then
+    fps="$3"
+  fi
+
+  scale="1280"
+  if [ "$4" ]; then
+    scale="$4"
+  fi
+
+  ffmpeg -i "$1" -vf "fps=$fps,scale=$scale:-1:flags=lanczos,split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse" -loop 0 "$2"
+}
