@@ -122,3 +122,12 @@ fi
 export PNPM_HOME="$HOME/.local/share/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 # pnpm end
+
+
+
+# android stuff
+export ANDROID_SDK_ROOT=$HOME/.android/sdk
+export SDKMANAGER=$ANDROID_SDK_ROOT/cmdline-tools/latest/bin/sdkmanager
+export ANDROID_NDK_HOME=$HOME/.android/sdk/ndk/
+export ANDROID_HOME=$HOME/.android/sdk/
+
