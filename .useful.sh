@@ -313,6 +313,10 @@ compressIMG() {
   convert -quality "$2%" "$1" "$3"
 }
 
+compressIMG2() {
+  mozjpeg -quality 90 -outfile "$1.temp" "$1" && rm "$1" && mv "$1.temp" "$1"
+}
+
 hacker_screen() {
   check_command "hollywood"
   hollywood
