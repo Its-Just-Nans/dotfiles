@@ -129,7 +129,7 @@ gsize() {
 }
 
 myip() {
-  curl ifconfig.me
+  curl ifconfig.me "$@"
   echo ""
 }
 
@@ -139,6 +139,7 @@ q() {
   check_command "fdfind"
   check_command "shuf"
   check_command "lolcat"
+  clear
   fortune | cowsay -f "$(fdfind . /usr/share/cowsay/cows/ --exec basename {} | shuf -n1)" | lolcat
 }
 
