@@ -109,7 +109,8 @@ fi
 
 # shellcheck disable=SC2120
 mkt() {
-  cd "$(mktemp -d)" || return
+  path_folder=$(mktemp -d -p "$HOME/tmp/")
+  cd "$path_folder" || return
   if [ "$1" ]; then
     git clone "$1"
     dir=$(ls -1)
