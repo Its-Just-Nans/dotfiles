@@ -242,12 +242,12 @@ cleanLatex() {
 
 dolatex() {
   runEvince=true
-  runXe=false
   clean=true
+  binary="lualatex"
   for oneArg in "$@"; do
     if [ "$oneArg" = "-s" ] || [ "$oneArg" = "-q" ] || [ "$oneArg" = "--no-show" ] || [ "$oneArg" = "-xe" ] || [ "$oneArg" = "--no-clean" ]; then
       if [ "$oneArg" = "-xe" ]; then
-        runXe=true
+        binary="xelatex"
       elif [ "$oneArg" = "--no-clean" ]; then
         clean=false
       else
@@ -257,25 +257,20 @@ dolatex() {
       name="$oneArg"
     fi
   done
+  if [ ! -f "$oneArg" ]; then
+    echo "File not found!"
+    return
+  fi
   nameNoExtension=$(removeExtension "${name}")
   outputName="${nameNoExtension}.pdf"
   echo "name of file : ${nameNoExtension}"
-  if [ "$runXe" = true ]; then
-    xelatex -shell-escape "${name}"
-  else
-    lualatex -shell-escape "${name}"
-  fi
+  $binary -shell-escape "${name}"
   echo "*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*"
   if [ -f "${outputName}" ]; then
     bibtex "${nameNoExtension}.aux"
   fi
-  if [ "$runXe" = true ]; then
-    xelatex -shell-escape "${name}"
-    xelatex -shell-escape "${name}"
-  else
-    lualatex -shell-escape "${name}"
-    lualatex -shell-escape "${name}"
-  fi
+  $binary -shell-escape "${name}"
+  $binary -shell-escape "${name}"
   echo "*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*"
   if [ "$clean" = true ]; then
     cleanLatex "$nameNoExtension"

@@ -131,3 +131,8 @@ export SDKMANAGER=$ANDROID_SDK_ROOT/cmdline-tools/latest/bin/sdkmanager
 export ANDROID_NDK_HOME=$HOME/.android/sdk/ndk/
 export ANDROID_HOME=$HOME/.android/sdk/
 
+# go
+export PATH="$PATH:/usr/local/go/bin"
+
+# gradle
+export PATH="$PATH:/opt/gradle/bin/"
