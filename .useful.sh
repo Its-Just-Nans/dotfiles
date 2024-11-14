@@ -244,20 +244,21 @@ dolatex() {
   runEvince=true
   clean=true
   binary="lualatex"
+  once=false
   for oneArg in "$@"; do
-    if [ "$oneArg" = "-s" ] || [ "$oneArg" = "-q" ] || [ "$oneArg" = "--no-show" ] || [ "$oneArg" = "-xe" ] || [ "$oneArg" = "--no-clean" ]; then
-      if [ "$oneArg" = "-xe" ]; then
-        binary="xelatex"
-      elif [ "$oneArg" = "--no-clean" ]; then
-        clean=false
-      else
-        runEvince=false
-      fi
+    if [ "$oneArg" = "-xe" ]; then
+      binary="xelatex"
+    elif [ "$oneArg" = "--no-clean" ]; then
+      clean=false
+    elif [ "$oneArg" = "-1" ]; then
+      once=true
+    elif [ "$oneArg" = "-s" ] || [ "$oneArg" = "-q" ] || [ "$oneArg" = "--no-show" ]; then
+      runEvince=false
     else
       name="$oneArg"
     fi
   done
-  if [ ! -f "$oneArg" ]; then
+  if [ ! -f "$name" ]; then
     echo "File not found!"
     return
   fi
@@ -269,8 +270,10 @@ dolatex() {
   if [ -f "${outputName}" ]; then
     bibtex "${nameNoExtension}.aux"
   fi
-  $binary -shell-escape "${name}"
-  $binary -shell-escape "${name}"
+  if [ "$once" = false ]; then
+    $binary -shell-escape "${name}"
+    $binary -shell-escape "${name}"
+  fi
   echo "*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*"
   if [ "$clean" = true ]; then
     cleanLatex "$nameNoExtension"

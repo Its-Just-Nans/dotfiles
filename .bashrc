@@ -116,14 +116,12 @@ if ! shopt -oq posix; then
 fi
 
 . ~/.useful.sh
-. ~/.useful2.sh
+. ~/.utils.sh
 
 # pnpm
 export PNPM_HOME="$HOME/.local/share/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 # pnpm end
-
-
 
 # android stuff
 export ANDROID_SDK_ROOT=$HOME/.android/sdk
