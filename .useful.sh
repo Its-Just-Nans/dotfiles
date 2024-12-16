@@ -350,21 +350,25 @@ listGIT() {
   show_onefetch=false
   quiet=false
   recursive=false
+  run_git_fetch=false
   for oneArg in "$@"; do
     if [ "$oneArg" = "-a" ]; then
       show_onefetch=true
-    fi
-    if [ "$oneArg" = "-q" ]; then
+    elif [ "$oneArg" = "-q" ]; then
       quiet=true
-    fi
-    if [ "$oneArg" = "-r" ]; then
+    elif [ "$oneArg" = "-r" ]; then
       recursive=true
+    elif [ "$oneArg" = "-f" ]; then
+      run_git_fetch=true
     fi
   done
   for x in $list; do
 
     if [ -d "$x" ]; then
       if [ -d "$x/.git" ]; then
+        if [ "$run_git_fetch" = true ]; then
+          git --git-dir="$x/.git" fetch
+        fi
         count=$(git --work-tree="$x" --git-dir="$x/.git" status --porcelain | wc -l)
         current=$(git --git-dir="$x/.git" branch --show-current)
         count2=$(git --git-dir="$x/.git" log "origin/$current..HEAD" | wc -l)
