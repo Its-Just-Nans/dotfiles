@@ -1,5 +1,28 @@
 #!/bin/bash
 
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# zig
+export ZIG_FOLDER="$HOME/.zig"
+export PATH="$ZIG_FOLDER:$PATH"
+
+# if running bash
+if [ -n "$BASH_VERSION" ]; then
+  source "$HOME/.cargo/env"
+  source "$HOME/.bun/completion.sh"
+  # zoxide
+  eval "$(zoxide init bash)"
+
+  # nvm
+  export NVM_DIR="$HOME/.nvm"
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
+  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
+fi
+
+export PATH="$HOME/.cargo/bin:$HOME/.arduino:$HOME/.local/bin:$PATH"
+
 alias ll="ls -lahv"
 alias lla="ls -lahv"
 alias sl="sl | lolcat"
