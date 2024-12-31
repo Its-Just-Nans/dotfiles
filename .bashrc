@@ -134,3 +134,7 @@ export PATH="$PATH:/usr/local/go/bin"
 
 # gradle
 export PATH="$PATH:/opt/gradle/bin/"
+
+alias n4N5='n4n5'
+alias N4n5='n4n5'
+alias N4N5='n4n5'
