@@ -1,3 +1,4 @@
+#!/bin/bash
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
@@ -117,24 +118,3 @@ fi
 
 . ~/.useful.sh
 . ~/.utils.sh
-
-# pnpm
-export PNPM_HOME="$HOME/.local/share/pnpm"
-export PATH="$PNPM_HOME:$PATH"
-# pnpm end
-
-# android stuff
-export ANDROID_SDK_ROOT=$HOME/.android/sdk
-export SDKMANAGER=$ANDROID_SDK_ROOT/cmdline-tools/latest/bin/sdkmanager
-export ANDROID_NDK_HOME=$HOME/.android/sdk/ndk/
-export ANDROID_HOME=$HOME/.android/sdk/
-
-# go
-export PATH="$PATH:/usr/local/go/bin"
-
-# gradle
-export PATH="$PATH:/opt/gradle/bin/"
-
-alias n4N5='n4n5'
-alias N4n5='n4n5'
-alias N4N5='n4n5'

@@ -28,6 +28,27 @@ alias lla="ls -lahv"
 alias sl="sl | lolcat"
 alias p="python"
 
+# pnpm
+export PNPM_HOME="$HOME/.local/share/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+# pnpm end
+
+# android stuff
+export ANDROID_SDK_ROOT="$HOME/.android/sdk"
+export SDKMANAGER="$ANDROID_SDK_ROOT/cmdline-tools/latest/bin/sdkmanager"
+export ANDROID_NDK_HOME="$HOME/.android/sdk/ndk/"
+export ANDROID_HOME="$HOME/.android/sdk/"
+
+# go
+export PATH="$PATH:/usr/local/go/bin"
+
+# gradle
+export PATH="$PATH:/opt/gradle/bin/"
+
+alias n4N5='n4n5'
+alias N4n5='n4n5'
+alias N4N5='n4n5'
+
 check_command() {
   if ! command -v "$1" >/dev/null 2>&1; then
     echo "I require $1 but it's not installed.  Aborting." >&2
