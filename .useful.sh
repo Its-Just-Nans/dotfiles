@@ -48,6 +48,7 @@ export PATH="$PATH:/opt/gradle/bin/"
 alias n4N5='n4n5'
 alias N4n5='n4n5'
 alias N4N5='n4n5'
+alias n='n4n5'
 
 check_command() {
   if ! command -v "$1" >/dev/null 2>&1; then
@@ -153,18 +154,30 @@ fi
 
 # shellcheck disable=SC2120
 mkt() {
-  path_folder=$(mktemp -d -p "$HOME/tmp/")
-  cd "$path_folder" || return
+  custom_tmp="$HOME/tmp/"
+  mkdir -p "$custom_tmp"
+  cd "$custom_tmp" || return
   if [ "$1" ]; then
-    git clone "$1"
-    dir=$(ls -1)
-    if [ "$dir" ]; then
-      if command -v code &>/dev/null; then
-        code "$(ls -1)" && exit
-      else
-        echo "code not installed :("
-      fi
+    filename=$(basename -- "$1")
+    repo_name="${filename%.*}"
+    random="$(tr -dc A-Za-z0-9 </dev/urandom | head -c 13)"
+    # if folder exists
+    if [ -d "$repo_name" ]; then
+      repo_name="${repo_name}_${random}"
     fi
+    if git clone "$1" "$repo_name"; then
+      cd "$repo_name" || return
+      if command -v code &>/dev/null; then
+        code . && exit
+      else
+        echo "mkt(): code not installed :("
+      fi
+    else
+      echo "mkt(): Error during the clone"
+    fi
+  else
+    folder=$(mktemp -d -p "$custom_tmp")
+    cd "$folder" || return
   fi
 }
 
