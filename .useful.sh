@@ -193,11 +193,11 @@ myip() {
 q() {
   check_command "fortune"
   check_command "cowsay"
-  check_command "fdfind"
+  check_command "fd"
   check_command "shuf"
   check_command "lolcat"
   clear
-  fortune | cowsay -f "$(fdfind . /usr/share/cowsay/cows/ --exec basename {} | shuf -n1)" | lolcat
+  fortune | cowsay -f "$(fd . /usr/share/cowsay/cows/ --exec basename {} | shuf -n1)" | lolcat
 }
 
 ai2svg() {
@@ -502,3 +502,20 @@ makegif() {
 
   ffmpeg -i "$1" -vf "fps=$fps,scale=$scale:-1:flags=lanczos,split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse" -loop 0 "$2"
 }
+
+addkeys() {
+  if [ "$1" ]; then
+    toSearch="${1}*"
+  else
+    toSearch="$HOME/.ssh/"
+  fi
+  list=$(fd "$toSearch" --full-path "$HOME/.ssh/" -t f -E "*.pub" -E 'agent-environment' -E 'known_hosts' -E 'config')
+  for oneFile in $list; do
+    ssh-add "${oneFile}"
+  done
+}
+
+if [ -n "$BASH_VERSION" ]; then
+  _addkeys_options=$(fd . "$HOME/.ssh/" -t f --format '{/}' -E "*.pub" -E 'agent-environment' -E 'known_hosts' -E 'config')
+  complete -W "${_addkeys_options}" 'addkeys'
+fi
