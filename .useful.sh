@@ -57,6 +57,10 @@ check_command() {
   fi
 }
 
+if command -v fdfind &>/dev/null; then
+  alias fd="fdfind"
+fi
+
 startAgent() {
   eval "$(ssh-agent -s)"
 }
