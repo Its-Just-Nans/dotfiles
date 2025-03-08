@@ -10,15 +10,25 @@ export PATH="$ZIG_FOLDER:$PATH"
 
 # if running bash
 if [ -n "$BASH_VERSION" ]; then
-  source "$HOME/.cargo/env"
-  source "$HOME/.bun/completion.sh"
+  # if file exists
+  if [ -f "$HOME/.cargo/env" ]; then
+    source "$HOME/.cargo/env"
+  fi
+  if [ -f "$HOME/.bun/completion.sh" ]; then
+    source "$HOME/.bun/completion.sh"
+  fi
   # zoxide
-  eval "$(zoxide init bash)"
+  if command -v zoxide &>/dev/null; then
+    eval "$(zoxide init bash)"
+  fi
 
   # nvm
-  export NVM_DIR="$HOME/.nvm"
-  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
-  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
+  if [ -d "$HOME/.nvm" ]; then
+
+    export NVM_DIR="$HOME/.nvm"
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
+    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
+  fi
 fi
 
 export PATH="$HOME/.cargo/bin:$HOME/.arduino:$HOME/.local/bin:$PATH"
@@ -151,9 +161,11 @@ gc() {
 
 # if running bash
 if [ -n "$BASH_VERSION" ]; then
-  _g_options=$(ls -1 "$HOME/Documents/github")
-  complete -W "${_g_options}" 'g'
-  complete -W "${_g_options}" 'gc'
+  if [ -d "$HOME/Documents/github" ]; then
+    _g_options=$(ls -1 "$HOME/Documents/github")
+    complete -W "${_g_options}" 'g'
+    complete -W "${_g_options}" 'gc'
+  fi
 fi
 
 # shellcheck disable=SC2120
