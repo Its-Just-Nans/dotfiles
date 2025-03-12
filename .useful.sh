@@ -525,13 +525,13 @@ addkeys() {
   else
     toSearch="$HOME/.ssh/"
   fi
-  list=$(fd "$toSearch" --full-path "$HOME/.ssh/" -t f -E "*.pub" -E 'agent-environment' -E 'known_hosts' -E 'config')
+  list=$(fd "$toSearch" --full-path "$HOME/.ssh/" -t f -E "*.pub" -E 'agent-environment' -E 'known_hosts*' -E 'config')
   for oneFile in $list; do
     ssh-add "${oneFile}"
   done
 }
 
 if [ -n "$BASH_VERSION" ]; then
-  _addkeys_options=$(fd . "$HOME/.ssh/" -t f --format '{/}' -E "*.pub" -E 'agent-environment' -E 'known_hosts' -E 'config')
+  _addkeys_options=$(fd . "$HOME/.ssh/" -t f --format '{/}' -E "*.pub" -E 'agent-environment' -E 'known_hosts*' -E 'config')
   complete -W "${_addkeys_options}" 'addkeys'
 fi
