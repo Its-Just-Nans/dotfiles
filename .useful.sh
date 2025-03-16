@@ -37,6 +37,8 @@ alias ll="ls -lahv"
 alias lla="ls -lahv"
 alias sl="sl | lolcat"
 alias p="python"
+alias ..="cd .."
+alias ...="cd ../.."
 
 # pnpm
 export PNPM_HOME="$HOME/.local/share/pnpm"
