@@ -32,6 +32,7 @@ if [ -n "$BASH_VERSION" ]; then
 fi
 
 export PATH="$HOME/.cargo/bin:$HOME/.arduino:$HOME/.local/bin:$PATH"
+export PATH="$HOME/go/bin:$PATH"
 
 alias ll="ls -lahv"
 alias lla="ls -lahv"
@@ -262,7 +263,7 @@ toFlac() {
 }
 
 yt() {
-  yt-dlp "$1"
+  yt-dlp "$@"
 }
 
 img2text() {
