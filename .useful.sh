@@ -67,7 +67,7 @@ CHROOT='${debian_chroot:+($debian_chroot)}'
 USER="\[\033[01;32m\]\u\[\033[00m\]"
 HOST="\[\033[01;32m\]\h\[\033[00m\]"
 DIR="\[\033[01;34m\]\w\[\033[00m\]"
-GIT="\[\033[01;33m\](\$(__git_ps1 '%s'))\[\033[00m\]"
+GIT="\[\033[01;33m\]\$(__git_ps1 '(%s)')\[\033[00m\]"
 PS1="$CHROOT$USER@$HOST:$DIR$GIT\$ "
 
 alias n4N5='n4n5'
