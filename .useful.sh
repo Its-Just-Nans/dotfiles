@@ -2,7 +2,8 @@
 
 # useful.sh - A collection of useful shell functions and aliases
 # http://github.com/Its-Just-Nans/dotfiles
-
+# update with
+# curl -O https://raw.githubusercontent.com/Its-Just-Nans/dotfiles/refs/heads/main/.useful.sh
 
 # bun
 export BUN_INSTALL="$HOME/.bun"
@@ -63,12 +64,12 @@ export PATH="$PATH:/usr/local/go/bin"
 export PATH="$PATH:/opt/gradle/bin/"
 
 # shellcheck disable=SC2016
-CHROOT='${debian_chroot:+($debian_chroot)}'
-USER="\[\033[01;32m\]\u\[\033[00m\]"
-HOST="\[\033[01;32m\]\h\[\033[00m\]"
-DIR="\[\033[01;34m\]\w\[\033[00m\]"
-GIT="\[\033[01;33m\]\$(__git_ps1 '(%s)')\[\033[00m\]"
-PS1="$CHROOT$USER@$HOST:$DIR$GIT\$ "
+_PS1_CHROOT='${debian_chroot:+($debian_chroot)}'
+_PS1_USER="\[\033[01;32m\]\u\[\033[00m\]"
+_PS1_HOST="\[\033[01;32m\]\h\[\033[00m\]"
+_PS1_DIR="\[\033[01;34m\]\w\[\033[00m\]"
+_PS1_GIT="\[\033[01;33m\]\$(__git_ps1 '(%s)')\[\033[00m\]"
+PS1="$_PS1_CHROOT$_PS1_USER@$_PS1_HOST:$_PS1_DIR$_PS1_GIT\$ "
 
 alias n4N5='n4n5'
 alias N4n5='n4n5'
@@ -82,8 +83,16 @@ check_command() {
   fi
 }
 
-if command -v fdfind &>/dev/null; then
-  alias fd="fdfind"
+_is_fd=false
+if command -v fd &>/dev/null && command -v fd-find &>/dev/null; then
+  # all good
+  _is_fd=true
+elif command -v fd-find &>/dev/null; then
+  alias fd="fd-find"
+  _is_fd=true
+elif command -v fd &>/dev/null; then
+  alias fd-find="fd"
+  _is_fd=true
 fi
 
 startAgent() {
@@ -546,7 +555,9 @@ addkeys() {
   done
 }
 
-if [ -n "$BASH_VERSION" ]; then
-  _addkeys_options=$(fd . "$HOME/.ssh/" -t f --format '{/}' -E "*.pub" -E 'agent-environment' -E 'known_hosts*' -E 'config')
-  complete -W "${_addkeys_options}" 'addkeys'
+if [ "$_is_fd" == "true" ]; then
+  if [ -n "$BASH_VERSION" ]; then
+    _addkeys_options=$(fd . "$HOME/.ssh/" -t f --format '{/}' -E "*.pub" -E 'agent-environment' -E 'known_hosts*' -E 'config')
+    complete -W "${_addkeys_options}" 'addkeys'
+  fi
 fi

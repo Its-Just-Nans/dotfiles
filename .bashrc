@@ -116,4 +116,6 @@ if ! shopt -oq posix; then
     fi
 fi
 
-. ~/.useful.sh
+if [ -f "$HOME/.useful.sh" ]; then
+    . "$HOME/.useful.sh"
+fi
