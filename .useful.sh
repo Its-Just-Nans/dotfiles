@@ -504,7 +504,7 @@ reloadNotesBackground() {
 
 na() {
   if [ "$1" == "" ]; then
-    echo "Usage: $0 TEXT"
+    echo "Usage: na TEXT"
     return
   fi
   echo "$1" >>~/.local/share/backgrounds/notes.txt
@@ -513,7 +513,7 @@ na() {
 
 nd() {
   if [ "$1" == "" ]; then
-    echo "Usage: $0 LINE"
+    echo "Usage: nd LINE"
     return
   fi
   cp ~/.local/share/backgrounds/notes.txt ~/.local/share/backgrounds/notes.save.txt
