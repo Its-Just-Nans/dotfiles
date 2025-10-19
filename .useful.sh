@@ -17,9 +17,11 @@ export PATH="$ZIG_FOLDER:$PATH"
 if [ -n "$BASH_VERSION" ]; then
   # if file exists
   if [ -f "$HOME/.cargo/env" ]; then
+    # shellcheck disable=SC1091
     source "$HOME/.cargo/env"
   fi
   if [ -f "$HOME/.bun/completion.sh" ]; then
+    # shellcheck disable=SC1091
     source "$HOME/.bun/completion.sh"
   fi
   # zoxide
@@ -31,7 +33,9 @@ if [ -n "$BASH_VERSION" ]; then
   if [ -d "$HOME/.nvm" ]; then
 
     export NVM_DIR="$HOME/.nvm"
+    # shellcheck disable=SC1091
     [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
+    # shellcheck disable=SC1091
     [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
   fi
 fi
@@ -70,6 +74,13 @@ _PS1_HOST="\[\033[01;32m\]\h\[\033[00m\]"
 _PS1_DIR="\[\033[01;34m\]\w\[\033[00m\]"
 _PS1_GIT="\[\033[01;33m\]\$(__git_ps1 '(%s)')\[\033[00m\]"
 PS1="$_PS1_CHROOT$_PS1_USER@$_PS1_HOST:$_PS1_DIR$_PS1_GIT\$ "
+
+
+completion_n4n5="$HOME/Documents/github/n4n5-crate/completions/n4n5.bash"
+if [ -f "$completion_n4n5" ]; then
+  # shellcheck disable=SC1090
+  . "$completion_n4n5"
+fi
 
 alias n4N5='n4n5'
 alias N4n5='n4n5'

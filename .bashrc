@@ -117,5 +117,6 @@ if ! shopt -oq posix; then
 fi
 
 if [ -f "$HOME/.useful.sh" ]; then
+    # shellcheck disable=SC1091
     . "$HOME/.useful.sh"
 fi
