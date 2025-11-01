@@ -20,6 +20,12 @@ if [ -n "$BASH_VERSION" ]; then
     # shellcheck disable=SC1091
     source "$HOME/.cargo/env"
   fi
+  # git completion __git_ps1
+  # curl -L https://raw.github.com/git/git/master/contrib/completion/git-prompt.sh > .git-prompt.sh
+  if [ -f "$HOME/.git-prompt.sh" ]; then
+    # shellcheck disable=SC1091
+    source "$HOME/.git-prompt.sh"
+  fi
   if [ -f "$HOME/.bun/completion.sh" ]; then
     # shellcheck disable=SC1091
     source "$HOME/.bun/completion.sh"
@@ -70,7 +76,11 @@ export PATH="$PATH:/opt/gradle/bin/"
 # shellcheck disable=SC2016
 _PS1_CHROOT='${debian_chroot:+($debian_chroot)}'
 _PS1_USER="\[\033[01;32m\]\u\[\033[00m\]"
-_PS1_HOST="\[\033[01;32m\]\h\[\033[00m\]"
+if [ "$(hostname)" = "container" ]; then
+    _PS1_HOST="\[\033[01;31m\]\h\[\033[00m\]"
+else
+    _PS1_HOST="\[\033[01;32m\]\h\[\033[00m\]"
+fi
 _PS1_DIR="\[\033[01;34m\]\w\[\033[00m\]"
 _PS1_GIT="\[\033[01;33m\]\$(__git_ps1 '(%s)')\[\033[00m\]"
 PS1="$_PS1_CHROOT$_PS1_USER@$_PS1_HOST:$_PS1_DIR$_PS1_GIT\$ "
@@ -572,3 +582,8 @@ if [ "$_is_fd" == "true" ]; then
     complete -W "${_addkeys_options}" 'addkeys'
   fi
 fi
+
+
+mkd() {
+  mkdir "$1" && cd "$1" || return
+}
