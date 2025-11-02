@@ -20,12 +20,20 @@ if [ -n "$BASH_VERSION" ]; then
     # shellcheck disable=SC1091
     source "$HOME/.cargo/env"
   fi
+
   # git completion __git_ps1
   # curl -L https://raw.github.com/git/git/master/contrib/completion/git-prompt.sh > .git-prompt.sh
   if [ -f "$HOME/.git-prompt.sh" ]; then
     # shellcheck disable=SC1091
     source "$HOME/.git-prompt.sh"
   fi
+
+  # just --completions bash > .justfile_completion.sh
+  if [ -f "$HOME/.justfile_completion.sh" ]; then
+    # shellcheck disable=SC1091
+    source "$HOME/.justfile_completion.sh"
+  fi
+
   if [ -f "$HOME/.bun/completion.sh" ]; then
     # shellcheck disable=SC1091
     source "$HOME/.bun/completion.sh"
