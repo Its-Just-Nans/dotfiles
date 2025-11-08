@@ -61,6 +61,7 @@ alias ll="ls -lahv"
 alias lla="ls -lahv"
 alias sl="sl | lolcat"
 alias p="python"
+alias j="just"
 alias ..="cd .."
 alias ...="cd ../.."
 
