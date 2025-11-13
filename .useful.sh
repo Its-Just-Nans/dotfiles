@@ -62,6 +62,7 @@ alias lla="ls -lahv"
 alias sl="sl | lolcat"
 alias p="python"
 alias j="just"
+alias c="clear"
 alias ..="cd .."
 alias ...="cd ../.."
 
@@ -105,6 +106,15 @@ alias n4N5='n4n5'
 alias N4n5='n4n5'
 alias N4N5='n4n5'
 alias n='n4n5'
+
+export COLOR_BLUE="\033[0;34m"
+export COLOR_RED="\033[0;31m"
+export COLOR_GREEN="\033[0;32m"
+export COLOR_NC="\033[0m"
+export COLOR_BACK_WHITE="\033[47m"
+export COLOR_BACK_GREEN="\033[42m"
+export COLOR_BACK_RED="\033[41m"
+export COLOR_BACK_BLUE="\033[44m"
 
 check_command() {
   if ! command -v "$1" >/dev/null 2>&1; then
@@ -421,15 +431,6 @@ eraseCache() {
 showPORTS() {
   ss -tulpn | grep LISTEN
 }
-
-export COLOR_BLUE="\033[0;34m"
-export COLOR_RED="\033[0;31m"
-export COLOR_GREEN="\033[0;32m"
-export COLOR_NC="\033[0m"
-export COLOR_BACK_WHITE="\033[47m"
-export COLOR_BACK_GREEN="\033[42m"
-export COLOR_BACK_RED="\033[41m"
-export COLOR_BACK_BLUE="\033[44m"
 
 compressIMG() {
   check_command "convert"
