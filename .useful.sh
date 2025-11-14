@@ -96,10 +96,10 @@ _PS1_GIT="\[\033[01;33m\]\$(__git_ps1 '(%s)')\[\033[00m\]"
 PS1="$_PS1_CHROOT$_PS1_USER@$_PS1_HOST:$_PS1_DIR$_PS1_GIT\$ "
 
 
-completion_n4n5="$HOME/Documents/github/n4n5-crate/completions/n4n5.bash"
-if [ -f "$completion_n4n5" ]; then
+_completion_n4n5="$HOME/.config/.n4n5/completions/n4n5.bash"
+if [ -f "$_completion_n4n5" ]; then
   # shellcheck disable=SC1090
-  . "$completion_n4n5"
+  . "$_completion_n4n5"
 fi
 
 alias n4N5='n4n5'
