@@ -1,0 +1,1412 @@
+#compdef n4n5
+
+autoload -U is-at-least
+
+_n4n5() {
+    typeset -A opt_args
+    typeset -a _arguments_options
+    local ret=1
+
+    if is-at-least 5.2; then
+        _arguments_options=(-s -S -C)
+    else
+        _arguments_options=(-s -C)
+    fi
+
+    local context curcontext="$curcontext" state line
+    _arguments "${_arguments_options[@]}" : \
+'-c+[Sets a custom config file]:FILE:_files' \
+'--config=[Sets a custom config file]:FILE:_files' \
+'*-d[Turn debugging information on]' \
+'*--debug[Turn debugging information on]' \
+'-h[Print help]' \
+'--help[Print help]' \
+":: :_n4n5_commands" \
+"*::: :->n4n5" \
+&& ret=0
+    case $state in
+    (n4n5)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:n4n5-command-$line[1]:"
+        case $line[1] in
+            (utils)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+":: :_n4n5__utils_commands" \
+"*::: :->utils" \
+&& ret=0
+
+    case $state in
+    (utils)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:n4n5-utils-command-$line[1]:"
+        case $line[1] in
+            (list_crates)
+_arguments "${_arguments_options[@]}" : \
+'--username=[Specify username]:USERNAME:_default' \
+'--user-agent=[Specify user agent]:USER_AGENT:_default' \
+'--output-markdown=[Output markdown]:OUTPUT_MARKDOWN:_files' \
+'--output-list=[Output list]:OUTPUT_LIST:_files' \
+'--output-list-full=[Output list long/full]:OUTPUT_LIST_FULL:_files' \
+'--delay=[Request delay (in seconds)]:DELAY:_default' \
+'--filtered=[Filter crates]:FILTERED:_default' \
+'--specials=[Filter crates]:SPECIALS:_default' \
+'--verbose[Filter crates]' \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+":: :_n4n5__utils__help_commands" \
+"*::: :->help" \
+&& ret=0
+
+    case $state in
+    (help)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:n4n5-utils-help-command-$line[1]:"
+        case $line[1] in
+            (list_crates)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+        esac
+    ;;
+esac
+;;
+(music)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+":: :_n4n5__music_commands" \
+"*::: :->music" \
+&& ret=0
+
+    case $state in
+    (music)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:n4n5-music-command-$line[1]:"
+        case $line[1] in
+            (sync)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(open)
+_arguments "${_arguments_options[@]}" : \
+'-p[Print the path only]' \
+'--path[Print the path only]' \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+":: :_n4n5__music__help_commands" \
+"*::: :->help" \
+&& ret=0
+
+    case $state in
+    (help)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:n4n5-music-help-command-$line[1]:"
+        case $line[1] in
+            (sync)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(open)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+        esac
+    ;;
+esac
+;;
+(config)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+":: :_n4n5__config_commands" \
+"*::: :->config" \
+&& ret=0
+
+    case $state in
+    (config)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:n4n5-config-command-$line[1]:"
+        case $line[1] in
+            (open)
+_arguments "${_arguments_options[@]}" : \
+'-p[Print the path]' \
+'--path[Print the path]' \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+":: :_n4n5__config__help_commands" \
+"*::: :->help" \
+&& ret=0
+
+    case $state in
+    (help)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:n4n5-config-help-command-$line[1]:"
+        case $line[1] in
+            (open)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+        esac
+    ;;
+esac
+;;
+(gh)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+":: :_n4n5__gh_commands" \
+"*::: :->gh" \
+&& ret=0
+
+    case $state in
+    (gh)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:n4n5-gh-command-$line[1]:"
+        case $line[1] in
+            (pulls)
+_arguments "${_arguments_options[@]}" : \
+'-j[Print as JSON]' \
+'--json[Print as JSON]' \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(projects)
+_arguments "${_arguments_options[@]}" : \
+'-j[Print as JSON]' \
+'--json[Print as JSON]' \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+":: :_n4n5__gh__help_commands" \
+"*::: :->help" \
+&& ret=0
+
+    case $state in
+    (help)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:n4n5-gh-help-command-$line[1]:"
+        case $line[1] in
+            (pulls)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(projects)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+        esac
+    ;;
+esac
+;;
+(helpers)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+":: :_n4n5__helpers_commands" \
+"*::: :->helpers" \
+&& ret=0
+
+    case $state in
+    (helpers)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:n4n5-helpers-command-$line[1]:"
+        case $line[1] in
+            (completions)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(man)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+":: :_n4n5__helpers__help_commands" \
+"*::: :->help" \
+&& ret=0
+
+    case $state in
+    (help)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:n4n5-helpers-help-command-$line[1]:"
+        case $line[1] in
+            (completions)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(man)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+        esac
+    ;;
+esac
+;;
+(movies)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+":: :_n4n5__movies_commands" \
+"*::: :->movies" \
+&& ret=0
+
+    case $state in
+    (movies)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:n4n5-movies-command-$line[1]:"
+        case $line[1] in
+            (add)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(open)
+_arguments "${_arguments_options[@]}" : \
+'-p[print path of movies file]' \
+'--path[print path of movies file]' \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(stats)
+_arguments "${_arguments_options[@]}" : \
+'-j[print stats as json]' \
+'--json[print stats as json]' \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(show)
+_arguments "${_arguments_options[@]}" : \
+'-r[reverse mode]' \
+'--reverse[reverse mode]' \
+'-f[show full mode]' \
+'--full[show full mode]' \
+'-c[show comment]' \
+'--comment[show comment]' \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(sync)
+_arguments "${_arguments_options[@]}" : \
+'-j[print as json]' \
+'--json[print as json]' \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+":: :_n4n5__movies__help_commands" \
+"*::: :->help" \
+&& ret=0
+
+    case $state in
+    (help)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:n4n5-movies-help-command-$line[1]:"
+        case $line[1] in
+            (add)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(open)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(stats)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(show)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(sync)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+        esac
+    ;;
+esac
+;;
+(sync)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+":: :_n4n5__sync_commands" \
+"*::: :->sync" \
+&& ret=0
+
+    case $state in
+    (sync)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:n4n5-sync-command-$line[1]:"
+        case $line[1] in
+            (settings)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+":: :_n4n5__sync__settings_commands" \
+"*::: :->settings" \
+&& ret=0
+
+    case $state in
+    (settings)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:n4n5-sync-settings-command-$line[1]:"
+        case $line[1] in
+            (add)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(all)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+":: :_n4n5__sync__settings__help_commands" \
+"*::: :->help" \
+&& ret=0
+
+    case $state in
+    (help)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:n4n5-sync-settings-help-command-$line[1]:"
+        case $line[1] in
+            (add)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(all)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+        esac
+    ;;
+esac
+;;
+(movies)
+_arguments "${_arguments_options[@]}" : \
+'-j[print as json]' \
+'--json[print as json]' \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(programs)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(music)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(all)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+":: :_n4n5__sync__help_commands" \
+"*::: :->help" \
+&& ret=0
+
+    case $state in
+    (help)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:n4n5-sync-help-command-$line[1]:"
+        case $line[1] in
+            (settings)
+_arguments "${_arguments_options[@]}" : \
+":: :_n4n5__sync__help__settings_commands" \
+"*::: :->settings" \
+&& ret=0
+
+    case $state in
+    (settings)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:n4n5-sync-help-settings-command-$line[1]:"
+        case $line[1] in
+            (add)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(all)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+(movies)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(programs)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(music)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(all)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+        esac
+    ;;
+esac
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+":: :_n4n5__help_commands" \
+"*::: :->help" \
+&& ret=0
+
+    case $state in
+    (help)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:n4n5-help-command-$line[1]:"
+        case $line[1] in
+            (utils)
+_arguments "${_arguments_options[@]}" : \
+":: :_n4n5__help__utils_commands" \
+"*::: :->utils" \
+&& ret=0
+
+    case $state in
+    (utils)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:n4n5-help-utils-command-$line[1]:"
+        case $line[1] in
+            (list_crates)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+(music)
+_arguments "${_arguments_options[@]}" : \
+":: :_n4n5__help__music_commands" \
+"*::: :->music" \
+&& ret=0
+
+    case $state in
+    (music)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:n4n5-help-music-command-$line[1]:"
+        case $line[1] in
+            (sync)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(open)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+(config)
+_arguments "${_arguments_options[@]}" : \
+":: :_n4n5__help__config_commands" \
+"*::: :->config" \
+&& ret=0
+
+    case $state in
+    (config)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:n4n5-help-config-command-$line[1]:"
+        case $line[1] in
+            (open)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+(gh)
+_arguments "${_arguments_options[@]}" : \
+":: :_n4n5__help__gh_commands" \
+"*::: :->gh" \
+&& ret=0
+
+    case $state in
+    (gh)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:n4n5-help-gh-command-$line[1]:"
+        case $line[1] in
+            (pulls)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(projects)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+(helpers)
+_arguments "${_arguments_options[@]}" : \
+":: :_n4n5__help__helpers_commands" \
+"*::: :->helpers" \
+&& ret=0
+
+    case $state in
+    (helpers)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:n4n5-help-helpers-command-$line[1]:"
+        case $line[1] in
+            (completions)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(man)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+(movies)
+_arguments "${_arguments_options[@]}" : \
+":: :_n4n5__help__movies_commands" \
+"*::: :->movies" \
+&& ret=0
+
+    case $state in
+    (movies)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:n4n5-help-movies-command-$line[1]:"
+        case $line[1] in
+            (add)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(open)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(stats)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(show)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(sync)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+(sync)
+_arguments "${_arguments_options[@]}" : \
+":: :_n4n5__help__sync_commands" \
+"*::: :->sync" \
+&& ret=0
+
+    case $state in
+    (sync)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:n4n5-help-sync-command-$line[1]:"
+        case $line[1] in
+            (settings)
+_arguments "${_arguments_options[@]}" : \
+":: :_n4n5__help__sync__settings_commands" \
+"*::: :->settings" \
+&& ret=0
+
+    case $state in
+    (settings)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:n4n5-help-sync-settings-command-$line[1]:"
+        case $line[1] in
+            (add)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(all)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+(movies)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(programs)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(music)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(all)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+        esac
+    ;;
+esac
+}
+
+(( $+functions[_n4n5_commands] )) ||
+_n4n5_commands() {
+    local commands; commands=(
+'utils:utils subcommand' \
+'music:music subcommand' \
+'config:config subcommand' \
+'gh:gh subcommand' \
+'helpers:helpers subcommand' \
+'movies:movies subcommand' \
+'sync:sync subcommand' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'n4n5 commands' commands "$@"
+}
+(( $+functions[_n4n5__config_commands] )) ||
+_n4n5__config_commands() {
+    local commands; commands=(
+'open:Open config with default editor' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'n4n5 config commands' commands "$@"
+}
+(( $+functions[_n4n5__config__help_commands] )) ||
+_n4n5__config__help_commands() {
+    local commands; commands=(
+'open:Open config with default editor' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'n4n5 config help commands' commands "$@"
+}
+(( $+functions[_n4n5__config__help__help_commands] )) ||
+_n4n5__config__help__help_commands() {
+    local commands; commands=()
+    _describe -t commands 'n4n5 config help help commands' commands "$@"
+}
+(( $+functions[_n4n5__config__help__open_commands] )) ||
+_n4n5__config__help__open_commands() {
+    local commands; commands=()
+    _describe -t commands 'n4n5 config help open commands' commands "$@"
+}
+(( $+functions[_n4n5__config__open_commands] )) ||
+_n4n5__config__open_commands() {
+    local commands; commands=()
+    _describe -t commands 'n4n5 config open commands' commands "$@"
+}
+(( $+functions[_n4n5__gh_commands] )) ||
+_n4n5__gh_commands() {
+    local commands; commands=(
+'pulls:Save pulls' \
+'projects:Save projects' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'n4n5 gh commands' commands "$@"
+}
+(( $+functions[_n4n5__gh__help_commands] )) ||
+_n4n5__gh__help_commands() {
+    local commands; commands=(
+'pulls:Save pulls' \
+'projects:Save projects' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'n4n5 gh help commands' commands "$@"
+}
+(( $+functions[_n4n5__gh__help__help_commands] )) ||
+_n4n5__gh__help__help_commands() {
+    local commands; commands=()
+    _describe -t commands 'n4n5 gh help help commands' commands "$@"
+}
+(( $+functions[_n4n5__gh__help__projects_commands] )) ||
+_n4n5__gh__help__projects_commands() {
+    local commands; commands=()
+    _describe -t commands 'n4n5 gh help projects commands' commands "$@"
+}
+(( $+functions[_n4n5__gh__help__pulls_commands] )) ||
+_n4n5__gh__help__pulls_commands() {
+    local commands; commands=()
+    _describe -t commands 'n4n5 gh help pulls commands' commands "$@"
+}
+(( $+functions[_n4n5__gh__projects_commands] )) ||
+_n4n5__gh__projects_commands() {
+    local commands; commands=()
+    _describe -t commands 'n4n5 gh projects commands' commands "$@"
+}
+(( $+functions[_n4n5__gh__pulls_commands] )) ||
+_n4n5__gh__pulls_commands() {
+    local commands; commands=()
+    _describe -t commands 'n4n5 gh pulls commands' commands "$@"
+}
+(( $+functions[_n4n5__help_commands] )) ||
+_n4n5__help_commands() {
+    local commands; commands=(
+'utils:utils subcommand' \
+'music:music subcommand' \
+'config:config subcommand' \
+'gh:gh subcommand' \
+'helpers:helpers subcommand' \
+'movies:movies subcommand' \
+'sync:sync subcommand' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'n4n5 help commands' commands "$@"
+}
+(( $+functions[_n4n5__help__config_commands] )) ||
+_n4n5__help__config_commands() {
+    local commands; commands=(
+'open:Open config with default editor' \
+    )
+    _describe -t commands 'n4n5 help config commands' commands "$@"
+}
+(( $+functions[_n4n5__help__config__open_commands] )) ||
+_n4n5__help__config__open_commands() {
+    local commands; commands=()
+    _describe -t commands 'n4n5 help config open commands' commands "$@"
+}
+(( $+functions[_n4n5__help__gh_commands] )) ||
+_n4n5__help__gh_commands() {
+    local commands; commands=(
+'pulls:Save pulls' \
+'projects:Save projects' \
+    )
+    _describe -t commands 'n4n5 help gh commands' commands "$@"
+}
+(( $+functions[_n4n5__help__gh__projects_commands] )) ||
+_n4n5__help__gh__projects_commands() {
+    local commands; commands=()
+    _describe -t commands 'n4n5 help gh projects commands' commands "$@"
+}
+(( $+functions[_n4n5__help__gh__pulls_commands] )) ||
+_n4n5__help__gh__pulls_commands() {
+    local commands; commands=()
+    _describe -t commands 'n4n5 help gh pulls commands' commands "$@"
+}
+(( $+functions[_n4n5__help__help_commands] )) ||
+_n4n5__help__help_commands() {
+    local commands; commands=()
+    _describe -t commands 'n4n5 help help commands' commands "$@"
+}
+(( $+functions[_n4n5__help__helpers_commands] )) ||
+_n4n5__help__helpers_commands() {
+    local commands; commands=(
+'completions:generate completions' \
+'man:generate man' \
+    )
+    _describe -t commands 'n4n5 help helpers commands' commands "$@"
+}
+(( $+functions[_n4n5__help__helpers__completions_commands] )) ||
+_n4n5__help__helpers__completions_commands() {
+    local commands; commands=()
+    _describe -t commands 'n4n5 help helpers completions commands' commands "$@"
+}
+(( $+functions[_n4n5__help__helpers__man_commands] )) ||
+_n4n5__help__helpers__man_commands() {
+    local commands; commands=()
+    _describe -t commands 'n4n5 help helpers man commands' commands "$@"
+}
+(( $+functions[_n4n5__help__movies_commands] )) ||
+_n4n5__help__movies_commands() {
+    local commands; commands=(
+'add:add a movie' \
+'open:open movie file' \
+'stats:Show stats of movies' \
+'show:Show movies list' \
+'sync:Sync movies file' \
+    )
+    _describe -t commands 'n4n5 help movies commands' commands "$@"
+}
+(( $+functions[_n4n5__help__movies__add_commands] )) ||
+_n4n5__help__movies__add_commands() {
+    local commands; commands=()
+    _describe -t commands 'n4n5 help movies add commands' commands "$@"
+}
+(( $+functions[_n4n5__help__movies__open_commands] )) ||
+_n4n5__help__movies__open_commands() {
+    local commands; commands=()
+    _describe -t commands 'n4n5 help movies open commands' commands "$@"
+}
+(( $+functions[_n4n5__help__movies__show_commands] )) ||
+_n4n5__help__movies__show_commands() {
+    local commands; commands=()
+    _describe -t commands 'n4n5 help movies show commands' commands "$@"
+}
+(( $+functions[_n4n5__help__movies__stats_commands] )) ||
+_n4n5__help__movies__stats_commands() {
+    local commands; commands=()
+    _describe -t commands 'n4n5 help movies stats commands' commands "$@"
+}
+(( $+functions[_n4n5__help__movies__sync_commands] )) ||
+_n4n5__help__movies__sync_commands() {
+    local commands; commands=()
+    _describe -t commands 'n4n5 help movies sync commands' commands "$@"
+}
+(( $+functions[_n4n5__help__music_commands] )) ||
+_n4n5__help__music_commands() {
+    local commands; commands=(
+'sync:Save music' \
+'open:Open music file' \
+    )
+    _describe -t commands 'n4n5 help music commands' commands "$@"
+}
+(( $+functions[_n4n5__help__music__open_commands] )) ||
+_n4n5__help__music__open_commands() {
+    local commands; commands=()
+    _describe -t commands 'n4n5 help music open commands' commands "$@"
+}
+(( $+functions[_n4n5__help__music__sync_commands] )) ||
+_n4n5__help__music__sync_commands() {
+    local commands; commands=()
+    _describe -t commands 'n4n5 help music sync commands' commands "$@"
+}
+(( $+functions[_n4n5__help__sync_commands] )) ||
+_n4n5__help__sync_commands() {
+    local commands; commands=(
+'settings:save settings' \
+'movies:sync movies' \
+'programs:sync programs' \
+'music:sync music' \
+'all:sync all' \
+    )
+    _describe -t commands 'n4n5 help sync commands' commands "$@"
+}
+(( $+functions[_n4n5__help__sync__all_commands] )) ||
+_n4n5__help__sync__all_commands() {
+    local commands; commands=()
+    _describe -t commands 'n4n5 help sync all commands' commands "$@"
+}
+(( $+functions[_n4n5__help__sync__movies_commands] )) ||
+_n4n5__help__sync__movies_commands() {
+    local commands; commands=()
+    _describe -t commands 'n4n5 help sync movies commands' commands "$@"
+}
+(( $+functions[_n4n5__help__sync__music_commands] )) ||
+_n4n5__help__sync__music_commands() {
+    local commands; commands=()
+    _describe -t commands 'n4n5 help sync music commands' commands "$@"
+}
+(( $+functions[_n4n5__help__sync__programs_commands] )) ||
+_n4n5__help__sync__programs_commands() {
+    local commands; commands=()
+    _describe -t commands 'n4n5 help sync programs commands' commands "$@"
+}
+(( $+functions[_n4n5__help__sync__settings_commands] )) ||
+_n4n5__help__sync__settings_commands() {
+    local commands; commands=(
+'add:add a file to save' \
+'all:add all files to save' \
+    )
+    _describe -t commands 'n4n5 help sync settings commands' commands "$@"
+}
+(( $+functions[_n4n5__help__sync__settings__add_commands] )) ||
+_n4n5__help__sync__settings__add_commands() {
+    local commands; commands=()
+    _describe -t commands 'n4n5 help sync settings add commands' commands "$@"
+}
+(( $+functions[_n4n5__help__sync__settings__all_commands] )) ||
+_n4n5__help__sync__settings__all_commands() {
+    local commands; commands=()
+    _describe -t commands 'n4n5 help sync settings all commands' commands "$@"
+}
+(( $+functions[_n4n5__help__utils_commands] )) ||
+_n4n5__help__utils_commands() {
+    local commands; commands=(
+'list_crates:list_crates subcommand' \
+    )
+    _describe -t commands 'n4n5 help utils commands' commands "$@"
+}
+(( $+functions[_n4n5__help__utils__list_crates_commands] )) ||
+_n4n5__help__utils__list_crates_commands() {
+    local commands; commands=()
+    _describe -t commands 'n4n5 help utils list_crates commands' commands "$@"
+}
+(( $+functions[_n4n5__helpers_commands] )) ||
+_n4n5__helpers_commands() {
+    local commands; commands=(
+'completions:generate completions' \
+'man:generate man' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'n4n5 helpers commands' commands "$@"
+}
+(( $+functions[_n4n5__helpers__completions_commands] )) ||
+_n4n5__helpers__completions_commands() {
+    local commands; commands=()
+    _describe -t commands 'n4n5 helpers completions commands' commands "$@"
+}
+(( $+functions[_n4n5__helpers__help_commands] )) ||
+_n4n5__helpers__help_commands() {
+    local commands; commands=(
+'completions:generate completions' \
+'man:generate man' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'n4n5 helpers help commands' commands "$@"
+}
+(( $+functions[_n4n5__helpers__help__completions_commands] )) ||
+_n4n5__helpers__help__completions_commands() {
+    local commands; commands=()
+    _describe -t commands 'n4n5 helpers help completions commands' commands "$@"
+}
+(( $+functions[_n4n5__helpers__help__help_commands] )) ||
+_n4n5__helpers__help__help_commands() {
+    local commands; commands=()
+    _describe -t commands 'n4n5 helpers help help commands' commands "$@"
+}
+(( $+functions[_n4n5__helpers__help__man_commands] )) ||
+_n4n5__helpers__help__man_commands() {
+    local commands; commands=()
+    _describe -t commands 'n4n5 helpers help man commands' commands "$@"
+}
+(( $+functions[_n4n5__helpers__man_commands] )) ||
+_n4n5__helpers__man_commands() {
+    local commands; commands=()
+    _describe -t commands 'n4n5 helpers man commands' commands "$@"
+}
+(( $+functions[_n4n5__movies_commands] )) ||
+_n4n5__movies_commands() {
+    local commands; commands=(
+'add:add a movie' \
+'open:open movie file' \
+'stats:Show stats of movies' \
+'show:Show movies list' \
+'sync:Sync movies file' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'n4n5 movies commands' commands "$@"
+}
+(( $+functions[_n4n5__movies__add_commands] )) ||
+_n4n5__movies__add_commands() {
+    local commands; commands=()
+    _describe -t commands 'n4n5 movies add commands' commands "$@"
+}
+(( $+functions[_n4n5__movies__help_commands] )) ||
+_n4n5__movies__help_commands() {
+    local commands; commands=(
+'add:add a movie' \
+'open:open movie file' \
+'stats:Show stats of movies' \
+'show:Show movies list' \
+'sync:Sync movies file' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'n4n5 movies help commands' commands "$@"
+}
+(( $+functions[_n4n5__movies__help__add_commands] )) ||
+_n4n5__movies__help__add_commands() {
+    local commands; commands=()
+    _describe -t commands 'n4n5 movies help add commands' commands "$@"
+}
+(( $+functions[_n4n5__movies__help__help_commands] )) ||
+_n4n5__movies__help__help_commands() {
+    local commands; commands=()
+    _describe -t commands 'n4n5 movies help help commands' commands "$@"
+}
+(( $+functions[_n4n5__movies__help__open_commands] )) ||
+_n4n5__movies__help__open_commands() {
+    local commands; commands=()
+    _describe -t commands 'n4n5 movies help open commands' commands "$@"
+}
+(( $+functions[_n4n5__movies__help__show_commands] )) ||
+_n4n5__movies__help__show_commands() {
+    local commands; commands=()
+    _describe -t commands 'n4n5 movies help show commands' commands "$@"
+}
+(( $+functions[_n4n5__movies__help__stats_commands] )) ||
+_n4n5__movies__help__stats_commands() {
+    local commands; commands=()
+    _describe -t commands 'n4n5 movies help stats commands' commands "$@"
+}
+(( $+functions[_n4n5__movies__help__sync_commands] )) ||
+_n4n5__movies__help__sync_commands() {
+    local commands; commands=()
+    _describe -t commands 'n4n5 movies help sync commands' commands "$@"
+}
+(( $+functions[_n4n5__movies__open_commands] )) ||
+_n4n5__movies__open_commands() {
+    local commands; commands=()
+    _describe -t commands 'n4n5 movies open commands' commands "$@"
+}
+(( $+functions[_n4n5__movies__show_commands] )) ||
+_n4n5__movies__show_commands() {
+    local commands; commands=()
+    _describe -t commands 'n4n5 movies show commands' commands "$@"
+}
+(( $+functions[_n4n5__movies__stats_commands] )) ||
+_n4n5__movies__stats_commands() {
+    local commands; commands=()
+    _describe -t commands 'n4n5 movies stats commands' commands "$@"
+}
+(( $+functions[_n4n5__movies__sync_commands] )) ||
+_n4n5__movies__sync_commands() {
+    local commands; commands=()
+    _describe -t commands 'n4n5 movies sync commands' commands "$@"
+}
+(( $+functions[_n4n5__music_commands] )) ||
+_n4n5__music_commands() {
+    local commands; commands=(
+'sync:Save music' \
+'open:Open music file' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'n4n5 music commands' commands "$@"
+}
+(( $+functions[_n4n5__music__help_commands] )) ||
+_n4n5__music__help_commands() {
+    local commands; commands=(
+'sync:Save music' \
+'open:Open music file' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'n4n5 music help commands' commands "$@"
+}
+(( $+functions[_n4n5__music__help__help_commands] )) ||
+_n4n5__music__help__help_commands() {
+    local commands; commands=()
+    _describe -t commands 'n4n5 music help help commands' commands "$@"
+}
+(( $+functions[_n4n5__music__help__open_commands] )) ||
+_n4n5__music__help__open_commands() {
+    local commands; commands=()
+    _describe -t commands 'n4n5 music help open commands' commands "$@"
+}
+(( $+functions[_n4n5__music__help__sync_commands] )) ||
+_n4n5__music__help__sync_commands() {
+    local commands; commands=()
+    _describe -t commands 'n4n5 music help sync commands' commands "$@"
+}
+(( $+functions[_n4n5__music__open_commands] )) ||
+_n4n5__music__open_commands() {
+    local commands; commands=()
+    _describe -t commands 'n4n5 music open commands' commands "$@"
+}
+(( $+functions[_n4n5__music__sync_commands] )) ||
+_n4n5__music__sync_commands() {
+    local commands; commands=()
+    _describe -t commands 'n4n5 music sync commands' commands "$@"
+}
+(( $+functions[_n4n5__sync_commands] )) ||
+_n4n5__sync_commands() {
+    local commands; commands=(
+'settings:save settings' \
+'movies:sync movies' \
+'programs:sync programs' \
+'music:sync music' \
+'all:sync all' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'n4n5 sync commands' commands "$@"
+}
+(( $+functions[_n4n5__sync__all_commands] )) ||
+_n4n5__sync__all_commands() {
+    local commands; commands=()
+    _describe -t commands 'n4n5 sync all commands' commands "$@"
+}
+(( $+functions[_n4n5__sync__help_commands] )) ||
+_n4n5__sync__help_commands() {
+    local commands; commands=(
+'settings:save settings' \
+'movies:sync movies' \
+'programs:sync programs' \
+'music:sync music' \
+'all:sync all' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'n4n5 sync help commands' commands "$@"
+}
+(( $+functions[_n4n5__sync__help__all_commands] )) ||
+_n4n5__sync__help__all_commands() {
+    local commands; commands=()
+    _describe -t commands 'n4n5 sync help all commands' commands "$@"
+}
+(( $+functions[_n4n5__sync__help__help_commands] )) ||
+_n4n5__sync__help__help_commands() {
+    local commands; commands=()
+    _describe -t commands 'n4n5 sync help help commands' commands "$@"
+}
+(( $+functions[_n4n5__sync__help__movies_commands] )) ||
+_n4n5__sync__help__movies_commands() {
+    local commands; commands=()
+    _describe -t commands 'n4n5 sync help movies commands' commands "$@"
+}
+(( $+functions[_n4n5__sync__help__music_commands] )) ||
+_n4n5__sync__help__music_commands() {
+    local commands; commands=()
+    _describe -t commands 'n4n5 sync help music commands' commands "$@"
+}
+(( $+functions[_n4n5__sync__help__programs_commands] )) ||
+_n4n5__sync__help__programs_commands() {
+    local commands; commands=()
+    _describe -t commands 'n4n5 sync help programs commands' commands "$@"
+}
+(( $+functions[_n4n5__sync__help__settings_commands] )) ||
+_n4n5__sync__help__settings_commands() {
+    local commands; commands=(
+'add:add a file to save' \
+'all:add all files to save' \
+    )
+    _describe -t commands 'n4n5 sync help settings commands' commands "$@"
+}
+(( $+functions[_n4n5__sync__help__settings__add_commands] )) ||
+_n4n5__sync__help__settings__add_commands() {
+    local commands; commands=()
+    _describe -t commands 'n4n5 sync help settings add commands' commands "$@"
+}
+(( $+functions[_n4n5__sync__help__settings__all_commands] )) ||
+_n4n5__sync__help__settings__all_commands() {
+    local commands; commands=()
+    _describe -t commands 'n4n5 sync help settings all commands' commands "$@"
+}
+(( $+functions[_n4n5__sync__movies_commands] )) ||
+_n4n5__sync__movies_commands() {
+    local commands; commands=()
+    _describe -t commands 'n4n5 sync movies commands' commands "$@"
+}
+(( $+functions[_n4n5__sync__music_commands] )) ||
+_n4n5__sync__music_commands() {
+    local commands; commands=()
+    _describe -t commands 'n4n5 sync music commands' commands "$@"
+}
+(( $+functions[_n4n5__sync__programs_commands] )) ||
+_n4n5__sync__programs_commands() {
+    local commands; commands=()
+    _describe -t commands 'n4n5 sync programs commands' commands "$@"
+}
+(( $+functions[_n4n5__sync__settings_commands] )) ||
+_n4n5__sync__settings_commands() {
+    local commands; commands=(
+'add:add a file to save' \
+'all:add all files to save' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'n4n5 sync settings commands' commands "$@"
+}
+(( $+functions[_n4n5__sync__settings__add_commands] )) ||
+_n4n5__sync__settings__add_commands() {
+    local commands; commands=()
+    _describe -t commands 'n4n5 sync settings add commands' commands "$@"
+}
+(( $+functions[_n4n5__sync__settings__all_commands] )) ||
+_n4n5__sync__settings__all_commands() {
+    local commands; commands=()
+    _describe -t commands 'n4n5 sync settings all commands' commands "$@"
+}
+(( $+functions[_n4n5__sync__settings__help_commands] )) ||
+_n4n5__sync__settings__help_commands() {
+    local commands; commands=(
+'add:add a file to save' \
+'all:add all files to save' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'n4n5 sync settings help commands' commands "$@"
+}
+(( $+functions[_n4n5__sync__settings__help__add_commands] )) ||
+_n4n5__sync__settings__help__add_commands() {
+    local commands; commands=()
+    _describe -t commands 'n4n5 sync settings help add commands' commands "$@"
+}
+(( $+functions[_n4n5__sync__settings__help__all_commands] )) ||
+_n4n5__sync__settings__help__all_commands() {
+    local commands; commands=()
+    _describe -t commands 'n4n5 sync settings help all commands' commands "$@"
+}
+(( $+functions[_n4n5__sync__settings__help__help_commands] )) ||
+_n4n5__sync__settings__help__help_commands() {
+    local commands; commands=()
+    _describe -t commands 'n4n5 sync settings help help commands' commands "$@"
+}
+(( $+functions[_n4n5__utils_commands] )) ||
+_n4n5__utils_commands() {
+    local commands; commands=(
+'list_crates:list_crates subcommand' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'n4n5 utils commands' commands "$@"
+}
+(( $+functions[_n4n5__utils__help_commands] )) ||
+_n4n5__utils__help_commands() {
+    local commands; commands=(
+'list_crates:list_crates subcommand' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'n4n5 utils help commands' commands "$@"
+}
+(( $+functions[_n4n5__utils__help__help_commands] )) ||
+_n4n5__utils__help__help_commands() {
+    local commands; commands=()
+    _describe -t commands 'n4n5 utils help help commands' commands "$@"
+}
+(( $+functions[_n4n5__utils__help__list_crates_commands] )) ||
+_n4n5__utils__help__list_crates_commands() {
+    local commands; commands=()
+    _describe -t commands 'n4n5 utils help list_crates commands' commands "$@"
+}
+(( $+functions[_n4n5__utils__list_crates_commands] )) ||
+_n4n5__utils__list_crates_commands() {
+    local commands; commands=()
+    _describe -t commands 'n4n5 utils list_crates commands' commands "$@"
+}
+
+if [ "$funcstack[1]" = "_n4n5" ]; then
+    _n4n5 "$@"
+else
+    compdef _n4n5 n4n5
+fi
