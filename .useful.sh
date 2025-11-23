@@ -188,7 +188,7 @@ g() {
       code=true
     elif [ "$oneArg" = "-e" ]; then
       exitAtEnd=true
-    else
+    elif [ "$folder" != "" ]; then
       folder=$oneArg
     fi
   done
