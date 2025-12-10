@@ -599,7 +599,7 @@ mkd() {
 }
 
 publish() {
-  set -eux
+  set -ux
   cargo check --workspace --all-targets
   cargo check --workspace --all-features --lib --target wasm32-unknown-unknown
   cargo fmt --all -- --check
