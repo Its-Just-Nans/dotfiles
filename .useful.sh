@@ -608,4 +608,5 @@ publish() {
   cargo test --workspace --doc
   trunk build
   cargo publish
+  set +ux
 }
