@@ -13,6 +13,9 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 export ZIG_FOLDER="$HOME/.zig"
 export PATH="$ZIG_FOLDER:$PATH"
 
+# nvim
+export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
+
 # if running bash
 if [ -n "$BASH_VERSION" ]; then
   # if file exists
@@ -65,6 +68,8 @@ alias j="just"
 alias c="clear"
 alias ..="cd .."
 alias ...="cd ../.."
+alias vi="nvim"
+alias v="nvim"
 
 # pnpm
 export PNPM_HOME="$HOME/.local/share/pnpm"
