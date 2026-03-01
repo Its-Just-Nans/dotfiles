@@ -62,6 +62,4 @@ xbuild
 yazi-build
 yazi-cli
 yazi-fm
-zizmor
-zola
 zoxide
