@@ -10,6 +10,11 @@ git clone https://github.com/Its-Just-Nans/dotfiles.git && cd dotfiles && ./setu
 
 ## Others
 
+```sh
+# install deps
+apt install gcc clang make git curl libssl-dev
+```
+
 - setup shortcuts
 - setup SSH key and GPG
 - <https://neovim.io/doc/install/>
@@ -18,7 +23,11 @@ git clone https://github.com/Its-Just-Nans/dotfiles.git && cd dotfiles && ./setu
 
 
 ```sh
-apt install gcc git curl libssl-dev
+# reinstall cargo packages
+cargo install --root .cargo/ --list \
+  | grep -E '^[a-zA-Z0-9_-]+ v' \
+  | awk '{print $1}' \
+  | xargs -n1 cargo install
 ```
 
 
