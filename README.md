@@ -30,4 +30,13 @@ cargo install --root .cargo/ --list \
   | xargs -n1 cargo install
 ```
 
+```sh
+apt install byobu tmux screen cmatrix thunar wireshark ffmpeg qemu-system libvirt-daemon-system virt-manager
+```
 
+
+## Save settings
+
+```sh
+just
+```
