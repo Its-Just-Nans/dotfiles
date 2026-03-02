@@ -1,88 +1,115 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <actions>
-	<action>
-		<icon>com.visualstudio.code</icon>
-		<name>Open with VSCode</name>
-		<unique-id>1650439303972734-1</unique-id>
-		<command>code %F</command>
-		<description>VSCode</description>
-		<patterns>*</patterns>
-		<directories />
-		<other-files />
-		<text-files />
-	</action>
-	<action>
-		<icon>video-x-generic</icon>
-		<name>Open with ffplay</name>
-		<unique-id>1650439303972734-1</unique-id>
-		<command>gnome-terminal -- bash -c &apos;ffplay %F;bash&apos;</command>
-		<description>ffplay</description>
-		<patterns>*</patterns>
-		<audio-files />
-		<image-files />
-		<other-files />
-		<video-files />
-	</action>
-	<action>
-		<icon>application-x-zip</icon>
-		<name>zip -r DIR.zip</name>
-		<unique-id>1667665424660378-2</unique-id>
-		<command>gnome-terminal -- bash -c &apos;zip -r %n.zip %N;bash&apos;</command>
-		<description>Make a zip</description>
-		<patterns>*</patterns>
-		<directories />
-		<audio-files />
-		<image-files />
-		<other-files />
-		<text-files />
-		<video-files />
-	</action>
-	<action>
-		<icon>utilities-terminal</icon>
-		<name>Open Terminal Here</name>
-		<unique-id>1650292913034050-1</unique-id>
-		<command>gnome-terminal %f</command>
-		<description>Example for a custom action</description>
-		<patterns>*</patterns>
-		<startup-notify />
-		<directories />
-	</action>
-	<action>
-		<icon>application-pdf</icon>
-		<name>pdfarranger</name>
-		<unique-id>1678458431774121-1</unique-id>
-		<command>pdfarranger %F</command>
-		<description>pdfarranger</description>
-		<patterns>*</patterns>
-		<image-files />
-		<other-files />
-		<text-files />
-	</action>
-	<action>
-		<icon>application-x-zip</icon>
-		<name>unzip -d DIR </name>
-		<unique-id>1706133223030976-1</unique-id>
-		<command>gnome-terminal -- bash -c &apos;unzip -d %n_unzipped %F;bash&apos;</command>
-		<description>Unzip</description>
-		<patterns>*.zip</patterns>
-		<audio-files />
-		<image-files />
-		<other-files />
-		<text-files />
-		<video-files />
-	</action>
-	<action>
-		<icon>google-chrome</icon>
-		<name>google-chrome</name>
-		<unique-id>1706133235691439-2</unique-id>
-		<command>google-chrome %F</command>
-		<description>Open with chrome</description>
-		<patterns>*</patterns>
-		<directories />
-		<audio-files />
-		<image-files />
-		<other-files />
-		<text-files />
-		<video-files />
-	</action>
+<action>
+	<icon>com.visualstudio.code</icon>
+	<name>Open with VSCode</name>
+	<submenu></submenu>
+	<unique-id>1650439303972734-1</unique-id>
+	<command>code %F</command>
+	<description>VSCode</description>
+	<range></range>
+	<patterns>*</patterns>
+	<directories/>
+	<other-files/>
+	<text-files/>
+</action>
+<action>
+	<icon>utilities-terminal</icon>
+	<name>Open with nvim</name>
+	<submenu></submenu>
+	<unique-id>1650439303972734-1</unique-id>
+	<command>gnome-terminal -- /opt/nvim-linux-x86_64/bin/nvim %F</command>
+	<description>nvim</description>
+	<range></range>
+	<patterns>*</patterns>
+	<directories/>
+	<other-files/>
+	<text-files/>
+</action>
+<action>
+	<icon>video-x-generic</icon>
+	<name>Open with ffplay</name>
+	<submenu></submenu>
+	<unique-id>1650439303972734-1</unique-id>
+	<command>gnome-terminal -- bash -c &apos;ffplay %F;bash&apos;</command>
+	<description>ffplay</description>
+	<range></range>
+	<patterns>*</patterns>
+	<audio-files/>
+	<image-files/>
+	<other-files/>
+	<video-files/>
+</action>
+<action>
+	<icon>application-x-zip</icon>
+	<name>zip -r DIR.zip</name>
+	<submenu></submenu>
+	<unique-id>1667665424660378-2</unique-id>
+	<command>gnome-terminal -- bash -c &apos;zip -r %n.zip %N;bash&apos;</command>
+	<description>Make a zip</description>
+	<range></range>
+	<patterns>*</patterns>
+	<directories/>
+	<audio-files/>
+	<image-files/>
+	<other-files/>
+	<text-files/>
+	<video-files/>
+</action>
+<action>
+	<icon>utilities-terminal</icon>
+	<name>Open Terminal Here</name>
+	<submenu></submenu>
+	<unique-id>1650292913034050-1</unique-id>
+	<command>gnome-terminal %f</command>
+	<description>Example for a custom action</description>
+	<range></range>
+	<patterns>*</patterns>
+	<startup-notify/>
+	<directories/>
+</action>
+<action>
+	<icon>application-pdf</icon>
+	<name>pdfarranger</name>
+	<submenu></submenu>
+	<unique-id>1678458431774121-1</unique-id>
+	<command>pdfarranger %F</command>
+	<description>pdfarranger</description>
+	<range></range>
+	<patterns>*</patterns>
+	<image-files/>
+	<other-files/>
+	<text-files/>
+</action>
+<action>
+	<icon>application-x-zip</icon>
+	<name>unzip -d DIR </name>
+	<submenu></submenu>
+	<unique-id>1706133223030976-1</unique-id>
+	<command>gnome-terminal -- bash -c &apos;unzip -d %n_unzipped %F;bash&apos;</command>
+	<description>Unzip</description>
+	<range></range>
+	<patterns>*.zip</patterns>
+	<audio-files/>
+	<image-files/>
+	<other-files/>
+	<text-files/>
+	<video-files/>
+</action>
+<action>
+	<icon>google-chrome</icon>
+	<name>google-chrome</name>
+	<submenu></submenu>
+	<unique-id>1706133235691439-2</unique-id>
+	<command>google-chrome %F</command>
+	<description>Open with chrome</description>
+	<range></range>
+	<patterns>*</patterns>
+	<directories/>
+	<audio-files/>
+	<image-files/>
+	<other-files/>
+	<text-files/>
+	<video-files/>
+</action>
 </actions>

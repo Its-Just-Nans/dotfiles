@@ -7,7 +7,7 @@
 [commit]
 	gpgSign = true
 [core]
-	editor = code
+	editor = nvim
 [pull]
 	rebase = false
 [push]
