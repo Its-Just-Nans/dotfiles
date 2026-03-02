@@ -123,8 +123,8 @@ export COLOR_BACK_BLUE="\033[44m"
 
 check_command() {
   if ! command -v "$1" >/dev/null 2>&1; then
-    echo "I require $1 but it's not installed.  Aborting." >&2
-    exit 1
+    echo "This program requires $1 but it's not installed.  Aborting." >&2
+    sleep 5 && exit 1
   fi
 }
 
@@ -208,8 +208,8 @@ g() {
     fi
   fi
   if [ "$code" = true ]; then
-    if command -v code &>/dev/null; then
-      code .
+    if command -v nvim &>/dev/null; then
+      nvim .
     else
       echo "code not installed :("
     fi
@@ -225,7 +225,7 @@ g() {
 
 # an opinionated g command
 gc() {
-  g "$@" -c -e
+  g "$@" -c
 }
 
 # if running bash
