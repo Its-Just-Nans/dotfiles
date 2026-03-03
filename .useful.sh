@@ -121,6 +121,8 @@ export COLOR_BACK_GREEN="\033[42m"
 export COLOR_BACK_RED="\033[41m"
 export COLOR_BACK_BLUE="\033[44m"
 
+editor="nvim"
+
 check_command() {
   if ! command -v "$1" >/dev/null 2>&1; then
     echo "This program requires $1 but it's not installed.  Aborting." >&2
@@ -185,12 +187,12 @@ dock() {
 
 # go to github directories
 g() {
-  code=false
+  use_editor=false
   exitAtEnd=false
   folder=""
   for oneArg in "$@"; do
     if [ "$oneArg" = "-c" ]; then
-      code=true
+      use_editor=true
     elif [ "$oneArg" = "-e" ]; then
       exitAtEnd=true
     elif [ "$folder" = "" ]; then
@@ -207,11 +209,11 @@ g() {
       echo "onefetch not installed :("
     fi
   fi
-  if [ "$code" = true ]; then
-    if command -v nvim &>/dev/null; then
-      nvim .
+  if [ "$use_editor" = true ]; then
+    if command -v "$editor" &>/dev/null; then
+      "$editor" .
     else
-      echo "code not installed :("
+      echo "$editor is not installed :("
     fi
   fi
   # if running bash
@@ -252,10 +254,10 @@ mkt() {
     fi
     if git clone "$1" "$repo_name"; then
       cd "$repo_name" || return
-      if command -v code &>/dev/null; then
-        code . && exit
+      if command -v "$editor" &>/dev/null; then
+        "$editor" . && exit
       else
-        echo "mkt(): code not installed :("
+        echo "mkt(): $editor not installed :("
       fi
     else
       echo "mkt(): Error during the clone"
