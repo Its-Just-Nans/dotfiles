@@ -284,8 +284,9 @@ q() {
   check_command "shuf"
   check_command "lolcat"
   clear
-  fortune | cowsay -f "$(fd . /usr/share/cowsay/cows/ --exec basename {} | shuf -n1)" | lolcat
+  echo "Have a beautiful day" | cowsay -f "$(fd . /usr/share/cowsay/cows/ --exec basename {} | shuf -n1)" | lolcat
 }
+
 
 ai2svg() {
   check_command "inkscape"

@@ -18,6 +18,7 @@ apt install pkg-config gcc clang make git curl libssl-dev
 - setup shortcuts
 - setup SSH key and GPG
 - <https://neovim.io/doc/install/>
+- <https://github.com/nvm-sh/nvm>
 - <https://go.dev/doc/install>
 - <https://github.com/jesseduffield/lazygit>
 
