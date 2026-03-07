@@ -12,7 +12,7 @@ git clone https://github.com/Its-Just-Nans/dotfiles.git && cd dotfiles && ./setu
 
 ```sh
 # install deps
-apt install pkg-config gcc clang make git curl libssl-dev xclip
+apt install pkg-config gcc clang make git curl libssl-dev xclip python-is-python3
 ```
 
 - setup shortcuts
