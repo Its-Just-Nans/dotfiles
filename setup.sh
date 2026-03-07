@@ -7,7 +7,7 @@ green=$(tput setaf 2)
 red=$(tput setaf 1)
 reset=$(tput sgr0)
 
-deploy() {
+setup() {
     # https://stackoverflow.com/a/4774063
     SCRIPT_PATH="$(
         cd -- "$(dirname "$0")" >/dev/null 2>&1 || return
@@ -58,35 +58,48 @@ install() {
 check() {
     if ! command -v nvim &>/dev/null; then
         echo "nvim is not installed"
-	echo "https://neovim.io/doc/install/"
+        echo "https://neovim.io/doc/install/"
+    else
+        echo "nvim seems installed"
     fi
-    if ! command -v node &>/dev/null; then
-        echo "node is not installed"
-	echo "https://github.com/nvm-sh/nvm/"
-    fi
-    if ! command -v npm &>/dev/null; then
-        echo "npm is not installed"
-	echo "https://github.com/nvm-sh/nvm/"
+    if [ ! command -v node &>/dev/null || ! command -v npm &>/dev/null ]; then 
+        if [ -d "$HOME/.nvm" ]; then
+            # nvm seems present but not loaded
+            echo "nvm seems installed but not loaded"
+        else
+            echo "node and/or npm are not installed"
+            echo "https://github.com/nvm-sh/nvm/"
+        fi
+    else
+        echo "nvm seems installed"
     fi
     if ! command -v go &>/dev/null; then
         echo "go is not installed"
-	echo "https://go.dev/doc/install"
+        echo "https://go.dev/doc/install"
+    else
+        echo "go seems installed"
     fi
     if ! command -v lazygit &>/dev/null; then
         echo "lazygit is not installed"
-	echo "https://github.com/jesseduffield/lazygit>"
+        echo "https://github.com/jesseduffield/lazygit>"
+    else
+        echo "lazygit seems installed"
     fi
 }
 
 main() {
     if [ $# -eq 0 ]; then
-        deploy
+        echo "please specify argument"
+    elif [ "$1" = "setup" ]; then
+        setup
     elif [ "$1" = "save" ]; then
         save
     elif [ "$1" = "check" ]; then
         check
     elif [ "$1" = "install" ]; then
         install
+    else
+        echo "no arg $1"
     fi
 }
 

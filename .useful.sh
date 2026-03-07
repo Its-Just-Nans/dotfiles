@@ -180,8 +180,8 @@ nvm() {
       [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
       if [ $# -eq 0 ]; then
           echo "No arguments provided. nvm is now loaded. You can try"
-	  echo "nvm install node"
-	  echo "nvm use node"
+          echo "nvm install node"
+          echo "nvm use node"
       else
           nvm "$@"
       fi
