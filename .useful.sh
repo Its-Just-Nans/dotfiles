@@ -122,13 +122,7 @@ export COLOR_BACK_RED="\033[41m"
 export COLOR_BACK_BLUE="\033[44m"
 
 editor="nvim"
-
-check_command() {
-  if ! command -v "$1" >/dev/null 2>&1; then
-    echo "This program requires $1 but it's not installed.  Aborting." >&2
-    sleep 5 && exit 1
-  fi
-}
+alias code="nvim"
 
 _is_fd=false
 if command -v fd &>/dev/null && command -v fd-find &>/dev/null; then
@@ -147,12 +141,18 @@ startAgent() {
 }
 
 server() {
-  check_command "python"
+  if ! command -v python &>/dev/null; then
+      echo "This program requires python but it's not installed. Aborting." >&2
+      return 1
+  fi
   python -m http.server
 }
 
 phpserver() {
-  check_command "php"
+  if ! command -v php &>/dev/null; then
+      echo "This program requires php but it's not installed. Aborting." >&2
+      return 1
+  fi
   php -S localhost:8000
 }
 
@@ -161,7 +161,11 @@ removeExtension() {
 }
 
 compressPDF() {
-  check_command "gs"
+  if ! command -v gs &>/dev/null; then
+      echo "This program requires gs but it's not installed. Aborting." >&2
+      return 1
+  fi
+
   name=$(removeExtension "$1")
   if [ "$#" -ne 2 ]; then
     echo "Usage compressPDF <file_name> <num_resolution>"
@@ -179,7 +183,11 @@ whileLoop() {
 }
 
 dock() {
-  check_command "docker"
+  if ! command -v docker &>/dev/null; then
+      echo "This program requires docker but it's not installed. Aborting." >&2
+      return 1
+  fi
+
   echo "docker run -it debian /bin/bash"
   docker pull debian
   docker run -it debian /bin/bash
@@ -188,13 +196,10 @@ dock() {
 # go to github directories
 g() {
   use_editor=false
-  exitAtEnd=false
   folder=""
   for oneArg in "$@"; do
     if [ "$oneArg" = "-c" ]; then
       use_editor=true
-    elif [ "$oneArg" = "-e" ]; then
-      exitAtEnd=true
     elif [ "$folder" = "" ]; then
       folder=$oneArg
     fi
@@ -214,13 +219,6 @@ g() {
       "$editor" .
     else
       echo "$editor is not installed :("
-    fi
-  fi
-  # if running bash
-  # we exit the terminal
-  if [ -n "$BASH_VERSION" ]; then
-    if [ "$exitAtEnd" = true ]; then
-      exit
     fi
   fi
 }
@@ -255,7 +253,7 @@ mkt() {
     if git clone "$1" "$repo_name"; then
       cd "$repo_name" || return
       if command -v "$editor" &>/dev/null; then
-        "$editor" . && exit
+        "$editor" .
       else
         echo "mkt(): $editor not installed :("
       fi
@@ -278,18 +276,38 @@ myip() {
 }
 
 q() {
-  check_command "fortune"
-  check_command "cowsay"
-  check_command "fd"
-  check_command "shuf"
-  check_command "lolcat"
+  if ! command -v fortune &>/dev/null; then
+    echo "This program requires fortune but it's not installed. Aborting." >&2
+    return 1
+  fi
+  if ! command -v cowsay &>/dev/null; then
+    echo "This program requires cowsay but it's not installed. Aborting." >&2
+    return 1
+  fi
+  if ! command -v fd &>/dev/null; then
+    echo "This program requires fd but it's not installed. Aborting." >&2
+    return 1
+  fi
+  if ! command -v shuf &>/dev/null; then
+    echo "This program requires shuf but it's not installed. Aborting." >&2
+    return 1
+  fi
+  if ! command -v lolcat &>/dev/null; then
+    echo "This program requires lolcat but it's not installed. Aborting." >&2
+    return 1
+  fi
+
   clear
   echo "Have a beautiful day" | cowsay -f "$(fd . /usr/share/cowsay/cows/ --exec basename {} | shuf -n1)" | lolcat
 }
 
 
 ai2svg() {
-  check_command "inkscape"
+  if ! command -v inkscape &>/dev/null; then
+      echo "This program requires inkscape but it's not installed. Aborting." >&2
+      return 1
+  fi
+
   path=""
   for oneArg in "$@"; do
     if [ "$oneArg" = "-p" ]; then
@@ -313,7 +331,11 @@ ai2svg() {
 }
 
 ff() {
-  check_command "ffmpeg"
+  if ! command -v ffmpeg &>/dev/null; then
+      echo "This program requires ffmpeg but it's not installed. Aborting." >&2
+      return 1
+  fi
+
   if [ "$1" == "" ]; then
     echo "Usage: ff LINE"
     return
@@ -441,7 +463,11 @@ showPORTS() {
 }
 
 compressIMG() {
-  check_command "convert"
+  if ! command -v convert &>/dev/null; then
+    echo "This program requires convert but it's not installed. Aborting." >&2
+    return 1
+  fi
+
   if [ "$#" -ne 3 ]; then
     echo "Usage compressIMG <input> <qual> <output>"
     return
@@ -454,12 +480,20 @@ compressIMG2() {
 }
 
 hacker_screen() {
-  check_command "hollywood"
+  if ! command -v hollywood &>/dev/null; then
+     echo "This program requires hollywood but it's not installed. Aborting." >&2
+     return 1
+  fi
+
   hollywood
 }
 
 phpmyadmin() {
-  check_command "php"
+  if ! command -v php &>/dev/null; then
+     echo "This program requires php but it's not installed. Aborting." >&2
+     return 1
+  fi
+
   cd /usr/share/phpmyadmin/ || return
   php -S localhost:8090
 }
@@ -473,8 +507,15 @@ addPrefix() {
 }
 
 str2pdf() {
-  check_command "enscript"
-  check_command "ps2pdf"
+  if ! command -v enscript &>/dev/null; then
+     echo "This program requires enscript but it's not installed. Aborting." >&2
+     return 1
+  fi
+  if ! command -v ps2pdf &>/dev/null; then
+     echo "This program requires ps2pdf but it's not installed. Aborting." >&2
+     return 1
+  fi
+
   mkt
   enscript -q -p temp.ps <<<"$1"
   ps2pdf temp.ps temp.pdf
