@@ -1,5 +1,4 @@
 apksig
-asn1-compiler
 ast-grep
 baobab
 bat
@@ -25,7 +24,6 @@ flamegraph
 galago
 galion
 git-mover
-grcov
 hexyl
 hyperfine
 jscontact
