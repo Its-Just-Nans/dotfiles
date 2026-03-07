@@ -17,12 +17,11 @@ apt install pkg-config gcc clang make git curl libssl-dev xclip python-is-python
 
 - setup shortcuts
 - setup SSH key and GPG
-- <https://neovim.io/doc/install/>
-- <https://github.com/nvm-sh/nvm>
-- <https://go.dev/doc/install>
-- <https://github.com/jesseduffield/lazygit>
 
 ```sh
+# check install programs
+./setup.sh check
+
 apt install $(./setup.sh install)
 cargo install $(cat cargo.txt)
 ```
@@ -32,3 +31,4 @@ cargo install $(cat cargo.txt)
 ```sh
 ./setup.sh save
 ```
+

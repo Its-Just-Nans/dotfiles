@@ -35,6 +35,11 @@ deploy() {
             echo "${red}failed${reset}"
         fi
     done
+
+    echo -n "Setting up ${grey}gterminal.preferences${reset}..."
+    dconf reset -f /org/gnome/terminal/
+    cat gterminal.preferences | dconf load /org/gnome/terminal/
+    echo "${green}done${reset}"
 }
 
 save(){
@@ -49,11 +54,37 @@ install() {
     echo "shellcheck byobu tmux screen cmatrix thunar wireshark ffmpeg qemu-system libvirt-daemon-system virt-manager"
 }
 
+
+check() {
+    if ! command -v nvim &>/dev/null; then
+        echo "nvim is not installed"
+	echo "https://neovim.io/doc/install/"
+    fi
+    if ! command -v node &>/dev/null; then
+        echo "node is not installed"
+	echo "https://github.com/nvm-sh/nvm/"
+    fi
+    if ! command -v npm &>/dev/null; then
+        echo "npm is not installed"
+	echo "https://github.com/nvm-sh/nvm/"
+    fi
+    if ! command -v go &>/dev/null; then
+        echo "go is not installed"
+	echo "https://go.dev/doc/install"
+    fi
+    if ! command -v lazygit &>/dev/null; then
+        echo "lazygit is not installed"
+	echo "https://github.com/jesseduffield/lazygit>"
+    fi
+}
+
 main() {
     if [ $# -eq 0 ]; then
         deploy
     elif [ "$1" = "save" ]; then
         save
+    elif [ "$1" = "check" ]; then
+        check
     elif [ "$1" = "install" ]; then
         install
     fi
