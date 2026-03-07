@@ -46,15 +46,6 @@ if [ -n "$BASH_VERSION" ]; then
     eval "$(zoxide init bash)"
   fi
 
-  # nvm
-  if [ -d "$HOME/.nvm" ]; then
-
-    export NVM_DIR="$HOME/.nvm"
-    # shellcheck disable=SC1091
-    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
-    # shellcheck disable=SC1091
-    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
-  fi
 fi
 
 export PATH="$HOME/.cargo/bin:$HOME/.arduino:$HOME/.local/bin:$PATH"
@@ -177,6 +168,29 @@ compressPDF() {
   fi
   gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dDownsampleColorImages=true -dColorImageResolution="$2" -dNOPAUSE -dBATCH -sOutputFile="${name}_compressed.pdf" "$1"
 }
+
+nvm() {
+  # nvm <https://github.com/nvm-sh/nvm>
+  # nvm is really slow to source (0.3 sec) so we lazy load it
+  if [ -d "$HOME/.nvm" ]; then
+      export NVM_DIR="$HOME/.nvm"
+      # shellcheck disable=SC1091
+      [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
+      # shellcheck disable=SC1091
+      [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
+      if [ $# -eq 0 ]; then
+          echo "No arguments provided. nvm is now loaded. You can try"
+	  echo "nvm install node"
+	  echo "nvm use node"
+      else
+          nvm "$@"
+      fi
+  else
+      echo "nvm seems not installed - $HOME/.nvm does not exists. Check https://github.com/nvm-sh/nvm"
+      return 1
+  fi
+}
+
 
 whileLoop() {
   echo "while true; do action; sleep 2; done"
