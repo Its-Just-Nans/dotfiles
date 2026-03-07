@@ -1,6 +1,6 @@
 # dotfiles
 
-dotfiles
+dotfiles. It's about ownership.
 
 ## Setup
 
