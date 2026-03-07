@@ -16,6 +16,8 @@ apt install pkg-config gcc clang make git curl libssl-dev xclip python-is-python
 ```
 
 - setup shortcuts
+  - `<CTRL> + d`: terminal
+  - `<CTRL> + f`: baobab
 - setup SSH key and GPG
 
 ```sh
