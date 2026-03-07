@@ -38,7 +38,7 @@ setup() {
 
     echo -n "Setting up ${grey}gterminal.preferences${reset}..."
     dconf reset -f /org/gnome/terminal/
-    cat gterminal.preferences | dconf load /org/gnome/terminal/
+    dconf load /org/gnome/terminal/ < gterminal.preferences
     echo "${green}done${reset}"
 }
 
@@ -51,7 +51,7 @@ save(){
 }
 
 install() {
-    echo "shellcheck byobu tmux screen cmatrix thunar wireshark ffmpeg qemu-system libvirt-daemon-system virt-manager"
+    echo "imagemagick shellcheck byobu tmux screen cmatrix thunar wireshark ffmpeg qemu-system libvirt-daemon-system virt-manager"
 }
 
 
@@ -62,7 +62,7 @@ check() {
     else
         echo "nvim seems installed"
     fi
-    if [ ! command -v node &>/dev/null || ! command -v npm &>/dev/null ]; then 
+    if ! command -v node &>/dev/null || ! command -v npm &>/dev/null; then
         if [ -d "$HOME/.nvm" ]; then
             # nvm seems present but not loaded
             echo "nvm seems installed but not loaded"
@@ -87,6 +87,10 @@ check() {
     fi
 }
 
+meta() {
+    shellcheck setup.sh
+}
+
 main() {
     if [ $# -eq 0 ]; then
         echo "please specify argument"
@@ -98,6 +102,8 @@ main() {
         check
     elif [ "$1" = "install" ]; then
         install
+    elif [ "$1" = "meta" ]; then
+        meta
     else
         echo "no arg $1"
     fi
