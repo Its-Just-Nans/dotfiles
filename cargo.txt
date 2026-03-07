@@ -11,15 +11,12 @@ cargo-expand
 cargo-hack
 cargo-llvm-cov
 cargo-ndk
-cargo-nextest
 cargo-shear
 cargo-sort
 cargo-update
 cors-proxy
 cross
 czkawka_cli
-czkawka_gui
-diesel_cli
 diskus
 du-dust
 eza
