@@ -55,6 +55,14 @@ setup() {
     else
         echo "${red}No such file '$wallpaper'${reset}"
     fi
+
+    echo -n "Setting up '${grey}shortcuts${reset}'..."
+    dconf reset -f /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/
+    dconf reset /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings
+    dconf load /org/gnome/settings-daemon/plugins/media-keys/ < media-keys.txt
+    sleep "$sleep_time"
+    echo "${green}done${reset}"
+
 }
 
 save(){
@@ -63,6 +71,7 @@ save(){
     dconf dump /org/gnome/terminal/ > gterminal.preferences
     # sync-cargo
     cargo install --list | grep -E '^[a-zA-Z0-9_-]+ v' | awk '{print $1}' > cargo.txt
+    dconf dump /org/gnome/settings-daemon/plugins/media-keys/ > media-keys.txt
 }
 
 install() {
