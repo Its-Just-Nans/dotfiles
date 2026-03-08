@@ -16,6 +16,7 @@ setup() {
 
     scripts=$(fdfind -H -a -E .git -t f --full-path "./\..*")
 
+    sleep_time="0.08"
 
     for one_script in $scripts; do
         local_path=${one_script//$SCRIPT_PATH/}
@@ -28,7 +29,7 @@ setup() {
         echo -n "Installing '${grey}$local_path${reset}' at '${blue}$dest_path${reset}'..."
         ln -s -f "$one_script" "$dest_path"
         result=$?
-        sleep 0.1
+        sleep "$sleep_time"
         if [ "$result" -eq 0 ]; then
             echo "${green}done${reset}"
         else
@@ -36,10 +37,24 @@ setup() {
         fi
     done
 
-    echo -n "Setting up ${grey}gterminal.preferences${reset}..."
+    echo -n "Setting up '${grey}gterminal.preferences${reset}'..."
     dconf reset -f /org/gnome/terminal/
     dconf load /org/gnome/terminal/ < gterminal.preferences
+    sleep "$sleep_time"
     echo "${green}done${reset}"
+
+    wallpaper="background.png"
+    if [ -f "$wallpaper" ]; then
+        current_path=$(pwd)
+        path_wallpaper="$current_path/$wallpaper"
+        echo -n "Setting up '${grey}$path_wallpaper${reset}'..."
+        gsettings set org.gnome.desktop.background picture-uri "$path_wallpaper"
+        gsettings set org.gnome.desktop.background picture-uri-dark "$path_wallpaper"
+        sleep "$sleep_time"
+        echo "${green}done${reset}"
+    else
+        echo "${red}No such file '$wallpaper'${reset}"
+    fi
 }
 
 save(){
