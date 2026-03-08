@@ -94,7 +94,7 @@ meta() {
 add() {
     dir=$(dirname "$1")
     if [[ "$dir" == $HOME/* ]]; then
-        dir="${dir#$HOME/}"
+        dir="${dir#"$HOME"/}"
     else
         echo "$1 does not start with $HOME"
         exit 1
