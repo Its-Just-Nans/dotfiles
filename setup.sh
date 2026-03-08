@@ -91,6 +91,23 @@ meta() {
     shellcheck setup.sh
 }
 
+add() {
+    dir=$(dirname "$1")
+    if [[ "$dir" == $HOME/* ]]; then
+        dir="${dir#$HOME/}"
+    else
+        echo "$1 does not start with $HOME"
+        exit 1
+    fi
+    if [ ! -f "$dir" ];then
+        echo "Creating $dir"
+        mkdir -p "$dir"
+    fi
+    file=$(basename "$1")
+    echo "Copying $1 to $dir/$file"
+    cp "$1" "$dir/$file"
+}
+
 main() {
     if [ $# -eq 0 ]; then
         echo "please specify argument"
@@ -104,6 +121,8 @@ main() {
         install
     elif [ "$1" = "meta" ]; then
         meta
+    elif [ "$1" = "add" ]; then
+        add "$2"
     else
         echo "no arg $1"
     fi
