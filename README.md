@@ -34,3 +34,7 @@ cargo install $(cat cargo.txt)
 ./setup.sh save
 ```
 
+## License
+
+Licensed under MIT License. Note that some file have their own license
+
