@@ -26,6 +26,9 @@ if [ -n "$BASH_VERSION" ]; then
 
   # git completion __git_ps1
   # curl -L https://raw.github.com/git/git/master/contrib/completion/git-prompt.sh > .git-prompt.sh
+
+
+
   if [ -f "$HOME/.git-prompt.sh" ]; then
     # shellcheck disable=SC1091
     source "$HOME/.git-prompt.sh"
@@ -88,9 +91,14 @@ else
     _PS1_HOST="\[\033[01;32m\]\h\[\033[00m\]"
 fi
 _PS1_DIR="\[\033[01;34m\]\w\[\033[00m\]"
-_PS1_GIT="\[\033[01;33m\]\$(__git_ps1 '(%s)')\[\033[00m\]"
-PS1="$_PS1_CHROOT$_PS1_USER@$_PS1_HOST:$_PS1_DIR$_PS1_GIT\$ "
 
+export GIT_PS1_SHOWUPSTREAM="auto"
+export GIT_PS1_SHOWDIRTYSTATE=1
+export GIT_PS1_SHOWSTASHSTATE=1
+export GIT_PS1_SHOWUNTRACKEDFILES=1
+
+_PS1_GIT="\[\033[01;33m\]\$(__git_ps1 '(%s%u)')\[\033[00m\]"
+PS1="$_PS1_CHROOT$_PS1_USER@$_PS1_HOST:$_PS1_DIR$_PS1_GIT\$ "
 
 _completion_n4n5="$HOME/.config/.n4n5/completions/n4n5.bash"
 if [ -f "$_completion_n4n5" ]; then
@@ -113,7 +121,7 @@ export COLOR_BACK_RED="\033[41m"
 export COLOR_BACK_BLUE="\033[44m"
 
 editor="nvim"
-alias code="nvim"
+alias code="$editor"
 
 _is_fd=false
 if command -v fd &>/dev/null && command -v fd-find &>/dev/null; then
