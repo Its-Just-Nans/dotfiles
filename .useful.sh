@@ -120,8 +120,8 @@ export COLOR_BACK_GREEN="\033[42m"
 export COLOR_BACK_RED="\033[41m"
 export COLOR_BACK_BLUE="\033[44m"
 
-editor="nvim"
-alias code="$editor"
+EDITOR="/opt/nvim-linux-x86_64/bin/nvim"
+alias code="$EDITOR"
 
 _is_fd=false
 if command -v fd &>/dev/null && command -v fd-find &>/dev/null; then
@@ -237,10 +237,10 @@ g() {
     fi
   fi
   if [ "$use_editor" = true ]; then
-    if command -v "$editor" &>/dev/null; then
-      "$editor" .
+    if command -v "$EDITOR" &>/dev/null; then
+      "$EDITOR" .
     else
-      echo "$editor is not installed :("
+      echo "$EDITOR is not installed :("
     fi
   fi
 }
@@ -274,10 +274,10 @@ mkt() {
     fi
     if git clone "$1" "$repo_name"; then
       cd "$repo_name" || return
-      if command -v "$editor" &>/dev/null; then
-        "$editor" .
+      if command -v "$EDITOR" &>/dev/null; then
+        "$EDITOR" .
       else
-        echo "mkt(): $editor not installed :("
+        echo "mkt(): $EDITOR not installed :("
       fi
     else
       echo "mkt(): Error during the clone"
