@@ -13,3 +13,17 @@ inoremap <Up> <Nop>
 inoremap <Down> <Nop>
 inoremap <Left> <Nop>
 inoremap <Right> <Nop>
+
+" Disable arrow keys in visual mode
+vnoremap <Up> <NOP>
+vnoremap <Down> <NOP>
+vnoremap <Left> <NOP>
+vnoremap <Right> <NOP>
+
+" no mouse
+set mouse=
+
+set backspace=
+
+set relativenumber
+set number
