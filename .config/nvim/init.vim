@@ -27,3 +27,6 @@ set backspace=
 
 set relativenumber
 set number
+
+" transparent bg
+autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE
