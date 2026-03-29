@@ -121,8 +121,10 @@ export COLOR_BACK_GREEN="\033[42m"
 export COLOR_BACK_RED="\033[41m"
 export COLOR_BACK_BLUE="\033[44m"
 
-EDITOR="/opt/nvim-linux-x86_64/bin/nvim"
-alias code="$EDITOR"
+if [ -f "/opt/nvim-linux-x86_64/bin/nvim" ]; then
+    EDITOR="/opt/nvim-linux-x86_64/bin/nvim"
+    alias code="$EDITOR"
+fi
 
 _is_fd=false
 if command -v fd &>/dev/null && command -v fd-find &>/dev/null; then
