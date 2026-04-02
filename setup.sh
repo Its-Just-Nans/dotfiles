@@ -81,7 +81,7 @@ save(){
 }
 
 install() {
-    echo "imagemagick libimage-exiftool-perl shellcheck byobu tmux screen cmatrix thunar wireshark ffmpeg qemu-system libvirt-daemon-system virt-manager"
+    echo "git-crypt imagemagick libimage-exiftool-perl shellcheck byobu tmux screen cmatrix thunar wireshark ffmpeg qemu-system libvirt-daemon-system virt-manager"
 }
 
 
