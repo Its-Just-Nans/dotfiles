@@ -118,7 +118,11 @@ check() {
 }
 
 meta() {
-    shellcheck setup.sh
+    if ! command -v shellcheck &>/dev/null; then
+        echo "shellcheck is not installed"
+    else
+        shellcheck setup.sh
+    fi
 }
 
 add() {
