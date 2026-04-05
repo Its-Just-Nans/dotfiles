@@ -30,6 +30,7 @@ hyperfine
 jscontact
 just
 lychee
+mdbook
 meka
 n4n5
 notox
