@@ -110,10 +110,20 @@ check() {
         echo "go seems installed"
     fi
     if ! command -v lazygit &>/dev/null; then
+        repo="github.com/jesseduffield/lazygit"
         echo "lazygit is not installed"
-        echo "https://github.com/jesseduffield/lazygit>"
+        echo "https://$repo"
+        echo "go install $repo@latest"
     else
         echo "lazygit seems installed"
+    fi
+    if ! command -v fzf &>/dev/null; then
+        repo="github.com/junegunn/fzf"
+        echo "fzf is not installed"
+        echo "https://$repo"
+        echo "go install $repo@latest"
+    else
+        echo "fzf seems installed"
     fi
 }
 
