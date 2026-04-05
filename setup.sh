@@ -155,21 +155,21 @@ add() {
 main() {
     if [ $# -eq 0 ]; then
         echo "please specify argument"
-    elif [ "$1" = "setup" ]; then
-        setup
-    elif [ "$1" = "save" ]; then
-        save
-    elif [ "$1" = "check" ]; then
-        check
-    elif [ "$1" = "install" ]; then
-        install
-    elif [ "$1" = "meta" ]; then
-        meta
-    elif [ "$1" = "add" ]; then
-        add "$2"
-    else
-        echo "no arg $1"
+        exit 1
     fi
+
+    case "$1" in
+        setup)   setup ;;
+        save)    save ;;
+        check)   check ;;
+        install) install ;;
+        meta)    meta ;;
+        add)
+            [ -z "$2" ] && { echo "add requires an argument"; exit 1; }
+            add "$2"
+            ;;
+        *)       echo "no arg $1" ;;
+    esac
 }
 
 main "$@"
