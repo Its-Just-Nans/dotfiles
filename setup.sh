@@ -91,8 +91,9 @@ install() {
 
 check() {
     if ! command -v nvim &>/dev/null; then
-        echo "nvim is not installed"
+        echo "${red}nvim is not installed${reset}"
         echo "https://neovim.io/doc/install/"
+	echo ""
     else
         echo "nvim seems installed"
     fi
@@ -108,24 +109,27 @@ check() {
         echo "nvm seems installed"
     fi
     if ! command -v go &>/dev/null; then
-        echo "go is not installed"
+        echo "${red}go is not installed${reset}"
         echo "https://go.dev/doc/install"
+	echo ""
     else
         echo "go seems installed"
     fi
     if ! command -v lazygit &>/dev/null; then
         repo="github.com/jesseduffield/lazygit"
-        echo "lazygit is not installed"
+        echo "${red}lazygit is not installed${reset}"
         echo "https://$repo"
         echo "go install $repo@latest"
+	echo ""
     else
         echo "lazygit seems installed"
     fi
     if ! command -v fzf &>/dev/null; then
         repo="github.com/junegunn/fzf"
-        echo "fzf is not installed"
+        echo "${red}fzf is not installed${reset}"
         echo "https://$repo"
         echo "go install $repo@latest"
+	echo ""
     else
         echo "fzf seems installed"
     fi
