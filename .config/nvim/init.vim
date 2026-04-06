@@ -30,3 +30,5 @@ set number
 
 " transparent bg
 autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE
+
+set expandtab "use only space

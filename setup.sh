@@ -6,6 +6,7 @@ blue=$(tput setaf 4)
 green=$(tput setaf 2)
 red=$(tput setaf 1)
 reset=$(tput sgr0)
+sleep_time="0.08"
 
 setup() {
     if ! command -v fd &>/dev/null; then
@@ -20,8 +21,6 @@ setup() {
     )/"
 
     scripts=$(fd -H -a -E .git -t f --full-path "./\..*")
-
-    sleep_time="0.08"
 
     for one_script in $scripts; do
         local_path=${one_script//$SCRIPT_PATH/}
@@ -42,31 +41,43 @@ setup() {
         fi
     done
 
-    echo -n "Setting up '${grey}gterminal.preferences${reset}'..."
-    dconf reset -f /org/gnome/terminal/
-    dconf load /org/gnome/terminal/ < gterminal.preferences
-    sleep "$sleep_time"
-    echo "${green}done${reset}"
-
-    wallpaper="background.png"
-    if [ -f "$wallpaper" ]; then
-        current_path=$(pwd)
-        path_wallpaper="$current_path/$wallpaper"
-        echo -n "Setting up '${grey}$path_wallpaper${reset}'..."
-        gsettings set org.gnome.desktop.background picture-uri "$path_wallpaper"
-        gsettings set org.gnome.desktop.background picture-uri-dark "$path_wallpaper"
+    if command -v dconf &>/dev/null; then
+        echo -n "Setting up '${grey}gterminal.preferences${reset}'..."
+        dconf reset -f /org/gnome/terminal/
+        dconf load /org/gnome/terminal/ < gterminal.preferences
         sleep "$sleep_time"
         echo "${green}done${reset}"
     else
-        echo "${red}No such file '$wallpaper'${reset}"
+        echo "${red}dconf is not installed${reset}"
     fi
 
-    echo -n "Setting up '${grey}shortcuts${reset}'..."
-    dconf reset -f /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/
-    dconf reset /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings
-    dconf load /org/gnome/settings-daemon/plugins/media-keys/ < media-keys.txt
-    sleep "$sleep_time"
-    echo "${green}done${reset}"
+    if command -v gsettings &>/dev/null; then
+        wallpaper="background.png"
+        if [ -f "$wallpaper" ]; then
+                current_path=$(pwd)
+                path_wallpaper="$current_path/$wallpaper"
+                echo -n "Setting up '${grey}$path_wallpaper${reset}'..."
+                gsettings set org.gnome.desktop.background picture-uri "$path_wallpaper"
+                gsettings set org.gnome.desktop.background picture-uri-dark "$path_wallpaper"
+                sleep "$sleep_time"
+                echo "${green}done${reset}"
+         else
+                echo "${red}No such file '$wallpaper'${reset}"
+         fi
+    else
+        echo "${red}gsettings is not installed${reset}"
+    fi
+
+    if command -v dconf &>/dev/null; then
+        echo -n "Setting up '${grey}shortcuts${reset}'..."
+        dconf reset -f /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/
+        dconf reset /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings
+        dconf load /org/gnome/settings-daemon/plugins/media-keys/ < media-keys.txt
+        sleep "$sleep_time"
+        echo "${green}done${reset}"
+    else
+        echo "${red}dconf is not installed${reset}"
+    fi
 
     if command -v rustup &>/dev/null; then
         echo -n "Setting up '${grey}rust completions${reset}'..."
@@ -104,6 +115,7 @@ check() {
     else
         printf "%s %s ${green}[OK]${reset}\n" "$cmd_test" "${spacing:${#cmd_test}}"
     fi
+    sleep "$sleep_time"
 
     cmd_test="nvm"
     if ! command -v node &>/dev/null || ! command -v npm &>/dev/null; then
@@ -118,6 +130,7 @@ check() {
     else
         printf "%s %s ${green}[OK]${reset}\n" "$cmd_test" "${spacing:${#cmd_test}}"
     fi
+    sleep "$sleep_time"
 
     cmd_test="go"
     if ! command -v "$cmd_test" &>/dev/null; then
@@ -127,6 +140,7 @@ check() {
     else
         printf "%s %s ${green}[OK]${reset}\n" "$cmd_test" "${spacing:${#cmd_test}}"
     fi
+    sleep "$sleep_time"
 
     cmd_test="lazygit"
     if ! command -v "$cmd_test" &>/dev/null; then
@@ -138,6 +152,7 @@ check() {
     else
         printf "%s %s ${green}[OK]${reset}\n" "$cmd_test" "${spacing:${#cmd_test}}"
     fi
+    sleep "$sleep_time"
 
     cmd_test="fzf"
     if ! command -v "$cmd_test" &>/dev/null; then
@@ -149,18 +164,26 @@ check() {
     else
         printf "%s %s ${green}[OK]${reset}\n" "$cmd_test" "${spacing:${#cmd_test}}"
     fi
+    sleep "$sleep_time"
 
-    cmd_test="Font Ubuntu Mono"
-    if fc-list | grep "Ubuntu Mono" &> /dev/null; then
-        printf "%s %s ${green}[OK]${reset}\n" "$cmd_test" "${spacing:${#cmd_test}}"
+    if command -v fc-list &>/dev/null; then
+        cmd_test="Font Ubuntu Mono"
+        if fc-list | grep "Ubuntu Mono" &> /dev/null; then
+            printf "%s %s ${green}[OK]${reset}\n" "$cmd_test" "${spacing:${#cmd_test}}"
+        else
+            echo "${red}Font Ubuntu Mono is not installed${reset}"
+        fi
+        sleep "$sleep_time"
+
+        cmd_test="Font CommitMono"
+        if fc-list | grep "CommitMono" &> /dev/null; then
+            printf "%s %s ${green}[OK]${reset}\n" "$cmd_test" "${spacing:${#cmd_test}}"
+        else
+            echo "${red}Font CommitMono is not installed${reset}"
+        fi
+        sleep "$sleep_time"
     else
-        echo "${red}Font Ubuntu Mono is not installed${reset}"
-    fi
-    cmd_test="Font CommitMono"
-    if fc-list | grep "CommitMono" &> /dev/null; then
-        printf "%s %s ${green}[OK]${reset}\n" "$cmd_test" "${spacing:${#cmd_test}}"
-    else
-        echo "${red}Font CommitMono is not installed${reset}"
+        echo "${red}fc-list is not installed${reset}"
     fi
 }
 
