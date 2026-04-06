@@ -138,6 +138,17 @@ check() {
     else
         echo "fzf seems installed"
     fi
+
+    if fc-list | grep "Ubuntu Mono"; then
+        echo "Font Ubuntu Mono is installed"
+    else
+        echo "${red}Font Ubuntu Mono is not installed${reset}"
+    fi
+    if fc-list | grep "CommitMono"; then
+        echo "Font CommitMono is installed"
+    else
+        echo "${red}Font CommitMono is not installed${reset}"
+    fi
 }
 
 meta() {
