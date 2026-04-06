@@ -234,6 +234,10 @@ g() {
       folder=$oneArg
     fi
   done
+  if [ ! -d "${HOME}/Documents/github/" ]; then
+      mkdir -p "${HOME}/Documents/github/"
+      echo "Folder ${HOME}/Documents/github/ created"
+  fi
   cd "${HOME}/Documents/github/${folder}" || return
   # check if onefetch is installed
 
