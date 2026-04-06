@@ -16,6 +16,37 @@ export PATH="$ZIG_FOLDER:$PATH"
 # nvim
 export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
 
+# pnpm
+export PNPM_HOME="$HOME/.local/share/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+# pnpm end
+
+export PATH="$HOME/.cargo/bin:$HOME/.arduino:$HOME/.local/bin:$PATH"
+
+# go
+export PATH="$HOME/go/bin:$PATH"
+export PATH="$PATH:/usr/local/go/bin"
+
+# gradle
+#export PATH="$PATH:/opt/gradle/bin/"
+
+if [ -f "/opt/nvim-linux-x86_64/bin/nvim" ]; then
+    EDITOR="/opt/nvim-linux-x86_64/bin/nvim"
+    alias code="$EDITOR"
+fi
+
+_is_fd=false
+if command -v fd &>/dev/null && command -v fd-find &>/dev/null; then
+  # all good
+  _is_fd=true
+elif command -v fd-find &>/dev/null; then
+  alias fd="fd-find"
+  _is_fd=true
+elif command -v fd &>/dev/null; then
+  alias fd-find="fd"
+  _is_fd=true
+fi
+
 # if running bash
 if [ -n "$BASH_VERSION" ]; then
   # if file exists
@@ -26,9 +57,6 @@ if [ -n "$BASH_VERSION" ]; then
 
   # git completion __git_ps1
   # curl -L https://raw.github.com/git/git/master/contrib/completion/git-prompt.sh > .git-prompt.sh
-
-
-
   if [ -f "$HOME/.git-prompt.sh" ]; then
     # shellcheck disable=SC1091
     source "$HOME/.git-prompt.sh"
@@ -54,10 +82,14 @@ if [ -n "$BASH_VERSION" ]; then
   if command -v fzf &>/dev/null; then
     eval "$(fzf --bash)"
   fi
-fi
 
-export PATH="$HOME/.cargo/bin:$HOME/.arduino:$HOME/.local/bin:$PATH"
-export PATH="$HOME/go/bin:$PATH"
+  # n4n5
+  _completion_n4n5="$HOME/.config/.n4n5/completions/n4n5.bash"
+  if [ -f "$_completion_n4n5" ]; then
+      # shellcheck disable=SC1090
+      . "$_completion_n4n5"
+  fi
+fi
 
 alias ll="ls -lahv"
 alias lla="ls -lahv"
@@ -70,23 +102,16 @@ alias ...="cd ../.."
 alias vim="nvim"
 alias vi="nvim"
 alias v="nvim"
-
-# pnpm
-export PNPM_HOME="$HOME/.local/share/pnpm"
-export PATH="$PNPM_HOME:$PATH"
-# pnpm end
+alias n4N5='n4n5'
+alias N4n5='n4n5'
+alias N4N5='n4n5'
+alias n='n4n5'
 
 # android stuff
 export ANDROID_SDK_ROOT="$HOME/.android/sdk"
 export SDKMANAGER="$ANDROID_SDK_ROOT/cmdline-tools/latest/bin/sdkmanager"
 export ANDROID_NDK_HOME="$HOME/.android/sdk/ndk/"
 export ANDROID_HOME="$HOME/.android/sdk/"
-
-# go
-export PATH="$PATH:/usr/local/go/bin"
-
-# gradle
-export PATH="$PATH:/opt/gradle/bin/"
 
 # shellcheck disable=SC2016
 _PS1_CHROOT='${debian_chroot:+($debian_chroot)}'
@@ -105,43 +130,6 @@ export GIT_PS1_SHOWUNTRACKEDFILES=1
 
 _PS1_GIT="\[\033[01;33m\]\$(__git_ps1 '(%s%u)')\[\033[00m\]"
 PS1="$_PS1_CHROOT$_PS1_USER@$_PS1_HOST:$_PS1_DIR$_PS1_GIT\$ "
-
-_completion_n4n5="$HOME/.config/.n4n5/completions/n4n5.bash"
-if [ -f "$_completion_n4n5" ]; then
-  # shellcheck disable=SC1090
-  . "$_completion_n4n5"
-fi
-
-alias n4N5='n4n5'
-alias N4n5='n4n5'
-alias N4N5='n4n5'
-alias n='n4n5'
-
-export COLOR_BLUE="\033[0;34m"
-export COLOR_RED="\033[0;31m"
-export COLOR_GREEN="\033[0;32m"
-export COLOR_NC="\033[0m"
-export COLOR_BACK_WHITE="\033[47m"
-export COLOR_BACK_GREEN="\033[42m"
-export COLOR_BACK_RED="\033[41m"
-export COLOR_BACK_BLUE="\033[44m"
-
-if [ -f "/opt/nvim-linux-x86_64/bin/nvim" ]; then
-    EDITOR="/opt/nvim-linux-x86_64/bin/nvim"
-    alias code="$EDITOR"
-fi
-
-_is_fd=false
-if command -v fd &>/dev/null && command -v fd-find &>/dev/null; then
-  # all good
-  _is_fd=true
-elif command -v fd-find &>/dev/null; then
-  alias fd="fd-find"
-  _is_fd=true
-elif command -v fd &>/dev/null; then
-  alias fd-find="fd"
-  _is_fd=true
-fi
 
 startAgent() {
   eval "$(ssh-agent -s)"
@@ -573,6 +561,10 @@ listGIT() {
       run_git_fetch=true
     fi
   done
+  COLOR_NC="\033[0m"
+  COLOR_BACK_GREEN="\033[42m"
+  COLOR_BACK_RED="\033[41m"
+  COLOR_BACK_BLUE="\033[44m"
   for x in $list; do
 
     if [ -d "$x" ]; then
