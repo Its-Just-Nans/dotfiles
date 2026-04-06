@@ -11,7 +11,7 @@ setup() {
     if ! command -v fd &>/dev/null; then
         echo "${red}fd is not installed${reset}"
         echo "cargo install fd-find"
-	return 1
+        return 1
     fi
     # https://stackoverflow.com/a/4774063
     SCRIPT_PATH="$(
@@ -95,57 +95,70 @@ install() {
 
 
 check() {
-    if ! command -v nvim &>/dev/null; then
-        echo "${red}nvim is not installed${reset}"
+    spacing='                                      '
+    cmd_test="nvim"
+    if ! command -v "$cmd_test" &>/dev/null; then
+        echo "${red}$cmd_test is not installed${reset}"
         echo "https://neovim.io/doc/install/"
-	echo ""
+        echo ""
     else
-        echo "nvim seems installed"
+        printf "%s %s ${green}[OK]${reset}\n" "$cmd_test" "${spacing:${#cmd_test}}"
     fi
+
+    cmd_test="nvm"
     if ! command -v node &>/dev/null || ! command -v npm &>/dev/null; then
         if [ -d "$HOME/.nvm" ]; then
             # nvm seems present but not loaded
-            echo "nvm seems installed but not loaded"
+            cmd_test="$cmd_test seems installed but not loaed"
+            printf "%s %s ${green}[OK]${reset}\n" "$cmd_test" "${spacing:${#cmd_test}}"
         else
             echo "node and/or npm are not installed"
             echo "https://github.com/nvm-sh/nvm/"
         fi
     else
-        echo "nvm seems installed"
-    fi
-    if ! command -v go &>/dev/null; then
-        echo "${red}go is not installed${reset}"
-        echo "https://go.dev/doc/install"
-	echo ""
-    else
-        echo "go seems installed"
-    fi
-    if ! command -v lazygit &>/dev/null; then
-        repo="github.com/jesseduffield/lazygit"
-        echo "${red}lazygit is not installed${reset}"
-        echo "https://$repo"
-        echo "go install $repo@latest"
-	echo ""
-    else
-        echo "lazygit seems installed"
-    fi
-    if ! command -v fzf &>/dev/null; then
-        repo="github.com/junegunn/fzf"
-        echo "${red}fzf is not installed${reset}"
-        echo "https://$repo"
-        echo "go install $repo@latest"
-	echo ""
-    else
-        echo "fzf seems installed"
+        printf "%s %s ${green}[OK]${reset}\n" "$cmd_test" "${spacing:${#cmd_test}}"
     fi
 
+    cmd_test="go"
+    if ! command -v "$cmd_test" &>/dev/null; then
+        echo "${red}$cmd_test is not installed${reset}"
+        echo "https://go.dev/doc/install"
+        echo ""
+    else
+        printf "%s %s ${green}[OK]${reset}\n" "$cmd_test" "${spacing:${#cmd_test}}"
+    fi
+
+    cmd_test="lazygit"
+    if ! command -v "$cmd_test" &>/dev/null; then
+        repo="github.com/jesseduffield/lazygit"
+        echo "${red}$cmd_test is not installed${reset}"
+        echo "https://$repo"
+        echo "go install $repo@latest"
+        echo ""
+    else
+        printf "%s %s ${green}[OK]${reset}\n" "$cmd_test" "${spacing:${#cmd_test}}"
+    fi
+
+    cmd_test="fzf"
+    if ! command -v "$cmd_test" &>/dev/null; then
+        repo="github.com/junegunn/fzf"
+        echo "${red}$cmd_test is not installed${reset}"
+        echo "https://$repo"
+        echo "go install $repo@latest"
+        echo ""
+    else
+        printf "%s %s ${green}[OK]${reset}\n" "$cmd_test" "${spacing:${#cmd_test}}"
+    fi
+
+    cmd_test="Font Ubuntu Mono"
     if fc-list | grep "Ubuntu Mono" &> /dev/null; then
-        echo "Font Ubuntu Mono is installed"
+        printf "%s %s ${green}[OK]${reset}\n" "$cmd_test" "${spacing:${#cmd_test}}"
     else
         echo "${red}Font Ubuntu Mono is not installed${reset}"
     fi
+    cmd_test="Font CommitMono"
     if fc-list | grep "CommitMono" &> /dev/null; then
-        echo "Font CommitMono is installed"
+        printf "%s %s ${green}[OK]${reset}\n" "$cmd_test" "${spacing:${#cmd_test}}"
     else
         echo "${red}Font CommitMono is not installed${reset}"
     fi
