@@ -8,13 +8,18 @@ red=$(tput setaf 1)
 reset=$(tput sgr0)
 
 setup() {
+    if ! command -v fd &>/dev/null; then
+        echo "${red}fd is not installed${reset}"
+        echo "cargo install fd-find"
+	return 1
+    fi
     # https://stackoverflow.com/a/4774063
     SCRIPT_PATH="$(
         cd -- "$(dirname "$0")" >/dev/null 2>&1 || return
         pwd -P
     )/"
 
-    scripts=$(fdfind -H -a -E .git -t f --full-path "./\..*")
+    scripts=$(fd -H -a -E .git -t f --full-path "./\..*")
 
     sleep_time="0.08"
 
