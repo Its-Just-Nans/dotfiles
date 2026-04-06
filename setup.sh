@@ -63,12 +63,16 @@ setup() {
     sleep "$sleep_time"
     echo "${green}done${reset}"
 
-    echo -n "Setting up '${grey}rust completions${reset}'..."
-    mkdir -p ~/.local/share/bash-completion/completions
-    rustup completions bash       > ~/.local/share/bash-completion/completions/rustup
-    rustup completions bash cargo > ~/.local/share/bash-completion/completions/cargo
-    sleep "$sleep_time"
-    echo "${green}done${reset}"
+    if command -v rustup &>/dev/null; then
+        echo -n "Setting up '${grey}rust completions${reset}'..."
+        mkdir -p ~/.local/share/bash-completion/completions
+        rustup completions bash       > ~/.local/share/bash-completion/completions/rustup
+        rustup completions bash cargo > ~/.local/share/bash-completion/completions/cargo
+        sleep "$sleep_time"
+        echo "${green}done${reset}"
+    else
+        echo "${red}rustup is not installed${reset}"
+    fi
 }
 
 save(){
