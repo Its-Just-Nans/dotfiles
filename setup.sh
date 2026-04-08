@@ -101,7 +101,12 @@ save(){
 }
 
 install() {
-    echo "git-crypt imagemagick libimage-exiftool-perl shellcheck byobu tmux screen cmatrix thunar wireshark gimp ffmpeg qemu-system libvirt-daemon-system virt-manager"
+    echo "git-crypt shellcheck thunar \
+imagemagick libimage-exiftool-perl gimp inkscape \
+byobu tmux screen \
+wireshark ffmpeg \
+libaa-bin cmatrix \
+qemu-system libvirt-daemon-system virt-manager"
 }
 
 
