@@ -2,6 +2,7 @@ apksig
 ast-grep
 baobab
 bat
+bladvak-cli
 boa_cli
 cargo-afl
 cargo-bloat
@@ -29,6 +30,7 @@ hexyl
 hyperfine
 jscontact
 just
+lemming
 lychee
 mdbook
 meka
