@@ -44,7 +44,6 @@ libaa-bin # activate a little fire with `aafire`
 lolcat # download all ruby just to show rainbow
 polybar # to do
 https://hannahmontana.sourceforge.net/ # wish I knew this before
-https://github.com/pipeseroni/pipes.sh
 screen # multiple terminal
 tmux # screen but better
 byobu # tmux but better
@@ -71,7 +70,6 @@ dav1d # https://code.videolan.org/videolan/dav1d/
 unison # bidirect sync files
 unison-gtk # unison but with an interface
 keepassxc # keepassx is dead
-texlive-full # for latex
 xscreensaver # screen saver!
 blueman # bluetooth gtk interface
 valgrind # detect leak errors
@@ -122,5 +120,7 @@ httpie # fun http viewer
 detox # rename files
 micro # text editor
 exa # ls but newer
+https://github.com/pipeseroni/pipes.sh
+texlive-full # for latex
 ```
 
