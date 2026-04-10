@@ -28,7 +28,9 @@ set backspace=
 set relativenumber
 set number
 
+if !exists('$I3SOCK')
 " transparent bg
-autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE
+" autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE
+endif
 
 set expandtab "use only space
