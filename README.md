@@ -38,16 +38,12 @@ Licensed under MIT License. Note that some file have their own license, for exam
 
 ```sh
 ghex # hex editor
-httpie # fun http viewer
 fortune # quote of life
 sl # just a train
 libaa-bin # activate a little fire with `aafire`
 lolcat # download all ruby just to show rainbow
-ranger # file explorer in terminal
-telnet towel.blinkenlights.nl # real film here
 polybar # to do
 https://hannahmontana.sourceforge.net/ # wish I knew this before
-neofetch # am I a geek now?
 https://github.com/pipeseroni/pipes.sh
 screen # multiple terminal
 tmux # screen but better
@@ -59,10 +55,8 @@ htop # better top
 okular # pdf
 pdfarranger # love pdf
 vlc # if not already present
-exa # ls but newer
 blender # 3D
 dos2unix # convert file
-detox # rename files
 golang # dev with go
 default-jdk # java
 docker
@@ -82,14 +76,13 @@ xscreensaver # screen saver!
 blueman # bluetooth gtk interface
 valgrind # detect leak errors
 tlp # battery management
-micro # text editor
 calligra # libreoffice alternative
 nmap # networking
 network-manager-openvpn-gnome openvpn # use openvpn
 phpmyadmin # or just clone the git repo!
 mediainfo # get info of a media
 visidata # https://github.com/saulpw/visidata
-gource # https://github.com/acaudwell/Gource
+gource # git visualization https://github.com/acaudwell/Gource
 pipewire # https://www.youtube.com/watch?v=5a7_2mA2LYQ
 apt-listchanges
 needrestart
@@ -105,16 +98,10 @@ sysstat # https://github.com/sysstat/sysstat
 czkawka # https://github.com/qarmin/czkawka
 matrix  # communication protocol https://www.youtube.com/watch?v=BieAw6lwntU
 gifsicle # gif manipulation
-hyperfine # benchmarking https://github.com/sharkdp/hyperfine
-dust # boosted du command https://github.com/bootandy/dust
-bat # for batcat command
-rg # ripgrep https://github.com/BurntSushi/ripgrep
-fd-find # find but better and in rust https://github.com/sharkdp/fd
 puddletag # music tag editor https://github.com/puddletag/puddletag
 magic-trace # https://magic-trace.org/
 vhs # record terminal https://github.com/charmbracelet/vhs
 typst # https://typst.app/
-ast-grep # https://github.com/ast-grep/ast-grep
 trippy # https://github.com/fujiapple852/trippy
 mise # https://github.com/jdx/mise
 binocle # https://github.com/sharkdp/binocle
@@ -124,5 +111,14 @@ sq # sequoia-sq https://gitlab.com/sequoia-pgp/sequoia
 rshell # remote shell for MicroPython - https://github.com/dhylands/rshell
 flameshot # screenshot https://flameshot.org/
 meld # diff viewer
+
+## Old programs
+
+ranger # file explorer in terminal
+neofetch # am I a geek now?
+httpie # fun http viewer
+detox # rename files
+micro # text editor
+exa # ls but newer
 ```
 
