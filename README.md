@@ -84,6 +84,8 @@ mediainfo # get info of a media
 visidata # https://github.com/saulpw/visidata
 gource # git visualization https://github.com/acaudwell/Gource
 pipewire # https://www.youtube.com/watch?v=5a7_2mA2LYQ
+qpwgraph # pipewire GUI
+helvum # pipewire GUI
 apt-listchanges
 needrestart
 testdisk # testdisk and photorec
