@@ -705,3 +705,10 @@ rfv() (
       --preview-window '~4,+{2}+4/3,<80(up)' \
       --query "$*"
 )
+
+copyfile() {
+  if [ -z "$1" ]; then
+    echo "No argument provided"
+  fi
+  xclip -selection clipboard < "$1"
+}
