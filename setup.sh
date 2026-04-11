@@ -8,17 +8,19 @@ red=$(tput setaf 1)
 reset=$(tput sgr0)
 sleep_time="0.08"
 
+# https://stackoverflow.com/a/4774063
+SCRIPT_PATH="$(
+    cd -- "$(dirname "$0")" >/dev/null 2>&1 || return
+    pwd -P
+)"
+
+
 setup() {
     if ! command -v fd &>/dev/null; then
         echo "${red}fd is not installed${reset}"
         echo "cargo install fd-find"
         return 1
     fi
-    # https://stackoverflow.com/a/4774063
-    SCRIPT_PATH="$(
-        cd -- "$(dirname "$0")" >/dev/null 2>&1 || return
-        pwd -P
-    )/"
 
     scripts=$(fd -H -a -E .git -t f --full-path "./\..*")
 
@@ -206,7 +208,7 @@ add() {
         dir="${dir#"$HOME"/}"
     else
         echo "$1 does not start with $HOME"
-        exit 1
+        return 1
     fi
     if [ ! -f "$dir" ];then
         echo "Creating $dir"
@@ -215,6 +217,8 @@ add() {
     file=$(basename "$1")
     echo "Copying $1 to $dir/$file"
     cp "$1" "$dir/$file"
+
+    ln -s -f "$SCRIPT_PATH/$dir/$file" "$1"
 }
 
 main() {
