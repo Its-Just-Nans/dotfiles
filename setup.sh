@@ -101,7 +101,7 @@ save(){
 }
 
 install() {
-    echo "git-crypt shellcheck thunar \
+    echo "git-crypt shellcheck thunar flameshot\
 imagemagick libimage-exiftool-perl gimp inkscape \
 byobu tmux screen \
 wireshark ffmpeg \
