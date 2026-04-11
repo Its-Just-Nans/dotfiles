@@ -224,7 +224,7 @@ add() {
 main() {
     if [ $# -eq 0 ]; then
         echo "please specify argument"
-        exit 1
+        return 1
     fi
 
     case "$1" in
