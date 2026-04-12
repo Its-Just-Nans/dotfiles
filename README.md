@@ -42,7 +42,6 @@ fortune # quote of life
 sl # just a train
 libaa-bin # activate a little fire with `aafire`
 lolcat # download all ruby just to show rainbow
-polybar # to do
 https://hannahmontana.sourceforge.net/ # wish I knew this before
 screen # multiple terminal
 tmux # screen but better
