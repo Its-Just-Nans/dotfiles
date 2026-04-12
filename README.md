@@ -111,6 +111,7 @@ sq # sequoia-sq https://gitlab.com/sequoia-pgp/sequoia
 rshell # remote shell for MicroPython - https://github.com/dhylands/rshell
 flameshot # screenshot https://flameshot.org/
 meld # diff viewer
+kooha # https://github.com/SeaDve/Kooha
 
 ## Old programs
 
@@ -122,5 +123,6 @@ micro # text editor
 exa # ls but newer
 https://github.com/pipeseroni/pipes.sh
 texlive-full # for latex
+peek # https://github.com/phw/peek/issues/1191
 ```
 
