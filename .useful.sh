@@ -226,9 +226,13 @@ g() {
       mkdir -p "${HOME}/Documents/github/"
       echo "Folder ${HOME}/Documents/github/ created"
   fi
-  cd "${HOME}/Documents/github/${folder}" || return
-  # check if onefetch is installed
 
+  if [ ! -d "${HOME}/Documents/github/${folder}" ]; then
+      echo "Folder ${HOME}/Documents/github/${folder} does not exists"
+      return 1
+  fi
+  cd "${HOME}/Documents/github/${folder}" || return 1
+  # check if onefetch is installed
   if [ "$folder" != "" ]; then
     if command -v onefetch &>/dev/null; then
       onefetch .

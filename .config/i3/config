@@ -19,7 +19,7 @@ font pango:monospace 8
 exec --no-startup-id /usr/libexec/gsd-xsettings
 
 # keyboard
-exec --no-startup-id setxkbmap -layout fr -variant nodeadkeys
+exec_always --no-startup-id setxkbmap -layout fr -variant nodeadkeys
 
 # polybar
 exec_always --no-startup-id ~/.config/i3/polybar.sh &
