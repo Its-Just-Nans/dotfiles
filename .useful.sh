@@ -654,6 +654,10 @@ makegif() {
 }
 
 addkeys() {
+  if [ -z "$SSH_AUTH_SOCK" ]; then
+    echo "New to load the ssh-agent"
+    eval $(ssh-agent)
+  fi
   if [ "$1" ]; then
     toSearch="${1}*"
   else
