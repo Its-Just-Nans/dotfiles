@@ -654,6 +654,11 @@ makegif() {
 }
 
 addkeys() {
+  if [[ "$SSH_AUTH_SOCK" == *gpg-agent* ]]; then
+    echo "GPG agent detected. Killing it..."
+    gpgconf --kill gpg-agent
+    unset SSH_AUTH_SOCK
+  fi
   if [ -z "$SSH_AUTH_SOCK" ]; then
     echo "New to load the ssh-agent"
     eval $(ssh-agent)
