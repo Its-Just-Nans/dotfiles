@@ -661,6 +661,7 @@ addkeys() {
   fi
   if [ -z "$SSH_AUTH_SOCK" ]; then
     echo "New to load the ssh-agent"
+    pkill ssh-agent
     eval $(ssh-agent)
   fi
   if [ "$1" ]; then
