@@ -53,8 +53,9 @@ setup() {
         echo "${red}dconf is not installed${reset}"
     fi
 
+    wallpaper="background.png"
+    cp "$wallpaper" "/opt/$wallpaper"
     if command -v gsettings &>/dev/null; then
-        wallpaper="background.png"
         if [ -f "$wallpaper" ]; then
                 current_path=$(pwd)
                 path_wallpaper="$current_path/$wallpaper"
