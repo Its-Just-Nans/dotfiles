@@ -1,1 +1,5 @@
+# lazygit config.yml
+
+
+# esc to quit - https://github.com/jesseduffield/lazygit/discussions/1966
 quitOnTopLevelReturn: true
