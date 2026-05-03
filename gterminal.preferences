@@ -1,3 +1,6 @@
+[legacy]
+default-show-menubar=false
+
 [legacy/profiles:]
 default='84a1141b-3563-4648-b965-72dec91bb500'
 list=['b1dcc9dd-5262-4d8d-a863-c897e6d979b9', '84a1141b-3563-4648-b965-72dec91bb500', 'a590d9bc-b2be-4f4c-bd81-8771f7d061fd', 'b9c4c392-a103-42fe-9e2f-480248e93d37']

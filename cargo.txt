@@ -42,6 +42,7 @@ release-plz
 resvg
 ripgrep
 ruget
+scooter
 sequoia-sq
 spust
 sqlx-cli
