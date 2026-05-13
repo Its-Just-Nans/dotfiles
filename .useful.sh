@@ -135,6 +135,8 @@ startAgent() {
   eval "$(ssh-agent -s)"
 }
 
+SSH_ENV="$HOME/.ssh/agent-environment"
+
 server() {
   if ! command -v python &>/dev/null; then
       echo "This program requires python but it's not installed. Aborting." >&2
@@ -653,16 +655,29 @@ makegif() {
   ffmpeg -i "$1" -vf "fps=$fps,scale=$scale:-1:flags=lanczos,split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse" -loop 0 "$2"
 }
 
+start_agent() {
+    echo "Initialising new SSH agent..."
+    /usr/bin/ssh-agent | sed 's/^echo/#echo/' >"${SSH_ENV}"
+    echo succeeded
+    chmod 600 "${SSH_ENV}"
+    . "${SSH_ENV}" >/dev/null
+    /usr/bin/ssh-add
+}
+
 addkeys() {
   if [[ "$SSH_AUTH_SOCK" == *gpg-agent* ]]; then
     echo "GPG agent detected. Killing it..."
     gpgconf --kill gpg-agent
     unset SSH_AUTH_SOCK
   fi
-  if [ -z "$SSH_AUTH_SOCK" ]; then
-    echo "New to load the ssh-agent"
-    pkill ssh-agent
-    eval $(ssh-agent)
+  if [ -f "${SSH_ENV}" ]; then
+      . "${SSH_ENV}" >/dev/null
+      #ps ${SSH_AGENT_PID} doesn't work under cywgin
+      ps -ef | grep "${SSH_AGENT_PID}" | grep ssh-agent$ >/dev/null || {
+          start_agent
+      }
+  else
+      start_agent
   fi
   if [ "$1" ]; then
     toSearch="${1}*"
