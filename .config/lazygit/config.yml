@@ -3,3 +3,7 @@
 
 # esc to quit - https://github.com/jesseduffield/lazygit/discussions/1966
 quitOnTopLevelReturn: true
+
+# https://github.com/jesseduffield/lazygit/issues/1576#issuecomment-1111690534
+promptToReturnFromSubprocess: true
+
