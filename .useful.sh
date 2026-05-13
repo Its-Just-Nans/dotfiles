@@ -665,30 +665,31 @@ start_agent() {
 }
 
 addkeys() {
-  if [[ "$SSH_AUTH_SOCK" == *gpg-agent* ]]; then
-    echo "GPG agent detected. Killing it..."
-    gpgconf --kill gpg-agent
-    unset SSH_AUTH_SOCK
-  fi
-  if [ -f "${SSH_ENV}" ]; then
-      . "${SSH_ENV}" >/dev/null
-      if ps -ef | grep "${SSH_AGENT_PID}" | grep 'ssh-agent$' >/dev/null; then
-           echo "ssh-agent is running and should be loaded"
-      else
-           start_agent
-      fi
-  else
-      start_agent
-  fi
-  if [ "$1" ]; then
-    toSearch="${1}*"
-  else
-    toSearch="$HOME/.ssh/"
-  fi
-  list=$(fd "$toSearch" --full-path "$HOME/.ssh/" -t f -E "*.pub" -E 'agent-environment' -E 'known_hosts*' -E 'config')
-  for oneFile in $list; do
-    ssh-add "${oneFile}"
-  done
+    if [[ "$SSH_AUTH_SOCK" == *gpg-agent* ]]; then
+        echo "GPG agent detected. Killing it..."
+        gpgconf --kill gpg-agent
+        unset SSH_AUTH_SOCK
+    fi
+    if [ -f "${SSH_ENV}" ]; then
+        . "${SSH_ENV}" >/dev/null
+        if ps -ef | grep "${SSH_AGENT_PID}" | grep 'ssh-agent$' >/dev/null; then
+            echo "ssh-agent is running and should be loaded"
+            ssh-add -l
+        else
+            start_agent
+        fi
+    else
+        start_agent
+    fi
+    if [ "$1" ]; then
+        toSearch="${1}*"
+    else
+        toSearch="$HOME/.ssh/"
+    fi
+    list=$(fd "$toSearch" --full-path "$HOME/.ssh/" -t f -E "*.pub" -E 'agent-environment' -E 'known_hosts*' -E 'config')
+    for oneFile in $list; do
+        ssh-add "${oneFile}"
+    done
 }
 
 if [ "$_is_fd" == "true" ]; then
