@@ -672,10 +672,11 @@ addkeys() {
   fi
   if [ -f "${SSH_ENV}" ]; then
       . "${SSH_ENV}" >/dev/null
-      #ps ${SSH_AGENT_PID} doesn't work under cywgin
-      ps -ef | grep "${SSH_AGENT_PID}" | grep ssh-agent$ >/dev/null || {
-          start_agent
-      }
+      if ps -ef | grep "${SSH_AGENT_PID}" | grep 'ssh-agent$' >/dev/null; then
+           echo "ssh-agent is running and should be loaded"
+      else
+           start_agent
+      fi
   else
       start_agent
   fi
