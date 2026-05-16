@@ -656,9 +656,11 @@ makegif() {
 }
 
 start_agent() {
-    echo "Initialising new SSH agent..."
+    green=$(tput setaf 2)
+    reset=$(tput sgr0)
+    echo -n "Initialising new SSH agent..."
     /usr/bin/ssh-agent | sed 's/^echo/#echo/' >"${SSH_ENV}"
-    echo succeeded
+    echo "${green}succeeded${reset}"
     chmod 600 "${SSH_ENV}"
     . "${SSH_ENV}" >/dev/null
     /usr/bin/ssh-add
