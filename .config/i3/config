@@ -20,6 +20,7 @@ exec --no-startup-id /usr/libexec/gsd-xsettings
 
 # keyboard
 exec_always --no-startup-id setxkbmap -layout fr -variant nodeadkeys
+exec_always --no-startup-id numlockx on
 
 # polybar
 exec_always --no-startup-id ~/.config/i3/polybar.sh &
@@ -42,6 +43,7 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
+
 
 # Use pactl to adjust volume in PulseAudio.
 # set $refresh_i3status killall -SIGUSR1 i3status
