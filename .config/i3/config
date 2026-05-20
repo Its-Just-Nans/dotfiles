@@ -58,6 +58,7 @@ bindsym --release Mod4+k exec --no-startup-id i3lock
 bindsym Mod4+d exec --no-startup-id gnome-terminal
 bindsym Mod4+e exec --no-startup-id thunar
 bindsym Mod4+f exec --no-startup-id baobab
+bindsym Mod4+s exec --no-startup-id flameshot gui
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
