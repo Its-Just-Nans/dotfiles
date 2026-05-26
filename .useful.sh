@@ -745,3 +745,9 @@ copyfile() {
   fi
   xclip -selection clipboard < "$1"
 }
+
+changeCommitDate() {
+  VARIABLE="${1:-3}"
+  MESSAGE="${2:-message}"
+  printf 'DAT=$(date --date "%s days ago" -R) GIT_AUTHOR_DATE=$DAT GIT_COMMITTER_DATE=$DAT git commit -m "%s"\n' "$VARIABLE" "$MESSAGE"
+}
