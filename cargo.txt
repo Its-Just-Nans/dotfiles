@@ -38,6 +38,7 @@ n4n5
 notox
 onefetch
 pastel
+pdf_to_text
 release-plz
 resvg
 ripgrep
