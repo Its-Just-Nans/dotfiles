@@ -677,6 +677,8 @@ addkeys() {
         if ps -ef | grep "${SSH_AGENT_PID}" | grep 'ssh-agent$' >/dev/null; then
             echo "ssh-agent is running and should be loaded"
             ssh-add -l
+            # return early
+            return
         else
             start_agent
         fi
