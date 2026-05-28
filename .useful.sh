@@ -673,16 +673,21 @@ addkeys() {
         unset SSH_AUTH_SOCK
     fi
     if [ -f "${SSH_ENV}" ]; then
-        . "${SSH_ENV}" >/dev/null
-        if ps -ef | grep "${SSH_AGENT_PID}" | grep 'ssh-agent$' >/dev/null; then
-            green=$(tput setaf 2)
-            reset=$(tput sgr0)
+        green=$(tput setaf 2)
+        reset=$(tput sgr0)
+        if [ -z "$SSH_AGENT_PID" ]; then
+            . "${SSH_ENV}" >/dev/null
+            if ps -ef | grep "${SSH_AGENT_PID}" | grep 'ssh-agent$' >/dev/null; then
+                echo "ssh-agent is running and ${green}should be loaded${reset}"
+                ssh-add -l
+            else
+                start_agent
+            fi
+        else
             echo "ssh-agent is running and ${green}should be loaded${reset}"
             ssh-add -l
             # return early
             return
-        else
-            start_agent
         fi
     else
         start_agent
