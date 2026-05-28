@@ -675,7 +675,9 @@ addkeys() {
     if [ -f "${SSH_ENV}" ]; then
         . "${SSH_ENV}" >/dev/null
         if ps -ef | grep "${SSH_AGENT_PID}" | grep 'ssh-agent$' >/dev/null; then
-            echo "ssh-agent is running and should be loaded"
+            green=$(tput setaf 2)
+            reset=$(tput sgr0)
+            echo "ssh-agent is running and ${green}should be loaded${reset}"
             ssh-add -l
             # return early
             return
