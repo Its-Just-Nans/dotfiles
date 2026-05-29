@@ -672,24 +672,31 @@ addkeys() {
         gpgconf --kill gpg-agent
         unset SSH_AUTH_SOCK
     fi
+    r=$(tput setaf 1)
+    g=$(tput setaf 2)
+    rs=$(tput sgr0)
     if [ -z "$SSH_AGENT_PID" ]; then
-        # echo "ssh-agent is not loaded"
-        if [ -f "${SSH_ENV}" ]; then
-            green=$(tput setaf 2)
-            reset=$(tput sgr0)
+       if [ -f "${SSH_ENV}" ]; then
             . "${SSH_ENV}" >/dev/null
-            echo "ssh-agent is running and ${green}should be loaded${reset}"
-            ssh-add -l
-            # return early
-            return
+            if ps -ef | grep "${SSH_AGENT_PID}" | grep 'ssh-agent$' >/dev/null; then
+                echo "ssh-agent is already ${g}running${rs} and is now ${g}loaded${rs}"
+                ssh-add -l
+                # return early
+                return
+            else
+                echo "ssh-agent is ${r}not running${rs}, ${g}starting${rs} a new agent"
+                start_agent
+            fi
         else
+            echo "ssh-agent is already ${g}running${rs} but $SSH_ENV does not exists, starting a new agent"
             start_agent
         fi
     else
         if ps -ef | grep "${SSH_AGENT_PID}" | grep 'ssh-agent$' >/dev/null; then
-            echo "ssh-agent is ${green}running${reset}"
+            echo "ssh-agent is already ${g}running${rs} and already ${g}loaded${rs}"
             ssh-add -l
         else
+            echo "Agent PID present but not found, starting a new agent"
             start_agent
         fi
     fi
