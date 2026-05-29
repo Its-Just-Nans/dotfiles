@@ -761,3 +761,9 @@ changeCommitDate() {
   MESSAGE="${2:-message}"
   printf 'DAT=$(date --date "%s days ago" -R) GIT_AUTHOR_DATE=$DAT GIT_COMMITTER_DATE=$DAT git commit -m "%s"\n' "$VARIABLE" "$MESSAGE"
 }
+
+golb() {
+    g golb
+    cd Its-Just-Nans/golb-articles/
+    yazi
+}
