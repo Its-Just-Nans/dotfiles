@@ -486,8 +486,11 @@ eraseCache() {
   luaotfload-tool --cache=erase
 }
 
+# run the same command with sudo to know the PIDs
 showPORTS() {
-  ss -tulpn | grep LISTEN
+    set -x
+    ss -tulpn | grep LISTEN
+    set +x
 }
 
 compressIMG() {
@@ -504,7 +507,9 @@ compressIMG() {
 }
 
 compressIMG2() {
-  mozjpeg -quality 90 -outfile "$1.temp" "$1" && rm "$1" && mv "$1.temp" "$1"
+    set -x
+    mozjpeg -quality 90 -outfile "$1.temp" "$1" && rm "$1" && mv "$1.temp" "$1"
+    set +x
 }
 
 hacker_screen() {
@@ -651,8 +656,9 @@ makegif() {
   if [ "$4" ]; then
     scale="$4"
   fi
-
+  set -x
   ffmpeg -i "$1" -vf "fps=$fps,scale=$scale:-1:flags=lanczos,split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse" -loop 0 "$2"
+  set +x
 }
 
 start_agent() {
