@@ -2,6 +2,7 @@ apksig
 ast-grep
 baobab
 bat
+binocle
 bladvak-cli
 boa_cli
 cargo-afl
@@ -36,6 +37,7 @@ mdbook
 meka
 n4n5
 notox
+numbat-cli
 onefetch
 pastel
 pdf_to_text

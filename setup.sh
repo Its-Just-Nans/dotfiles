@@ -224,7 +224,7 @@ add() {
 
 main() {
     if [ $# -eq 0 ]; then
-        echo "please specify argument"
+        echo "please specify argument: setup, save, check, install, meta, add"
         return 1
     fi
 
