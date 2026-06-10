@@ -1,6 +1,5 @@
 -- https://www.youtube.com/watch?v=5PIiKDES_wc
 
-vim.keymap.set("t", "<esc><esc>", "<c-\\><c-n>")
 
 local state = {
   floating = {
@@ -58,5 +57,9 @@ end
 -- Example usage:
 -- Create a floating window with default dimensions
 vim.api.nvim_create_user_command("Floaterminal", toggle_terminal, {})
-vim.keymap.set({"n", "t"}, "<space>t", toggle_terminal)
+vim.keymap.set({ "n", "t" }, "ù", toggle_terminal)
+vim.keymap.set("t", "<Esc><Esc>", function()
+  vim.cmd("stopinsert") -- leave terminal mode
+  toggle_terminal()
+end)
 
