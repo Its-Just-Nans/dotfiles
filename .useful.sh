@@ -31,7 +31,7 @@ export PATH="$PATH:/usr/local/go/bin"
 #export PATH="$PATH:/opt/gradle/bin/"
 
 if [ -f "/opt/nvim-linux-x86_64/bin/nvim" ]; then
-    EDITOR="/opt/nvim-linux-x86_64/bin/nvim"
+    export EDITOR="/opt/nvim-linux-x86_64/bin/nvim"
     alias code="$EDITOR"
 fi
 
