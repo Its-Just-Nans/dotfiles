@@ -25,7 +25,7 @@ setup() {
     scripts=$(fd -H -a -E .git -t f --full-path "./\..*")
 
     for one_script in $scripts; do
-        local_path=${one_script//$SCRIPT_PATH/}
+        local_path=${one_script#"$SCRIPT_PATH"/}
         dest_path="$HOME/$local_path"
         dir_path=$(dirname "$dest_path")
         if [ ! -d "$dir_path" ]; then
