@@ -414,12 +414,7 @@ do
 		})
 	end, { desc = "[S]earch [/] in Open Files" })
 
-	-- Shortcut for searching your Neovim configuration files
-	vim.keymap.set("n", "<leader>sn", function()
-		builtin.find_files({ cwd = vim.fn.stdpath("config"), follow = true })
-	end, { desc = "[S]earch [N]eovim files" })
 end
-
 -- ============================================================
 -- SECTION 6: LSP
 -- LSP keymaps, server configuration, Mason tools installations
@@ -654,24 +649,9 @@ do
 end
 
 -- ============================================================
--- SECTION 8: AUTOCOMPLETE & SNIPPETS
--- blink.cmp and luasnip setup
+-- SECTION 8: AUTOCOMPLETE
 -- ============================================================
 do
-	-- [[ Snippet Engine ]]
-
-	-- NOTE: You can also specify plugin using a version range for its git tag.
-	--  See `:help vim.version.range()` for more info
-	vim.pack.add({ { src = gh("L3MON4D3/LuaSnip"), version = vim.version.range("2.*") } })
-	require("luasnip").setup({})
-
-	-- `friendly-snippets` contains a variety of premade snippets.
-	--    See the README about individual language/framework/plugin snippets:
-	--    https://github.com/rafamadriz/friendly-snippets
-	--
-	-- vim.pack.add { gh 'rafamadriz/friendly-snippets' }
-	-- require('luasnip.loaders.from_vscode').lazy_load()
-
 	-- [[ Autocomplete Engine ]]
 	vim.pack.add({ { src = gh("saghen/blink.cmp"), version = vim.version.range("1.*") } })
 	require("blink.cmp").setup({
@@ -718,8 +698,6 @@ do
 		sources = {
 			default = { "lsp", "path", "snippets" },
 		},
-
-		snippets = { preset = "luasnip" },
 
 		-- Blink.cmp includes an optional, recommended rust fuzzy matcher,
 		-- which automatically downloads a prebuilt binary when enabled.
