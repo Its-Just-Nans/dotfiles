@@ -782,3 +782,8 @@ golb() {
     cd Its-Just-Nans/golb-articles/
     yazi
 }
+
+r() {
+  cargo clippy
+  cargo fmt
+}
