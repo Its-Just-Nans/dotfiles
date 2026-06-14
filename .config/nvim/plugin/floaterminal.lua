@@ -1,6 +1,5 @@
 -- https://www.youtube.com/watch?v=5PIiKDES_wc
 
-
 local state = {
   floating = {
     buf = -1,
@@ -44,6 +43,9 @@ end
 
 local toggle_terminal = function()
   if not vim.api.nvim_win_is_valid(state.floating.win) then
+    if vim.fn.mode() == "n" then
+      vim.cmd("write")
+    end
     state.floating = create_floating_window { buf = state.floating.buf }
     if vim.bo[state.floating.buf].buftype ~= "terminal" then
       vim.cmd.terminal()
