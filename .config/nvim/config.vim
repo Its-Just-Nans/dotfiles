@@ -1,4 +1,4 @@
-set number
+" vim config
 
 " show tabulations
 set list
