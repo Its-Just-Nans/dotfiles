@@ -413,7 +413,6 @@ do
 			prompt_title = "Live Grep in Open Files",
 		})
 	end, { desc = "[S]earch [/] in Open Files" })
-
 end
 -- ============================================================
 -- SECTION 6: LSP
@@ -634,12 +633,16 @@ do
 		},
 		-- You can also specify external formatters in here.
 		formatters_by_ft = {
+			html = { "prettier" },
 			-- rust = { 'rustfmt' },
 			-- Conform can also run multiple formatters sequentially
 			-- python = { "isort", "black" },
 			--
 			-- You can use 'stop_after_first' to run the first available formatter from the list
 			-- javascript = { "prettierd", "prettier", stop_after_first = true },
+		},
+		args = {
+			prettier = { "--parser", "html", "-w" },
 		},
 	})
 
@@ -791,7 +794,6 @@ do
 			version = vim.version.range("^9"),
 		},
 	})
-
 end
 
 -- ============================================================
