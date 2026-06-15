@@ -797,11 +797,14 @@ r() {
     cargo fmt
     nightly=false
     build=false
+    run=false
     for arg in "$@"; do
         if [ "$arg" = "n" ]; then
             nightly=true
         elif [ "$arg" = "b" ]; then
             build=true
+        elif [ "$arg" = "r" ]; then
+            run=true
         fi
     done
     if [ "$build" = "true" ]; then
@@ -813,6 +816,9 @@ r() {
         if [ "$build" = "true" ]; then
             cargo +nightly build
         fi
+    fi
+    if [ "$run" = "true" ]; then
+        cargo run
     fi
 }
 
