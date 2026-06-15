@@ -786,6 +786,10 @@ golb() {
 r() {
   cargo clippy
   cargo fmt
+  if [ "$1" == "n" ]; then
+    cargo +nightly clippy
+    cargo +nightly fmt
+  fi
 }
 
 battery() {
