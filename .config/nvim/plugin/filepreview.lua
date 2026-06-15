@@ -2,10 +2,11 @@
 
 local preview_files = function()
 	local width = vim.o.columns
+  local max_width = 100
 	require("telescope.builtin").find_files({
 		cwd = ".",
-		layout_strategy = width > 160 and "horizontal" or "vertical",
-		layout_config = width > 160 and { width = 0.8, height = 0.8 } or { width = 0.5 },
+		layout_strategy = width > max_width and "horizontal" or "vertical",
+		layout_config = width > max_width and { width = 0.8, height = 0.8 } or { width = 0.5 },
 		initial_mode = "normal",
 		hidden = true,
 		file_ignore_patterns = { ".git/" },

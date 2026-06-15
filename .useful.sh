@@ -81,7 +81,7 @@ if [ -n "$BASH_VERSION" ]; then
 
     # fzf
     if command -v fzf &>/dev/null; then
-        eval "$(fzf --bash)"
+        FZF_CTRL_R_COMMAND= FZF_ALT_C_COMMAND= eval "$(fzf --bash)"
     fi
 
     # n4n5
