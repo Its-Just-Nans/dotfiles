@@ -787,3 +787,7 @@ r() {
   cargo clippy
   cargo fmt
 }
+
+battery() {
+  sudo tlp-stat --battery
+}
