@@ -32,63 +32,64 @@ export PATH="$PATH:/usr/local/go/bin"
 
 if [ -f "/opt/nvim-linux-x86_64/bin/nvim" ]; then
     export EDITOR="/opt/nvim-linux-x86_64/bin/nvim"
+    # shellcheck disable=SC2139
     alias code="$EDITOR"
 fi
 
 _is_fd=false
 if command -v fd &>/dev/null && command -v fd-find &>/dev/null; then
-  # all good
-  _is_fd=true
+    # all good
+    _is_fd=true
 elif command -v fd-find &>/dev/null; then
-  alias fd="fd-find"
-  _is_fd=true
+    alias fd="fd-find"
+    _is_fd=true
 elif command -v fd &>/dev/null; then
-  alias fd-find="fd"
-  _is_fd=true
+    alias fd-find="fd"
+    _is_fd=true
 fi
 
 # if running bash
 if [ -n "$BASH_VERSION" ]; then
-  # if file exists
-  if [ -f "$HOME/.cargo/env" ]; then
-    # shellcheck disable=SC1091
-    source "$HOME/.cargo/env"
-  fi
+    # if file exists
+    if [ -f "$HOME/.cargo/env" ]; then
+        # shellcheck disable=SC1091
+        source "$HOME/.cargo/env"
+    fi
 
-  # git completion __git_ps1
-  # curl -L https://raw.github.com/git/git/master/contrib/completion/git-prompt.sh > .git-prompt.sh
-  if [ -f "$HOME/.git-prompt.sh" ]; then
-    # shellcheck disable=SC1091
-    source "$HOME/.git-prompt.sh"
-  fi
+    # git completion __git_ps1
+    # curl -L https://raw.github.com/git/git/master/contrib/completion/git-prompt.sh > .git-prompt.sh
+    if [ -f "$HOME/.git-prompt.sh" ]; then
+        # shellcheck disable=SC1091
+        source "$HOME/.git-prompt.sh"
+    fi
 
-  # just --completions bash > .justfile_completion.sh
-  if [ -f "$HOME/.justfile_completion.sh" ]; then
-    # shellcheck disable=SC1091
-    source "$HOME/.justfile_completion.sh"
-  fi
+    # just --completions bash > .justfile_completion.sh
+    if [ -f "$HOME/.justfile_completion.sh" ]; then
+        # shellcheck disable=SC1091
+        source "$HOME/.justfile_completion.sh"
+    fi
 
-  if [ -f "$HOME/.bun/completion.sh" ]; then
-    # shellcheck disable=SC1091
-    source "$HOME/.bun/completion.sh"
-  fi
+    if [ -f "$HOME/.bun/completion.sh" ]; then
+        # shellcheck disable=SC1091
+        source "$HOME/.bun/completion.sh"
+    fi
 
-  # zoxide
-  if command -v zoxide &>/dev/null; then
-    eval "$(zoxide init bash)"
-  fi
+    # zoxide
+    if command -v zoxide &>/dev/null; then
+        eval "$(zoxide init bash)"
+    fi
 
-  # fzf
-  if command -v fzf &>/dev/null; then
-    eval "$(fzf --bash)"
-  fi
+    # fzf
+    if command -v fzf &>/dev/null; then
+        eval "$(fzf --bash)"
+    fi
 
-  # n4n5
-  _completion_n4n5="$HOME/.config/.n4n5/completions/n4n5.bash"
-  if [ -f "$_completion_n4n5" ]; then
-      # shellcheck disable=SC1090
-      . "$_completion_n4n5"
-  fi
+    # n4n5
+    _completion_n4n5="$HOME/.config/.n4n5/completions/n4n5.bash"
+    if [ -f "$_completion_n4n5" ]; then
+        # shellcheck disable=SC1090
+        . "$_completion_n4n5"
+    fi
 fi
 
 alias ll="ls -lahv"
@@ -134,358 +135,358 @@ _PS1_GIT="\[\033[01;33m\]\$(__git_ps1 '(%s%u)')\[\033[00m\]"
 PS1="$_PS1_CHROOT$_PS1_USER@$_PS1_HOST:$_PS1_DIR$_PS1_GIT\$ "
 
 startAgent() {
-  eval "$(ssh-agent -s)"
+    eval "$(ssh-agent -s)"
 }
 
 SSH_ENV="$HOME/.ssh/agent-environment"
 
 server() {
-  if ! command -v python &>/dev/null; then
-      echo "This program requires python but it's not installed. Aborting." >&2
-      return 1
-  fi
-  python -m http.server
+    if ! command -v python &>/dev/null; then
+        echo "This program requires python but it's not installed. Aborting." >&2
+        return 1
+    fi
+    python -m http.server
 }
 
 phpserver() {
-  if ! command -v php &>/dev/null; then
-      echo "This program requires php but it's not installed. Aborting." >&2
-      return 1
-  fi
-  php -S localhost:8000
+    if ! command -v php &>/dev/null; then
+        echo "This program requires php but it's not installed. Aborting." >&2
+        return 1
+    fi
+    php -S localhost:8000
 }
 
 removeExtension() {
-  echo "${1%.*}"
+    echo "${1%.*}"
 }
 
 compressPDF() {
-  if ! command -v gs &>/dev/null; then
-      echo "This program requires gs but it's not installed. Aborting." >&2
-      return 1
-  fi
+    if ! command -v gs &>/dev/null; then
+        echo "This program requires gs but it's not installed. Aborting." >&2
+        return 1
+    fi
 
-  name=$(removeExtension "$1")
-  if [ "$#" -ne 2 ]; then
-    echo "Usage compressPDF <file_name> <num_resolution>"
-    return
-  fi
-  if ! test -f "$1"; then
-    echo "'$1' No such file"
-    return
-  fi
-  gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dDownsampleColorImages=true -dColorImageResolution="$2" -dNOPAUSE -dBATCH -sOutputFile="${name}_compressed.pdf" "$1"
+    name=$(removeExtension "$1")
+    if [ "$#" -ne 2 ]; then
+        echo "Usage compressPDF <file_name> <num_resolution>"
+        return
+    fi
+    if ! test -f "$1"; then
+        echo "'$1' No such file"
+        return
+    fi
+    gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dDownsampleColorImages=true -dColorImageResolution="$2" -dNOPAUSE -dBATCH -sOutputFile="${name}_compressed.pdf" "$1"
 }
 
 nvm() {
-  # nvm <https://github.com/nvm-sh/nvm>
-  # nvm is really slow to source (0.3 sec) so we lazy load it
-  if [ -d "$HOME/.nvm" ]; then
-      export NVM_DIR="$HOME/.nvm"
-      # shellcheck disable=SC1091
-      [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
-      # shellcheck disable=SC1091
-      [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
-      if [ $# -eq 0 ]; then
-          echo "No arguments provided. nvm is now loaded. You can try"
-          echo "nvm install node"
-          echo "nvm use node"
-      else
-          nvm "$@"
-      fi
-  else
-      echo "nvm seems not installed - $HOME/.nvm does not exists. Check https://github.com/nvm-sh/nvm"
-      return 1
-  fi
+    # nvm <https://github.com/nvm-sh/nvm>
+    # nvm is really slow to source (0.3 sec) so we lazy load it
+    if [ -d "$HOME/.nvm" ]; then
+        export NVM_DIR="$HOME/.nvm"
+        # shellcheck disable=SC1091
+        [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
+        # shellcheck disable=SC1091
+        [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
+        if [ $# -eq 0 ]; then
+            echo "No arguments provided. nvm is now loaded. You can try"
+            echo "nvm install node"
+            echo "nvm use node"
+        else
+            nvm "$@"
+        fi
+    else
+        echo "nvm seems not installed - $HOME/.nvm does not exists. Check https://github.com/nvm-sh/nvm"
+        return 1
+    fi
 }
 
 
 whileLoop() {
-  echo "while true; do action; sleep 2; done"
+    echo "while true; do action; sleep 2; done"
 }
 
 dock() {
-  if ! command -v docker &>/dev/null; then
-      echo "This program requires docker but it's not installed. Aborting." >&2
-      return 1
-  fi
+    if ! command -v docker &>/dev/null; then
+        echo "This program requires docker but it's not installed. Aborting." >&2
+        return 1
+    fi
 
-  echo "docker run -it debian /bin/bash"
-  docker pull debian
-  docker run -it debian /bin/bash
+    echo "docker run -it debian /bin/bash"
+    docker pull debian
+    docker run -it debian /bin/bash
 }
 
 # go to github directories
 g() {
-  use_editor=false
-  folder=""
-  for oneArg in "$@"; do
-    if [ "$oneArg" = "-c" ]; then
-      use_editor=true
-    elif [ "$folder" = "" ]; then
-      folder=$oneArg
+    use_editor=false
+    folder=""
+    for oneArg in "$@"; do
+        if [ "$oneArg" = "-c" ]; then
+            use_editor=true
+        elif [ "$folder" = "" ]; then
+            folder=$oneArg
+        fi
+    done
+    if [ ! -d "${HOME}/Documents/github/" ]; then
+        mkdir -p "${HOME}/Documents/github/"
+        echo "Folder ${HOME}/Documents/github/ created"
     fi
-  done
-  if [ ! -d "${HOME}/Documents/github/" ]; then
-      mkdir -p "${HOME}/Documents/github/"
-      echo "Folder ${HOME}/Documents/github/ created"
-  fi
 
-  if [ ! -d "${HOME}/Documents/github/${folder}" ]; then
-      echo "Folder ${HOME}/Documents/github/${folder} does not exists"
-      return 1
-  fi
-  cd "${HOME}/Documents/github/${folder}" || return 1
-  # check if onefetch is installed
-  if [ "$folder" != "" ]; then
-    if command -v onefetch &>/dev/null; then
-      onefetch .
-    else
-      echo "onefetch not installed :("
+    if [ ! -d "${HOME}/Documents/github/${folder}" ]; then
+        echo "Folder ${HOME}/Documents/github/${folder} does not exists"
+        return 1
     fi
-  fi
-  if [ "$use_editor" = true ]; then
-    if command -v "$EDITOR" &>/dev/null; then
-      "$EDITOR" .
-    else
-      echo "$EDITOR is not installed :("
+    cd "${HOME}/Documents/github/${folder}" || return 1
+    # check if onefetch is installed
+    if [ "$folder" != "" ]; then
+        if command -v onefetch &>/dev/null; then
+            onefetch .
+        else
+            echo "onefetch not installed :("
+        fi
     fi
-  fi
+    if [ "$use_editor" = true ]; then
+        if command -v "$EDITOR" &>/dev/null; then
+            "$EDITOR" .
+        else
+            echo "$EDITOR is not installed :("
+        fi
+    fi
 }
 
 # an opinionated g command
 gc() {
-  g "$@" -c
+    g "$@" -c
 }
 
 # if running bash
 if [ -n "$BASH_VERSION" ]; then
-  if [ -d "$HOME/Documents/github" ]; then
-    _g_options=$(ls -1 "$HOME/Documents/github")
-    complete -W "${_g_options}" 'g'
-    complete -W "${_g_options}" 'gc'
-  fi
+    if [ -d "$HOME/Documents/github" ]; then
+        _g_options=$(ls -1 "$HOME/Documents/github")
+        complete -W "${_g_options}" 'g'
+        complete -W "${_g_options}" 'gc'
+    fi
 fi
 
 # shellcheck disable=SC2120
 mkt() {
-  custom_tmp="$HOME/tmp/"
-  mkdir -p "$custom_tmp"
-  cd "$custom_tmp" || return
-  if [ "$1" ]; then
-    filename=$(basename -- "$1")
-    repo_name="${filename%.*}"
-    random="$(tr -dc A-Za-z0-9 </dev/urandom | head -c 13)"
-    # if folder exists
-    if [ -d "$repo_name" ]; then
-      repo_name="${repo_name}_${random}"
-    fi
-    if git clone "$1" "$repo_name"; then
-      cd "$repo_name" || return
-      if command -v "$EDITOR" &>/dev/null; then
-        "$EDITOR" .
-      else
-        echo "mkt(): $EDITOR not installed :("
-      fi
+    custom_tmp="$HOME/tmp/"
+    mkdir -p "$custom_tmp"
+    cd "$custom_tmp" || return
+    if [ "$1" ]; then
+        filename=$(basename -- "$1")
+        repo_name="${filename%.*}"
+        random="$(tr -dc A-Za-z0-9 </dev/urandom | head -c 13)"
+        # if folder exists
+        if [ -d "$repo_name" ]; then
+            repo_name="${repo_name}_${random}"
+        fi
+        if git clone "$1" "$repo_name"; then
+            cd "$repo_name" || return
+            if command -v "$EDITOR" &>/dev/null; then
+                "$EDITOR" .
+            else
+                echo "mkt(): $EDITOR not installed :("
+            fi
+        else
+            echo "mkt(): Error during the clone"
+        fi
     else
-      echo "mkt(): Error during the clone"
+        folder=$(mktemp -d -p "$custom_tmp")
+        cd "$folder" || return
     fi
-  else
-    folder=$(mktemp -d -p "$custom_tmp")
-    cd "$folder" || return
-  fi
 }
 
 gsize() {
-  git gc && git count-objects -vH
+    git gc && git count-objects -vH
 }
 
 myip() {
-  curl ifconfig.me "$@"
-  echo ""
+    curl ifconfig.me "$@"
+    echo ""
 }
 
 q() {
-  if ! command -v fortune &>/dev/null; then
-    echo "This program requires fortune but it's not installed. Aborting." >&2
-    return 1
-  fi
-  if ! command -v cowsay &>/dev/null; then
-    echo "This program requires cowsay but it's not installed. Aborting." >&2
-    return 1
-  fi
-  if ! command -v fd &>/dev/null; then
-    echo "This program requires fd but it's not installed. Aborting." >&2
-    return 1
-  fi
-  if ! command -v shuf &>/dev/null; then
-    echo "This program requires shuf but it's not installed. Aborting." >&2
-    return 1
-  fi
-  if ! command -v lolcat &>/dev/null; then
-    echo "This program requires lolcat but it's not installed. Aborting." >&2
-    return 1
-  fi
+    if ! command -v fortune &>/dev/null; then
+        echo "This program requires fortune but it's not installed. Aborting." >&2
+        return 1
+    fi
+    if ! command -v cowsay &>/dev/null; then
+        echo "This program requires cowsay but it's not installed. Aborting." >&2
+        return 1
+    fi
+    if ! command -v fd &>/dev/null; then
+        echo "This program requires fd but it's not installed. Aborting." >&2
+        return 1
+    fi
+    if ! command -v shuf &>/dev/null; then
+        echo "This program requires shuf but it's not installed. Aborting." >&2
+        return 1
+    fi
+    if ! command -v lolcat &>/dev/null; then
+        echo "This program requires lolcat but it's not installed. Aborting." >&2
+        return 1
+    fi
 
-  clear
-  echo "Have a beautiful day" | cowsay -f "$(fd . /usr/share/cowsay/cows/ --exec basename {} | shuf -n1)" | lolcat
+    clear
+    echo "Have a beautiful day" | cowsay -f "$(fd . /usr/share/cowsay/cows/ --exec basename {} | shuf -n1)" | lolcat
 }
 
 
 ai2svg() {
-  if ! command -v inkscape &>/dev/null; then
-      echo "This program requires inkscape but it's not installed. Aborting." >&2
-      return 1
-  fi
+    if ! command -v inkscape &>/dev/null; then
+        echo "This program requires inkscape but it's not installed. Aborting." >&2
+        return 1
+    fi
 
-  path=""
-  for oneArg in "$@"; do
-    if [ "$oneArg" = "-p" ]; then
-      path="_path"
-    fi
-  done
-  for oneArg in "$@"; do
-    if [ "$oneArg" != "-p" ]; then
-      output=${oneArg//.ai/$path.svg}
-      if ! test -f "$oneArg"; then
-        echo "'$oneArg' No such file"
-        continue
-      fi
-      if [ "$path" != "" ]; then
-        inkscape "$oneArg" --export-area-drawing "--export-plain-svg=$output" --export-text-to-path
-      else
-        inkscape "$oneArg" --export-area-drawing "--export-plain-svg=$output"
-      fi
-    fi
-  done
+    path=""
+    for oneArg in "$@"; do
+        if [ "$oneArg" = "-p" ]; then
+            path="_path"
+        fi
+    done
+    for oneArg in "$@"; do
+        if [ "$oneArg" != "-p" ]; then
+            output=${oneArg//.ai/$path.svg}
+            if ! test -f "$oneArg"; then
+                echo "'$oneArg' No such file"
+                continue
+            fi
+            if [ "$path" != "" ]; then
+                inkscape "$oneArg" --export-area-drawing "--export-plain-svg=$output" --export-text-to-path
+            else
+                inkscape "$oneArg" --export-area-drawing "--export-plain-svg=$output"
+            fi
+        fi
+    done
 }
 
 ff() {
-  if ! command -v ffmpeg &>/dev/null; then
-      echo "This program requires ffmpeg but it's not installed. Aborting." >&2
-      return 1
-  fi
+    if ! command -v ffmpeg &>/dev/null; then
+        echo "This program requires ffmpeg but it's not installed. Aborting." >&2
+        return 1
+    fi
 
-  if [ "$1" == "" ]; then
-    echo "Usage: ff LINE"
-    return
-  fi
-  name=$(removeExtension "$1")
-  ffmpeg -i "$1" -preset veryslow "${name}.mkv"
-  echo "Old : $1"
-  echo "New : ${name}.mkv"
+    if [ "$1" == "" ]; then
+        echo "Usage: ff LINE"
+        return
+    fi
+    name=$(removeExtension "$1")
+    ffmpeg -i "$1" -preset veryslow "${name}.mkv"
+    echo "Old : $1"
+    echo "New : ${name}.mkv"
 }
 
 toFlac() {
-  for oneFile in "$@"; do
-    noExt=$(removeExtension "$oneFile")
-    ffmpeg -i "${oneFile}" -c:a flac "${noExt}.flac"
-  done
+    for oneFile in "$@"; do
+        noExt=$(removeExtension "$oneFile")
+        ffmpeg -i "${oneFile}" -c:a flac "${noExt}.flac"
+    done
 }
 
 yt() {
-  yt-dlp "$@"
+    yt-dlp "$@"
 }
 
 img2text() {
-  for oneFile in "$@"; do
-    cuneiform -o "${oneFile}.txt" "${oneFile}"
-  done
+    for oneFile in "$@"; do
+        cuneiform -o "${oneFile}.txt" "${oneFile}"
+    done
 }
 
 dos2unixR() {
-  list=$(ls -1)
-  for oneFile in $list; do
-    if [[ -f $oneFile ]] && [ "$oneFile" != ".git" ]; then
-      dos2unix ./*
-    else
-      cd "$oneFile" || return
-      dos2unixR
-      cd ..
-    fi
-  done
+    list=$(ls -1)
+    for oneFile in $list; do
+        if [[ -f $oneFile ]] && [ "$oneFile" != ".git" ]; then
+            dos2unix ./*
+        else
+            cd "$oneFile" || return
+            dos2unixR
+            cd ..
+        fi
+    done
 }
 
 cleanLatex() {
-  toDelete=""
-  toDelete="${toDelete} $1.aux"
-  toDelete="${toDelete} $1.out"
-  toDelete="${toDelete} $1.bbl"
-  toDelete="${toDelete} $1.bbl"
-  toDelete="${toDelete} $1.blg"
-  toDelete="${toDelete} $1.lof"
-  toDelete="${toDelete} $1.log"
-  toDelete="${toDelete} $1.toc"
-  toDelete="${toDelete} $1.nav"
-  toDelete="${toDelete} $1.lot"
-  toDelete="${toDelete} $1.ist"
-  toDelete="${toDelete} $1.glo"
-  toDelete="${toDelete} $1.bcf"
-  toDelete="${toDelete} $1.acn"
-  toDelete="${toDelete} $1.snm"
-  toDelete="${toDelete} $1.nlo"
-  toDelete="${toDelete} texput.log"
-  toDelete="${toDelete} _minted-$1"
-  for oneElement in ${toDelete}; do
-    echo "Deleting ${oneElement}"
-    if [ -f "${oneElement}" ]; then
-      echo "Deleting ${oneElement}"
-      rm "${oneElement}"
-    elif [ -d "${oneElement}" ]; then
-      rm -r "${oneElement}"
-    fi
-  done
+    toDelete=""
+    toDelete="${toDelete} $1.aux"
+    toDelete="${toDelete} $1.out"
+    toDelete="${toDelete} $1.bbl"
+    toDelete="${toDelete} $1.bbl"
+    toDelete="${toDelete} $1.blg"
+    toDelete="${toDelete} $1.lof"
+    toDelete="${toDelete} $1.log"
+    toDelete="${toDelete} $1.toc"
+    toDelete="${toDelete} $1.nav"
+    toDelete="${toDelete} $1.lot"
+    toDelete="${toDelete} $1.ist"
+    toDelete="${toDelete} $1.glo"
+    toDelete="${toDelete} $1.bcf"
+    toDelete="${toDelete} $1.acn"
+    toDelete="${toDelete} $1.snm"
+    toDelete="${toDelete} $1.nlo"
+    toDelete="${toDelete} texput.log"
+    toDelete="${toDelete} _minted-$1"
+    for oneElement in ${toDelete}; do
+        echo "Deleting ${oneElement}"
+        if [ -f "${oneElement}" ]; then
+            echo "Deleting ${oneElement}"
+            rm "${oneElement}"
+        elif [ -d "${oneElement}" ]; then
+            rm -r "${oneElement}"
+        fi
+    done
 }
 
 dolatex() {
-  runEvince=true
-  clean=true
-  binary="lualatex"
-  once=false
-  for oneArg in "$@"; do
-    if [ "$oneArg" = "-xe" ]; then
-      binary="xelatex"
-    elif [ "$oneArg" = "--no-clean" ]; then
-      clean=false
-    elif [ "$oneArg" = "-1" ]; then
-      once=true
-    elif [ "$oneArg" = "-s" ] || [ "$oneArg" = "-q" ] || [ "$oneArg" = "--no-show" ]; then
-      runEvince=false
-    else
-      name="$oneArg"
+    runEvince=true
+    clean=true
+    binary="lualatex"
+    once=false
+    for oneArg in "$@"; do
+        if [ "$oneArg" = "-xe" ]; then
+            binary="xelatex"
+        elif [ "$oneArg" = "--no-clean" ]; then
+            clean=false
+        elif [ "$oneArg" = "-1" ]; then
+            once=true
+        elif [ "$oneArg" = "-s" ] || [ "$oneArg" = "-q" ] || [ "$oneArg" = "--no-show" ]; then
+            runEvince=false
+        else
+            name="$oneArg"
+        fi
+    done
+    if [ ! -f "$name" ]; then
+        echo "File not found!"
+        return
     fi
-  done
-  if [ ! -f "$name" ]; then
-    echo "File not found!"
-    return
-  fi
-  nameNoExtension=$(removeExtension "${name}")
-  outputName="${nameNoExtension}.pdf"
-  echo "name of file : ${nameNoExtension}"
-  $binary -shell-escape "${name}"
-  echo "*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*"
-  if [ -f "${outputName}" ]; then
-    bibtex "${nameNoExtension}.aux"
-  fi
-  if [ "$once" = false ]; then
+    nameNoExtension=$(removeExtension "${name}")
+    outputName="${nameNoExtension}.pdf"
+    echo "name of file : ${nameNoExtension}"
     $binary -shell-escape "${name}"
-    $binary -shell-escape "${name}"
-  fi
-  echo "*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*"
-  if [ "$clean" = true ]; then
-    cleanLatex "$nameNoExtension"
-  fi
-  if [ "$runEvince" = true ]; then
+    echo "*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*"
     if [ -f "${outputName}" ]; then
-      evince "${outputName}"
-    else
-      echo "Error during the creation of ${outputName}"
+        bibtex "${nameNoExtension}.aux"
     fi
-  fi
+    if [ "$once" = false ]; then
+        $binary -shell-escape "${name}"
+        $binary -shell-escape "${name}"
+    fi
+    echo "*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*"
+    if [ "$clean" = true ]; then
+        cleanLatex "$nameNoExtension"
+    fi
+    if [ "$runEvince" = true ]; then
+        if [ -f "${outputName}" ]; then
+            evince "${outputName}"
+        else
+            echo "Error during the creation of ${outputName}"
+        fi
+    fi
 }
 
 eraseCache() {
-  luaotfload-tool --cache=erase
+    luaotfload-tool --cache=erase
 }
 
 # run the same command with sudo to know the PIDs
@@ -496,16 +497,16 @@ showPORTS() {
 }
 
 compressIMG() {
-  if ! command -v convert &>/dev/null; then
-    echo "This program requires convert but it's not installed. Aborting." >&2
-    return 1
-  fi
+    if ! command -v convert &>/dev/null; then
+        echo "This program requires convert but it's not installed. Aborting." >&2
+        return 1
+    fi
 
-  if [ "$#" -ne 3 ]; then
-    echo "Usage compressIMG <input> <qual> <output>"
-    return
-  fi
-  convert -quality "$2%" "$1" "$3"
+    if [ "$#" -ne 3 ]; then
+        echo "Usage compressIMG <input> <qual> <output>"
+        return
+    fi
+    convert -quality "$2%" "$1" "$3"
 }
 
 compressIMG2() {
@@ -515,152 +516,152 @@ compressIMG2() {
 }
 
 hacker_screen() {
-  if ! command -v hollywood &>/dev/null; then
-     echo "This program requires hollywood but it's not installed. Aborting." >&2
-     return 1
-  fi
+    if ! command -v hollywood &>/dev/null; then
+        echo "This program requires hollywood but it's not installed. Aborting." >&2
+        return 1
+    fi
 
-  hollywood
+    hollywood
 }
 
 phpmyadmin() {
-  if ! command -v php &>/dev/null; then
-     echo "This program requires php but it's not installed. Aborting." >&2
-     return 1
-  fi
+    if ! command -v php &>/dev/null; then
+        echo "This program requires php but it's not installed. Aborting." >&2
+        return 1
+    fi
 
-  cd /usr/share/phpmyadmin/ || return
-  php -S localhost:8090
+    cd /usr/share/phpmyadmin/ || return
+    php -S localhost:8090
 }
 
 addPrefix() {
-  echo "adding prefix '$1'"
-  for file in *; do
-    echo "$file -> $1_$file"
-    mv -- "$file" "$1_$file"
-  done
+    echo "adding prefix '$1'"
+    for file in *; do
+        echo "$file -> $1_$file"
+        mv -- "$file" "$1_$file"
+    done
 }
 
 str2pdf() {
-  if ! command -v enscript &>/dev/null; then
-     echo "This program requires enscript but it's not installed. Aborting." >&2
-     return 1
-  fi
-  if ! command -v ps2pdf &>/dev/null; then
-     echo "This program requires ps2pdf but it's not installed. Aborting." >&2
-     return 1
-  fi
+    if ! command -v enscript &>/dev/null; then
+        echo "This program requires enscript but it's not installed. Aborting." >&2
+        return 1
+    fi
+    if ! command -v ps2pdf &>/dev/null; then
+        echo "This program requires ps2pdf but it's not installed. Aborting." >&2
+        return 1
+    fi
 
-  mkt
-  enscript -q -p temp.ps <<<"$1"
-  ps2pdf temp.ps temp.pdf
-  echo "$(pwd)/temp.pdf"
+    mkt
+    enscript -q -p temp.ps <<<"$1"
+    ps2pdf temp.ps temp.pdf
+    echo "$(pwd)/temp.pdf"
 }
 
 listGIT() {
-  list=$(ls -1)
-  show_onefetch=false
-  quiet=false
-  recursive=false
-  run_git_fetch=false
-  for oneArg in "$@"; do
-    if [ "$oneArg" = "-a" ]; then
-      show_onefetch=true
-    elif [ "$oneArg" = "-q" ]; then
-      quiet=true
-    elif [ "$oneArg" = "-r" ]; then
-      recursive=true
-    elif [ "$oneArg" = "-f" ]; then
-      run_git_fetch=true
-    fi
-  done
-  COLOR_NC="\033[0m"
-  COLOR_BACK_GREEN="\033[42m"
-  COLOR_BACK_RED="\033[41m"
-  COLOR_BACK_BLUE="\033[44m"
-  for x in $list; do
+    list=$(ls -1)
+    show_onefetch=false
+    quiet=false
+    recursive=false
+    run_git_fetch=false
+    for oneArg in "$@"; do
+        if [ "$oneArg" = "-a" ]; then
+            show_onefetch=true
+        elif [ "$oneArg" = "-q" ]; then
+            quiet=true
+        elif [ "$oneArg" = "-r" ]; then
+            recursive=true
+        elif [ "$oneArg" = "-f" ]; then
+            run_git_fetch=true
+        fi
+    done
+    COLOR_NC="\033[0m"
+    COLOR_BACK_GREEN="\033[42m"
+    COLOR_BACK_RED="\033[41m"
+    COLOR_BACK_BLUE="\033[44m"
+    for x in $list; do
 
-    if [ -d "$x" ]; then
-      if [ -d "$x/.git" ]; then
-        if [ "$run_git_fetch" = true ]; then
-          git --git-dir="$x/.git" fetch
+        if [ -d "$x" ]; then
+            if [ -d "$x/.git" ]; then
+                if [ "$run_git_fetch" = true ]; then
+                    git --git-dir="$x/.git" fetch
+                fi
+                count=$(git --work-tree="$x" --git-dir="$x/.git" status --porcelain | wc -l)
+                current=$(git --git-dir="$x/.git" branch --show-current)
+                count2=$(git --git-dir="$x/.git" log "origin/$current..HEAD" | wc -l)
+                if [ "$show_onefetch" = true ]; then
+                    onefetch "$x" || echo "no language detected in $x"
+                fi
+                if [ "$count" != "0" ] || [ "$count2" != "0" ]; then
+                    echo -e "${COLOR_NC}${COLOR_BACK_BLUE}******************$x*********************"
+                    git --work-tree="$x" --git-dir="$x/.git" status --porcelain
+                    git --git-dir="$x/.git" log "origin/$current..HEAD"
+                    echo -e "${COLOR_NC}"
+                else
+                    if [ "$quiet" = false ]; then
+                        echo -e "${COLOR_NC}${COLOR_BACK_GREEN}'$x' is good${COLOR_NC}"
+                    fi
+                fi
+            else
+                echo -e "${COLOR_NC}${COLOR_BACK_RED}'$x' is not repo${COLOR_NC}"
+            fi
+            if [ "$recursive" = true ]; then
+                (
+                    cd "$x" && listGIT "" && cd ..
+                )
+                echo "------------"
+            fi
         fi
-        count=$(git --work-tree="$x" --git-dir="$x/.git" status --porcelain | wc -l)
-        current=$(git --git-dir="$x/.git" branch --show-current)
-        count2=$(git --git-dir="$x/.git" log "origin/$current..HEAD" | wc -l)
-        if [ "$show_onefetch" = true ]; then
-          onefetch "$x" || echo "no language detected in $x"
-        fi
-        if [ "$count" != "0" ] || [ "$count2" != "0" ]; then
-          echo -e "${COLOR_NC}${COLOR_BACK_BLUE}******************$x*********************"
-          git --work-tree="$x" --git-dir="$x/.git" status --porcelain
-          git --git-dir="$x/.git" log "origin/$current..HEAD"
-          echo -e "${COLOR_NC}"
-        else
-          if [ "$quiet" = false ]; then
-            echo -e "${COLOR_NC}${COLOR_BACK_GREEN}'$x' is good${COLOR_NC}"
-          fi
-        fi
-      else
-        echo -e "${COLOR_NC}${COLOR_BACK_RED}'$x' is not repo${COLOR_NC}"
-      fi
-      if [ "$recursive" = true ]; then
-        (
-          cd "$x" && listGIT "" && cd ..
-        )
-        echo "------------"
-      fi
-    fi
-  done
+    done
 }
 
 reloadNotesBackground() {
-  TEXT=$(nl -w1 -s' | ' <"$HOME/.local/share/backgrounds/notes.txt")
-  BACKGROUND_SAVE="$HOME/.local/share/backgrounds/background_save.png"
-  BACKGROUND="$HOME/.local/share/backgrounds/2022-05-15-16-41-55-background.png"
-  convert -font helvetica -fill blue -pointsize 15 -draw "text 5,50 '$TEXT'" "$BACKGROUND_SAVE" "$BACKGROUND"
+    TEXT=$(nl -w1 -s' | ' <"$HOME/.local/share/backgrounds/notes.txt")
+    BACKGROUND_SAVE="$HOME/.local/share/backgrounds/background_save.png"
+    BACKGROUND="$HOME/.local/share/backgrounds/2022-05-15-16-41-55-background.png"
+    convert -font helvetica -fill blue -pointsize 15 -draw "text 5,50 '$TEXT'" "$BACKGROUND_SAVE" "$BACKGROUND"
 }
 
 na() {
-  if [ "$1" == "" ]; then
-    echo "Usage: na TEXT"
-    return
-  fi
-  echo "$1" >>~/.local/share/backgrounds/notes.txt
-  reloadNotesBackground
+    if [ "$1" == "" ]; then
+        echo "Usage: na TEXT"
+        return
+    fi
+    echo "$1" >>~/.local/share/backgrounds/notes.txt
+    reloadNotesBackground
 }
 
 nd() {
-  if [ "$1" == "" ]; then
-    echo "Usage: nd LINE"
-    return
-  fi
-  cp ~/.local/share/backgrounds/notes.txt ~/.local/share/backgrounds/notes.save.txt
-  sed -i "${1}d" ~/.local/share/backgrounds/notes.txt
-  echo "New file :"
-  cat ~/.local/share/backgrounds/notes.txt
-  reloadNotesBackground
+    if [ "$1" == "" ]; then
+        echo "Usage: nd LINE"
+        return
+    fi
+    cp ~/.local/share/backgrounds/notes.txt ~/.local/share/backgrounds/notes.save.txt
+    sed -i "${1}d" ~/.local/share/backgrounds/notes.txt
+    echo "New file :"
+    cat ~/.local/share/backgrounds/notes.txt
+    reloadNotesBackground
 }
 
 makegif() {
-  # if num args < 2
-  if [ "$#" -lt 2 ]; then
-    echo "Usage makegif <input> <output> [fps] [scale]"
-    return
-  fi
+    # if num args < 2
+    if [ "$#" -lt 2 ]; then
+        echo "Usage makegif <input> <output> [fps] [scale]"
+        return
+    fi
 
-  fps="30"
-  if [ "$3" ]; then
-    fps="$3"
-  fi
+    fps="30"
+    if [ "$3" ]; then
+        fps="$3"
+    fi
 
-  scale="1280"
-  if [ "$4" ]; then
-    scale="$4"
-  fi
-  set -x
-  ffmpeg -i "$1" -vf "fps=$fps,scale=$scale:-1:flags=lanczos,split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse" -loop 0 "$2"
-  set +x
+    scale="1280"
+    if [ "$4" ]; then
+        scale="$4"
+    fi
+    set -x
+    ffmpeg -i "$1" -vf "fps=$fps,scale=$scale:-1:flags=lanczos,split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse" -loop 0 "$2"
+    set +x
 }
 
 start_agent() {
@@ -669,7 +670,9 @@ start_agent() {
     echo -n "Initialising new SSH agent..."
     /usr/bin/ssh-agent | sed 's/^echo/#echo/' >"${SSH_ENV}"
     echo "${green}succeeded${reset}"
+    # shellcheck disable=SC2139
     chmod 600 "${SSH_ENV}"
+    # shellcheck disable=SC1090
     . "${SSH_ENV}" >/dev/null
     /usr/bin/ssh-add
 }
@@ -684,8 +687,10 @@ addkeys() {
     g=$(tput setaf 2)
     rs=$(tput sgr0)
     if [ -z "$SSH_AGENT_PID" ]; then
-       if [ -f "${SSH_ENV}" ]; then
+        if [ -f "${SSH_ENV}" ]; then
+            # shellcheck disable=SC1090
             . "${SSH_ENV}" >/dev/null
+            # shellcheck disable=SC2009
             if ps -ef | grep "${SSH_AGENT_PID}" | grep 'ssh-agent$' >/dev/null; then
                 echo "ssh-agent is already ${g}running${rs} and is now ${g}loaded${rs}"
                 ssh-add -l
@@ -700,6 +705,7 @@ addkeys() {
             start_agent
         fi
     else
+        # shellcheck disable=SC2009
         if ps -ef | grep "${SSH_AGENT_PID}" | grep 'ssh-agent$' >/dev/null; then
             echo "ssh-agent is already ${g}running${rs} and already ${g}loaded${rs}"
             ssh-add -l
@@ -720,83 +726,100 @@ addkeys() {
 }
 
 if [ "$_is_fd" == "true" ]; then
-  if [ -n "$BASH_VERSION" ]; then
-    _addkeys_options=$(fd . "$HOME/.ssh/" -t f --format '{/}' -E "*.pub" -E 'agent-environment' -E 'known_hosts*' -E 'config')
-    complete -W "${_addkeys_options}" 'addkeys'
-  fi
+    if [ -n "$BASH_VERSION" ]; then
+        _addkeys_options=$(fd . "$HOME/.ssh/" -t f --format '{/}' -E "*.pub" -E 'agent-environment' -E 'known_hosts*' -E 'config')
+        complete -W "${_addkeys_options}" 'addkeys'
+    fi
 fi
 
 
 mkd() {
-  mkdir "$1" && cd "$1" || return
+    mkdir "$1" && cd "$1" || return
 }
 
 publish() {
-  set -ux
-  cargo check --workspace --all-targets
-  cargo check --workspace --all-features --lib --target wasm32-unknown-unknown
-  cargo fmt --all -- --check
-  cargo clippy --workspace --all-targets --all-features --  -D warnings -W clippy::all
-  cargo test --workspace --all-targets --all-features
-  cargo test --workspace --doc
-  trunk build
-  cargo publish
-  set +ux
+    set -ux
+    cargo check --workspace --all-targets
+    cargo check --workspace --all-features --lib --target wasm32-unknown-unknown
+    cargo fmt --all -- --check
+    cargo clippy --workspace --all-targets --all-features --  -D warnings -W clippy::all
+    cargo test --workspace --all-targets --all-features
+    cargo test --workspace --doc
+    trunk build
+    cargo publish
+    set +ux
 }
 
 # https://junegunn.github.io/fzf/tips/ripgrep-integration/
 # ripgrep->fzf->vim [QUERY]
 rfv() (
-  RELOAD='reload:rg --column --color=always --smart-case {q} || :'
-  OPENER='if [[ $FZF_SELECT_COUNT -eq 0 ]]; then
-            nvim {1} +{2}     # No selection. Open the current line in Vim.
-          else
-            nvim +cw -q {+f}  # Build quickfix list for the selected items.
-          fi'
-  fzf --disabled --ansi --multi \
-      --bind "start:$RELOAD" --bind "change:$RELOAD" \
-      --bind "enter:become:$OPENER" \
-      --bind "ctrl-o:execute:$OPENER" \
-      --bind 'alt-a:select-all,alt-d:deselect-all,ctrl-/:toggle-preview' \
-      --delimiter : \
-      --preview 'bat --style=full --color=always --highlight-line {2} {1}' \
-      --preview-window '~4,+{2}+4/3,<80(up)' \
-      --query "$*"
+    RELOAD='reload:rg --column --color=always --smart-case {q} || :'
+    # shellcheck disable=SC2016
+    OPENER='if [[ $FZF_SELECT_COUNT -eq 0 ]]; then
+    nvim {1} +{2}     # No selection. Open the current line in Vim.
+    else
+    nvim +cw -q {+f}  # Build quickfix list for the selected items.
+    fi'
+    fzf --disabled --ansi --multi \
+    --bind "start:$RELOAD" --bind "change:$RELOAD" \
+    --bind "enter:become:$OPENER" \
+    --bind "ctrl-o:execute:$OPENER" \
+    --bind 'alt-a:select-all,alt-d:deselect-all,ctrl-/:toggle-preview' \
+    --delimiter : \
+    --preview 'bat --style=full --color=always --highlight-line {2} {1}' \
+    --preview-window '~4,+{2}+4/3,<80(up)' \
+    --query "$*"
 )
 
 copyfile() {
-  if [ -z "$1" ]; then
-    echo "No argument provided"
-  fi
-  xclip -selection clipboard < "$1"
+    if [ -z "$1" ]; then
+        echo "No argument provided"
+    fi
+    xclip -selection clipboard < "$1"
 }
 
 changeCommitDate() {
-  VARIABLE="${1:-3}"
-  MESSAGE="${2:-message}"
-  printf 'DAT=$(date --date "%s days ago" -R) GIT_AUTHOR_DATE=$DAT GIT_COMMITTER_DATE=$DAT git commit -m "%s"\n' "$VARIABLE" "$MESSAGE"
+    VARIABLE="${1:-3}"
+    MESSAGE="${2:-message}"
+    # shellcheck disable=SC2016
+    printf 'DAT=$(date --date "%s days ago" -R) GIT_AUTHOR_DATE=$DAT GIT_COMMITTER_DATE=$DAT git commit -m "%s"\n' "$VARIABLE" "$MESSAGE"
 }
 
 golb() {
     g golb
-    cd Its-Just-Nans/golb-articles/
+    cd Its-Just-Nans/golb-articles/ || ( echo "Cannot cd to gold" && exit )
     yazi
 }
 
 r() {
-  clear
-  cargo clippy
-  cargo fmt
-  if [ "$1" == "n" ]; then
-    cargo +nightly clippy
-    cargo +nightly fmt
-  fi
+    clear
+    cargo clippy
+    cargo fmt
+    nightly=false
+    build=false
+    for arg in "$@"; do
+        if [ "$arg" = "n" ]; then
+            nightly=true
+        elif [ "$arg" = "b" ]; then
+            build=true
+        fi
+    done
+    if [ "$build" = "true" ]; then
+        cargo build
+    fi
+    if [ "$nightly" = "true" ]; then
+        cargo +nightly clippy
+        cargo +nightly fmt
+        if [ "$build" = "true" ]; then
+            cargo +nightly build
+        fi
+    fi
 }
 
 battery() {
-  sudo tlp-stat --battery
+    sudo tlp-stat --battery
 }
 
 # The line beneath this is called `modeline`. See `:help modeline`
-# vim: ts=2 sts=2 sw=2 et
+# vim: ts=4 sts=4 sw=4 et
 

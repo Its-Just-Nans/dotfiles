@@ -57,16 +57,16 @@ setup() {
     cp "$wallpaper" "/opt/$wallpaper"
     if command -v gsettings &>/dev/null; then
         if [ -f "$wallpaper" ]; then
-                current_path=$(pwd)
-                path_wallpaper="$current_path/$wallpaper"
-                echo -n "Setting up '${grey}$path_wallpaper${reset}'..."
-                gsettings set org.gnome.desktop.background picture-uri "$path_wallpaper"
-                gsettings set org.gnome.desktop.background picture-uri-dark "$path_wallpaper"
-                sleep "$sleep_time"
-                echo "${green}done${reset}"
-         else
-                echo "${red}No such file '$wallpaper'${reset}"
-         fi
+            current_path=$(pwd)
+            path_wallpaper="$current_path/$wallpaper"
+            echo -n "Setting up '${grey}$path_wallpaper${reset}'..."
+            gsettings set org.gnome.desktop.background picture-uri "$path_wallpaper"
+            gsettings set org.gnome.desktop.background picture-uri-dark "$path_wallpaper"
+            sleep "$sleep_time"
+            echo "${green}done${reset}"
+        else
+            echo "${red}No such file '$wallpaper'${reset}"
+        fi
     else
         echo "${red}gsettings is not installed${reset}"
     fi
@@ -105,11 +105,11 @@ save(){
 
 install() {
     echo "git-crypt shellcheck thunar flameshot\
-imagemagick libimage-exiftool-perl gimp inkscape \
-byobu tmux screen \
-wireshark ffmpeg \
-libaa-bin cmatrix \
-qemu-system libvirt-daemon-system virt-manager"
+    imagemagick libimage-exiftool-perl gimp inkscape \
+    byobu tmux screen \
+    wireshark ffmpeg \
+    libaa-bin cmatrix \
+    qemu-system libvirt-daemon-system virt-manager"
 }
 
 
@@ -200,6 +200,7 @@ meta() {
         echo "shellcheck is not installed"
     else
         shellcheck setup.sh
+        shellcheck .useful.sh
     fi
 }
 
@@ -243,3 +244,7 @@ main() {
 }
 
 main "$@"
+
+# The line beneath this is called `modeline`. See `:help modeline`
+# vim: ts=4 sts=4 sw=4 et
+
