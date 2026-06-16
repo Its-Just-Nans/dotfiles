@@ -797,7 +797,7 @@ r() {
     build=false
     run=false
     test=false
-    all=true
+    all=false
     for arg in "$@"; do
         if [ "$arg" = "n" ]; then
             nightly=true

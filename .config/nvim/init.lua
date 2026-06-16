@@ -36,8 +36,17 @@ do
 		},
 	})
 
-	vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
+	-- vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
 
+	vim.keymap.set("n", "<leader>q", function()
+		local winid = vim.fn.getloclist(0, { winid = 0 }).winid
+
+		if winid ~= 0 then
+			vim.cmd("lclose")
+		else
+			vim.diagnostic.setloclist()
+		end
+	end, { desc = "Toggle diagnostic location list" })
 	-- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 	-- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
 	-- is not what someone will guess without a bit more experience.
@@ -511,6 +520,7 @@ do
 			-- code, if the language server you are using supports them
 			--
 			-- This may be unwanted, since they displace some of your code
+			vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
 			if client and client:supports_method("textDocument/inlayHint", event.buf) then
 				map("<leader>th", function()
 					vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
