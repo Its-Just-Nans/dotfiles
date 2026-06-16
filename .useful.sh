@@ -793,11 +793,11 @@ golb() {
 
 r() {
     clear
-    cargo clippy
-    cargo fmt
     nightly=false
     build=false
     run=false
+    test=false
+    all=true
     for arg in "$@"; do
         if [ "$arg" = "n" ]; then
             nightly=true
@@ -805,8 +805,17 @@ r() {
             build=true
         elif [ "$arg" = "r" ]; then
             run=true
+        elif [ "$arg" = "a" ]; then
+            all=true
+        elif [ "$arg" = "t" ]; then
+            test=true
         fi
     done
+    cargo clippy
+    cargo fmt
+    if [ "$all" = "true" ]; then
+        cargo clippy --all-targets --all-features
+    fi
     if [ "$build" = "true" ]; then
         cargo build
     fi
@@ -815,6 +824,12 @@ r() {
         cargo +nightly fmt
         if [ "$build" = "true" ]; then
             cargo +nightly build
+        fi
+    fi
+    if [ "$test" = "true" ]; then
+        cargo test
+        if [ "$all" = "true" ]; then
+            cargo test --all-targets --all-features
         fi
     fi
     if [ "$run" = "true" ]; then
