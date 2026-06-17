@@ -679,9 +679,12 @@ start_agent() {
 
 addkeys() {
     should_push=false
+    search=""
     for arg in "$@"; do
         if [ "$arg" = "p" ]; then
             should_push=true
+        else
+            search="$arg"
         fi
     done
     if [[ "$SSH_AUTH_SOCK" == *gpg-agent* ]]; then
@@ -725,8 +728,8 @@ addkeys() {
         git push
         return
     fi
-    if [ "$1" ]; then
-        toSearch="${1}*"
+    if [ "$search" ]; then
+        toSearch="${search}*"
     else
         toSearch="$HOME/.ssh/"
     fi
