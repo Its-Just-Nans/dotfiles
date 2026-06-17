@@ -703,6 +703,10 @@ addkeys() {
             if ps -ef | grep "${SSH_AGENT_PID}" | grep 'ssh-agent$' >/dev/null; then
                 echo "ssh-agent is already ${g}running${rs} and is now ${g}loaded${rs}"
                 ssh-add -l
+                if [ "$should_push" = "true" ]; then
+                    echo "git push"
+                    git push
+                fi
                 # return early
                 return
             else
