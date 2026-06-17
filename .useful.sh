@@ -809,6 +809,7 @@ r() {
     run=false
     test=false
     all=false
+    web=false
     for arg in "$@"; do
         if [ "$arg" = "n" ]; then
             nightly=true
@@ -820,6 +821,8 @@ r() {
             all=true
         elif [ "$arg" = "t" ]; then
             test=true
+        elif [ "$arg" = "w" ]; then
+            web=true
         fi
     done
     cargo clippy
@@ -841,6 +844,12 @@ r() {
         cargo test
         if [ "$all" = "true" ]; then
             cargo test --all-targets --all-features
+        fi
+    fi
+    if [ "$web" = "true" ]; then
+        trunk build
+        if [ "$all" = "true" ]; then
+            trunk build --all-features
         fi
     fi
     if [ "$run" = "true" ]; then
