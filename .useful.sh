@@ -678,6 +678,12 @@ start_agent() {
 }
 
 addkeys() {
+    should_push=false
+    for arg in "$@"; do
+        if [ "$arg" = "p" ]; then
+            should_push=true
+        fi
+    done
     if [[ "$SSH_AUTH_SOCK" == *gpg-agent* ]]; then
         echo "GPG agent detected. Killing it..."
         gpgconf --kill gpg-agent
@@ -713,6 +719,11 @@ addkeys() {
             echo "Agent PID present but not found, starting a new agent"
             start_agent
         fi
+    fi
+    if [ "$should_push" = "true" ]; then
+        echo "git push"
+        git push
+        return
     fi
     if [ "$1" ]; then
         toSearch="${1}*"
