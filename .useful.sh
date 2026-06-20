@@ -868,6 +868,29 @@ battery() {
     sudo tlp-stat --battery
 }
 
+# open overwrite
+open() {
+    for f in "$@"; do
+        case "$f" in
+            *.pdf) evince "$f" & ;;
+            *.png|*.jpg|*.jpeg|*.gif|*.webp|*.HEIC) ristretto "$f" & ;;
+            *.mp4|*.mkv|*.webm|*.mov)
+                mpv "$f" &
+                ;;
+            *.mp3|*.flac|*.wav|*.ogg)
+                mpv "$f" &
+                ;;
+            # Fonts
+            *.ttf|*.otf|*.woff|*.woff2) fontforge "$f" & ;;
+            *.sqlite|*.db) sqlitebrowser "$f" & ;;
+            *.stl) meshlab "$f" ;;
+            *.xcf) gimp "$f" & ;;
+            *.svg) galago "$f" & ;;
+            *)     vi "$f" ;;
+        esac
+    done
+}
+
 # The line beneath this is called `modeline`. See `:help modeline`
 # vim: ts=4 sts=4 sw=4 et
 
