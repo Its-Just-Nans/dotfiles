@@ -111,6 +111,7 @@ rshell # remote shell for MicroPython - https://github.com/dhylands/rshell
 flameshot # screenshot https://flameshot.org/
 meld # diff viewer
 kooha # https://github.com/SeaDve/Kooha
+heaptrack # heap memory profiler https://github.com/KDE/heaptrack
 
 ## Old programs
 
