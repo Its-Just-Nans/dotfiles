@@ -92,19 +92,26 @@ if [ -n "$BASH_VERSION" ]; then
     fi
 fi
 
-alias ll="ls -lahv"
-alias lla="ls -lahv"
+# long - all - human size - sort natural - append indicator
+alias l='ls -lahvF'
+alias ll='l'
+alias la='l'
+alias ll="l"
+alias lla="l"
+
 alias sl="sl | lolcat"
 alias p="python"
 alias j="just"
 alias c="clear"
 alias ..="cd .."
 alias ...="cd ../.."
+
 alias vim="nvim"
 alias vi="nvim"
 alias v="nvim"
 alias nv="nvim"
 alias neovim="nvim"
+
 alias n4N5='n4n5'
 alias N4n5='n4n5'
 alias N4N5='n4n5'
