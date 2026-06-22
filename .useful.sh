@@ -92,6 +92,7 @@ if [ -n "$BASH_VERSION" ]; then
     fi
 fi
 
+# to list aliases do 'alias'
 # long - all - human size - sort natural - append indicator
 alias l='ls -lahvF'
 alias ll='l'
