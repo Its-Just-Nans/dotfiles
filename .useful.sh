@@ -244,7 +244,12 @@ g() {
         echo "Folder ${HOME}/Documents/github/${folder} does not exists"
         return 1
     fi
-    cd "${HOME}/Documents/github/${folder}" || return 1
+    if [ -z "$folder" ] && [ "$(pwd)" == "${HOME}/Documents/github" ]; then
+        listGIT
+        return 0
+    else
+        cd "${HOME}/Documents/github/${folder}" || return 1
+    fi
     # check if onefetch is installed
     if [ "$folder" != "" ]; then
         if command -v onefetch &>/dev/null; then
