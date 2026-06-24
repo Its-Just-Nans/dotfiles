@@ -899,6 +899,20 @@ open() {
     done
 }
 
+mou() {
+    root="${1:-/}"
+    while read -r src target fstype opts _; do
+        [[ $src != /* ]] && continue
+        [[ $target == /snap || $target == /snap/* ]] && continue
+        [[ $target == /boot/* ]] && continue
+        # Hide root and anything below it
+        [[ $target == "$root" || $target == "$root"/* ]] && continue
+
+        printf "%s %s %s\n" "$src" "$target" "$fstype"
+    done < /proc/mounts
+
+}
+
 # The line beneath this is called `modeline`. See `:help modeline`
 # vim: ts=4 sts=4 sw=4 et
 
