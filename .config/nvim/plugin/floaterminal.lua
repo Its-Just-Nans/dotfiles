@@ -44,7 +44,12 @@ end
 local toggle_terminal = function()
 	if not vim.api.nvim_win_is_valid(state.floating.win) then
 		if vim.fn.mode() == "n" then
-			vim.cmd("write")
+			local filename = vim.api.nvim_buf_get_name(0)
+			if filename ~= "" then
+				vim.cmd("write")
+			else
+				return
+			end
 		end
 		state.floating = create_floating_window({ buf = state.floating.buf })
 		if vim.bo[state.floating.buf].buftype ~= "terminal" then
