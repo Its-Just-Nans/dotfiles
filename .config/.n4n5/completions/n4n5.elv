@@ -18,75 +18,26 @@ set edit:completion:arg-completer[n4n5] = {|@words|
     }
     var completions = [
         &'n4n5'= {
-            cand -c 'Sets a custom config file'
             cand --config 'Sets a custom config file'
             cand -d 'Turn debugging information on'
             cand --debug 'Turn debugging information on'
+            cand --use-input 'whether to use input for configuration'
             cand -h 'Print help'
             cand --help 'Print help'
-            cand utils 'utils subcommand'
-            cand music 'music subcommand'
+            cand -V 'Print version'
+            cand --version 'Print version'
             cand config 'config subcommand'
             cand gh 'gh subcommand'
-            cand helpers 'helpers subcommand'
             cand movies 'movies subcommand'
-            cand sync 'sync subcommand'
+            cand completions 'generate completions'
+            cand shortcuts 'Shortcuts subcommand'
+            cand man 'generate man'
+            cand list_crates 'list crates subcommand'
+            cand git-mover 'Launch git-mover cli'
+            cand music 'music subcommand'
+            cand share 'Quick http server share'
+            cand watching 'List watching repos'
             cand help 'Print this message or the help of the given subcommand(s)'
-        }
-        &'n4n5;utils'= {
-            cand -h 'Print help'
-            cand --help 'Print help'
-            cand list_crates 'list_crates subcommand'
-            cand help 'Print this message or the help of the given subcommand(s)'
-        }
-        &'n4n5;utils;list_crates'= {
-            cand --username 'Specify username'
-            cand --user-agent 'Specify user agent'
-            cand --output-markdown 'Output markdown'
-            cand --output-list 'Output list'
-            cand --output-list-full 'Output list long/full'
-            cand --delay 'Request delay (in seconds)'
-            cand --filtered 'Filter crates'
-            cand --specials 'Filter crates'
-            cand --verbose 'Filter crates'
-            cand -h 'Print help'
-            cand --help 'Print help'
-        }
-        &'n4n5;utils;help'= {
-            cand list_crates 'list_crates subcommand'
-            cand help 'Print this message or the help of the given subcommand(s)'
-        }
-        &'n4n5;utils;help;list_crates'= {
-        }
-        &'n4n5;utils;help;help'= {
-        }
-        &'n4n5;music'= {
-            cand -h 'Print help'
-            cand --help 'Print help'
-            cand sync 'Save music'
-            cand open 'Open music file'
-            cand help 'Print this message or the help of the given subcommand(s)'
-        }
-        &'n4n5;music;sync'= {
-            cand -h 'Print help'
-            cand --help 'Print help'
-        }
-        &'n4n5;music;open'= {
-            cand -p 'Print the path only'
-            cand --path 'Print the path only'
-            cand -h 'Print help'
-            cand --help 'Print help'
-        }
-        &'n4n5;music;help'= {
-            cand sync 'Save music'
-            cand open 'Open music file'
-            cand help 'Print this message or the help of the given subcommand(s)'
-        }
-        &'n4n5;music;help;sync'= {
-        }
-        &'n4n5;music;help;open'= {
-        }
-        &'n4n5;music;help;help'= {
         }
         &'n4n5;config'= {
             cand -h 'Print help'
@@ -137,32 +88,6 @@ set edit:completion:arg-completer[n4n5] = {|@words|
         &'n4n5;gh;help;projects'= {
         }
         &'n4n5;gh;help;help'= {
-        }
-        &'n4n5;helpers'= {
-            cand -h 'Print help'
-            cand --help 'Print help'
-            cand completions 'generate completions'
-            cand man 'generate man'
-            cand help 'Print this message or the help of the given subcommand(s)'
-        }
-        &'n4n5;helpers;completions'= {
-            cand -h 'Print help'
-            cand --help 'Print help'
-        }
-        &'n4n5;helpers;man'= {
-            cand -h 'Print help'
-            cand --help 'Print help'
-        }
-        &'n4n5;helpers;help'= {
-            cand completions 'generate completions'
-            cand man 'generate man'
-            cand help 'Print this message or the help of the given subcommand(s)'
-        }
-        &'n4n5;helpers;help;completions'= {
-        }
-        &'n4n5;helpers;help;man'= {
-        }
-        &'n4n5;helpers;help;help'= {
         }
         &'n4n5;movies'= {
             cand -h 'Print help'
@@ -226,108 +151,119 @@ set edit:completion:arg-completer[n4n5] = {|@words|
         }
         &'n4n5;movies;help;help'= {
         }
-        &'n4n5;sync'= {
+        &'n4n5;completions'= {
             cand -h 'Print help'
             cand --help 'Print help'
-            cand settings 'save settings'
-            cand movies 'sync movies'
-            cand programs 'sync programs'
-            cand music 'sync music'
-            cand all 'sync all'
+        }
+        &'n4n5;shortcuts'= {
+            cand -h 'Print help'
+            cand --help 'Print help'
+            cand sync-git 'Sync git repos between GitHub and Codeberg'
+            cand sync-all 'Sync all'
             cand help 'Print this message or the help of the given subcommand(s)'
         }
-        &'n4n5;sync;settings'= {
+        &'n4n5;shortcuts;sync-git'= {
             cand -h 'Print help'
             cand --help 'Print help'
-            cand add 'add a file to save'
-            cand all 'add all files to save'
+        }
+        &'n4n5;shortcuts;sync-all'= {
+            cand -h 'Print help'
+            cand --help 'Print help'
+        }
+        &'n4n5;shortcuts;help'= {
+            cand sync-git 'Sync git repos between GitHub and Codeberg'
+            cand sync-all 'Sync all'
             cand help 'Print this message or the help of the given subcommand(s)'
         }
-        &'n4n5;sync;settings;add'= {
+        &'n4n5;shortcuts;help;sync-git'= {
+        }
+        &'n4n5;shortcuts;help;sync-all'= {
+        }
+        &'n4n5;shortcuts;help;help'= {
+        }
+        &'n4n5;man'= {
             cand -h 'Print help'
             cand --help 'Print help'
         }
-        &'n4n5;sync;settings;all'= {
+        &'n4n5;list_crates'= {
+            cand --username 'Specify username'
+            cand --user-agent 'Specify user agent'
+            cand --output-markdown 'Output markdown'
+            cand --output-list 'Output list'
+            cand --output-list-full 'Output list long/full'
+            cand --delay 'Request delay (in milliseconds)'
+            cand --filtered 'Filter crates'
+            cand --specials 'Specials crates'
+            cand --verbose 'Verbose'
             cand -h 'Print help'
             cand --help 'Print help'
         }
-        &'n4n5;sync;settings;help'= {
-            cand add 'add a file to save'
-            cand all 'add all files to save'
-            cand help 'Print this message or the help of the given subcommand(s)'
-        }
-        &'n4n5;sync;settings;help;add'= {
-        }
-        &'n4n5;sync;settings;help;all'= {
-        }
-        &'n4n5;sync;settings;help;help'= {
-        }
-        &'n4n5;sync;movies'= {
-            cand -j 'print as json'
-            cand --json 'print as json'
+        &'n4n5;git-mover'= {
+            cand --source 'The source platform (github, gitlab, codeberg)'
+            cand --from 'The source platform (github, gitlab, codeberg)'
+            cand --destination 'The destination platform (github, gitlab, codeberg)'
+            cand --to 'The destination platform (github, gitlab, codeberg)'
+            cand --config 'Custom configuration file path'
+            cand --no-forks 'Don''t sync forked repositories'
+            cand --no-delete 'Don''t delete repositories'
+            cand --resync 'Resync all repositories'
+            cand --show-config-path 'Show the current config path and exit'
+            cand --manual 'Sync manually'
+            cand -v 'Verbose mode'
+            cand -d 'Verbose mode'
+            cand --verbose 'Verbose mode'
             cand -h 'Print help'
             cand --help 'Print help'
         }
-        &'n4n5;sync;programs'= {
+        &'n4n5;music'= {
             cand -h 'Print help'
             cand --help 'Print help'
-        }
-        &'n4n5;sync;music'= {
-            cand -h 'Print help'
-            cand --help 'Print help'
-        }
-        &'n4n5;sync;all'= {
-            cand -h 'Print help'
-            cand --help 'Print help'
-        }
-        &'n4n5;sync;help'= {
-            cand settings 'save settings'
-            cand movies 'sync movies'
-            cand programs 'sync programs'
-            cand music 'sync music'
-            cand all 'sync all'
-            cand help 'Print this message or the help of the given subcommand(s)'
-        }
-        &'n4n5;sync;help;settings'= {
-            cand add 'add a file to save'
-            cand all 'add all files to save'
-        }
-        &'n4n5;sync;help;settings;add'= {
-        }
-        &'n4n5;sync;help;settings;all'= {
-        }
-        &'n4n5;sync;help;movies'= {
-        }
-        &'n4n5;sync;help;programs'= {
-        }
-        &'n4n5;sync;help;music'= {
-        }
-        &'n4n5;sync;help;all'= {
-        }
-        &'n4n5;sync;help;help'= {
-        }
-        &'n4n5;help'= {
-            cand utils 'utils subcommand'
-            cand music 'music subcommand'
-            cand config 'config subcommand'
-            cand gh 'gh subcommand'
-            cand helpers 'helpers subcommand'
-            cand movies 'movies subcommand'
-            cand sync 'sync subcommand'
-            cand help 'Print this message or the help of the given subcommand(s)'
-        }
-        &'n4n5;help;utils'= {
-            cand list_crates 'list_crates subcommand'
-        }
-        &'n4n5;help;utils;list_crates'= {
-        }
-        &'n4n5;help;music'= {
             cand sync 'Save music'
             cand open 'Open music file'
+            cand help 'Print this message or the help of the given subcommand(s)'
         }
-        &'n4n5;help;music;sync'= {
+        &'n4n5;music;sync'= {
+            cand -h 'Print help'
+            cand --help 'Print help'
         }
-        &'n4n5;help;music;open'= {
+        &'n4n5;music;open'= {
+            cand -p 'Print the path only'
+            cand --path 'Print the path only'
+            cand -h 'Print help'
+            cand --help 'Print help'
+        }
+        &'n4n5;music;help'= {
+            cand sync 'Save music'
+            cand open 'Open music file'
+            cand help 'Print this message or the help of the given subcommand(s)'
+        }
+        &'n4n5;music;help;sync'= {
+        }
+        &'n4n5;music;help;open'= {
+        }
+        &'n4n5;music;help;help'= {
+        }
+        &'n4n5;share'= {
+            cand -h 'Print help'
+            cand --help 'Print help'
+        }
+        &'n4n5;watching'= {
+            cand -h 'Print help'
+            cand --help 'Print help'
+        }
+        &'n4n5;help'= {
+            cand config 'config subcommand'
+            cand gh 'gh subcommand'
+            cand movies 'movies subcommand'
+            cand completions 'generate completions'
+            cand shortcuts 'Shortcuts subcommand'
+            cand man 'generate man'
+            cand list_crates 'list crates subcommand'
+            cand git-mover 'Launch git-mover cli'
+            cand music 'music subcommand'
+            cand share 'Quick http server share'
+            cand watching 'List watching repos'
+            cand help 'Print this message or the help of the given subcommand(s)'
         }
         &'n4n5;help;config'= {
             cand open 'Open config with default editor'
@@ -341,14 +277,6 @@ set edit:completion:arg-completer[n4n5] = {|@words|
         &'n4n5;help;gh;pulls'= {
         }
         &'n4n5;help;gh;projects'= {
-        }
-        &'n4n5;help;helpers'= {
-            cand completions 'generate completions'
-            cand man 'generate man'
-        }
-        &'n4n5;help;helpers;completions'= {
-        }
-        &'n4n5;help;helpers;man'= {
         }
         &'n4n5;help;movies'= {
             cand add 'add a movie'
@@ -367,28 +295,33 @@ set edit:completion:arg-completer[n4n5] = {|@words|
         }
         &'n4n5;help;movies;sync'= {
         }
-        &'n4n5;help;sync'= {
-            cand settings 'save settings'
-            cand movies 'sync movies'
-            cand programs 'sync programs'
-            cand music 'sync music'
-            cand all 'sync all'
+        &'n4n5;help;completions'= {
         }
-        &'n4n5;help;sync;settings'= {
-            cand add 'add a file to save'
-            cand all 'add all files to save'
+        &'n4n5;help;shortcuts'= {
+            cand sync-git 'Sync git repos between GitHub and Codeberg'
+            cand sync-all 'Sync all'
         }
-        &'n4n5;help;sync;settings;add'= {
+        &'n4n5;help;shortcuts;sync-git'= {
         }
-        &'n4n5;help;sync;settings;all'= {
+        &'n4n5;help;shortcuts;sync-all'= {
         }
-        &'n4n5;help;sync;movies'= {
+        &'n4n5;help;man'= {
         }
-        &'n4n5;help;sync;programs'= {
+        &'n4n5;help;list_crates'= {
         }
-        &'n4n5;help;sync;music'= {
+        &'n4n5;help;git-mover'= {
         }
-        &'n4n5;help;sync;all'= {
+        &'n4n5;help;music'= {
+            cand sync 'Save music'
+            cand open 'Open music file'
+        }
+        &'n4n5;help;music;sync'= {
+        }
+        &'n4n5;help;music;open'= {
+        }
+        &'n4n5;help;share'= {
+        }
+        &'n4n5;help;watching'= {
         }
         &'n4n5;help;help'= {
         }

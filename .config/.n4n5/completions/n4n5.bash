@@ -16,287 +16,215 @@ _n4n5() {
             ",$1")
                 cmd="n4n5"
                 ;;
+            n4n5,completions)
+                cmd="n4n5__subcmd__completions"
+                ;;
             n4n5,config)
-                cmd="n4n5__config"
+                cmd="n4n5__subcmd__config"
                 ;;
             n4n5,gh)
-                cmd="n4n5__gh"
+                cmd="n4n5__subcmd__gh"
+                ;;
+            n4n5,git-mover)
+                cmd="n4n5__subcmd__git__subcmd__mover"
                 ;;
             n4n5,help)
-                cmd="n4n5__help"
+                cmd="n4n5__subcmd__help"
                 ;;
-            n4n5,helpers)
-                cmd="n4n5__helpers"
+            n4n5,list_crates)
+                cmd="n4n5__subcmd__list_crates"
+                ;;
+            n4n5,man)
+                cmd="n4n5__subcmd__man"
                 ;;
             n4n5,movies)
-                cmd="n4n5__movies"
+                cmd="n4n5__subcmd__movies"
                 ;;
             n4n5,music)
-                cmd="n4n5__music"
+                cmd="n4n5__subcmd__music"
                 ;;
-            n4n5,sync)
-                cmd="n4n5__sync"
+            n4n5,share)
+                cmd="n4n5__subcmd__share"
                 ;;
-            n4n5,utils)
-                cmd="n4n5__utils"
+            n4n5,shortcuts)
+                cmd="n4n5__subcmd__shortcuts"
                 ;;
-            n4n5__config,help)
-                cmd="n4n5__config__help"
+            n4n5,watching)
+                cmd="n4n5__subcmd__watching"
                 ;;
-            n4n5__config,open)
-                cmd="n4n5__config__open"
+            n4n5__subcmd__config,help)
+                cmd="n4n5__subcmd__config__subcmd__help"
                 ;;
-            n4n5__config__help,help)
-                cmd="n4n5__config__help__help"
+            n4n5__subcmd__config,open)
+                cmd="n4n5__subcmd__config__subcmd__open"
                 ;;
-            n4n5__config__help,open)
-                cmd="n4n5__config__help__open"
+            n4n5__subcmd__config__subcmd__help,help)
+                cmd="n4n5__subcmd__config__subcmd__help__subcmd__help"
                 ;;
-            n4n5__gh,help)
-                cmd="n4n5__gh__help"
+            n4n5__subcmd__config__subcmd__help,open)
+                cmd="n4n5__subcmd__config__subcmd__help__subcmd__open"
                 ;;
-            n4n5__gh,projects)
-                cmd="n4n5__gh__projects"
+            n4n5__subcmd__gh,help)
+                cmd="n4n5__subcmd__gh__subcmd__help"
                 ;;
-            n4n5__gh,pulls)
-                cmd="n4n5__gh__pulls"
+            n4n5__subcmd__gh,projects)
+                cmd="n4n5__subcmd__gh__subcmd__projects"
                 ;;
-            n4n5__gh__help,help)
-                cmd="n4n5__gh__help__help"
+            n4n5__subcmd__gh,pulls)
+                cmd="n4n5__subcmd__gh__subcmd__pulls"
                 ;;
-            n4n5__gh__help,projects)
-                cmd="n4n5__gh__help__projects"
+            n4n5__subcmd__gh__subcmd__help,help)
+                cmd="n4n5__subcmd__gh__subcmd__help__subcmd__help"
                 ;;
-            n4n5__gh__help,pulls)
-                cmd="n4n5__gh__help__pulls"
+            n4n5__subcmd__gh__subcmd__help,projects)
+                cmd="n4n5__subcmd__gh__subcmd__help__subcmd__projects"
                 ;;
-            n4n5__help,config)
-                cmd="n4n5__help__config"
+            n4n5__subcmd__gh__subcmd__help,pulls)
+                cmd="n4n5__subcmd__gh__subcmd__help__subcmd__pulls"
                 ;;
-            n4n5__help,gh)
-                cmd="n4n5__help__gh"
+            n4n5__subcmd__help,completions)
+                cmd="n4n5__subcmd__help__subcmd__completions"
                 ;;
-            n4n5__help,help)
-                cmd="n4n5__help__help"
+            n4n5__subcmd__help,config)
+                cmd="n4n5__subcmd__help__subcmd__config"
                 ;;
-            n4n5__help,helpers)
-                cmd="n4n5__help__helpers"
+            n4n5__subcmd__help,gh)
+                cmd="n4n5__subcmd__help__subcmd__gh"
                 ;;
-            n4n5__help,movies)
-                cmd="n4n5__help__movies"
+            n4n5__subcmd__help,git-mover)
+                cmd="n4n5__subcmd__help__subcmd__git__subcmd__mover"
                 ;;
-            n4n5__help,music)
-                cmd="n4n5__help__music"
+            n4n5__subcmd__help,help)
+                cmd="n4n5__subcmd__help__subcmd__help"
                 ;;
-            n4n5__help,sync)
-                cmd="n4n5__help__sync"
+            n4n5__subcmd__help,list_crates)
+                cmd="n4n5__subcmd__help__subcmd__list_crates"
                 ;;
-            n4n5__help,utils)
-                cmd="n4n5__help__utils"
+            n4n5__subcmd__help,man)
+                cmd="n4n5__subcmd__help__subcmd__man"
                 ;;
-            n4n5__help__config,open)
-                cmd="n4n5__help__config__open"
+            n4n5__subcmd__help,movies)
+                cmd="n4n5__subcmd__help__subcmd__movies"
                 ;;
-            n4n5__help__gh,projects)
-                cmd="n4n5__help__gh__projects"
+            n4n5__subcmd__help,music)
+                cmd="n4n5__subcmd__help__subcmd__music"
                 ;;
-            n4n5__help__gh,pulls)
-                cmd="n4n5__help__gh__pulls"
+            n4n5__subcmd__help,share)
+                cmd="n4n5__subcmd__help__subcmd__share"
                 ;;
-            n4n5__help__helpers,completions)
-                cmd="n4n5__help__helpers__completions"
+            n4n5__subcmd__help,shortcuts)
+                cmd="n4n5__subcmd__help__subcmd__shortcuts"
                 ;;
-            n4n5__help__helpers,man)
-                cmd="n4n5__help__helpers__man"
+            n4n5__subcmd__help,watching)
+                cmd="n4n5__subcmd__help__subcmd__watching"
                 ;;
-            n4n5__help__movies,add)
-                cmd="n4n5__help__movies__add"
+            n4n5__subcmd__help__subcmd__config,open)
+                cmd="n4n5__subcmd__help__subcmd__config__subcmd__open"
                 ;;
-            n4n5__help__movies,open)
-                cmd="n4n5__help__movies__open"
+            n4n5__subcmd__help__subcmd__gh,projects)
+                cmd="n4n5__subcmd__help__subcmd__gh__subcmd__projects"
                 ;;
-            n4n5__help__movies,show)
-                cmd="n4n5__help__movies__show"
+            n4n5__subcmd__help__subcmd__gh,pulls)
+                cmd="n4n5__subcmd__help__subcmd__gh__subcmd__pulls"
                 ;;
-            n4n5__help__movies,stats)
-                cmd="n4n5__help__movies__stats"
+            n4n5__subcmd__help__subcmd__movies,add)
+                cmd="n4n5__subcmd__help__subcmd__movies__subcmd__add"
                 ;;
-            n4n5__help__movies,sync)
-                cmd="n4n5__help__movies__sync"
+            n4n5__subcmd__help__subcmd__movies,open)
+                cmd="n4n5__subcmd__help__subcmd__movies__subcmd__open"
                 ;;
-            n4n5__help__music,open)
-                cmd="n4n5__help__music__open"
+            n4n5__subcmd__help__subcmd__movies,show)
+                cmd="n4n5__subcmd__help__subcmd__movies__subcmd__show"
                 ;;
-            n4n5__help__music,sync)
-                cmd="n4n5__help__music__sync"
+            n4n5__subcmd__help__subcmd__movies,stats)
+                cmd="n4n5__subcmd__help__subcmd__movies__subcmd__stats"
                 ;;
-            n4n5__help__sync,all)
-                cmd="n4n5__help__sync__all"
+            n4n5__subcmd__help__subcmd__movies,sync)
+                cmd="n4n5__subcmd__help__subcmd__movies__subcmd__sync"
                 ;;
-            n4n5__help__sync,movies)
-                cmd="n4n5__help__sync__movies"
+            n4n5__subcmd__help__subcmd__music,open)
+                cmd="n4n5__subcmd__help__subcmd__music__subcmd__open"
                 ;;
-            n4n5__help__sync,music)
-                cmd="n4n5__help__sync__music"
+            n4n5__subcmd__help__subcmd__music,sync)
+                cmd="n4n5__subcmd__help__subcmd__music__subcmd__sync"
                 ;;
-            n4n5__help__sync,programs)
-                cmd="n4n5__help__sync__programs"
+            n4n5__subcmd__help__subcmd__shortcuts,sync-all)
+                cmd="n4n5__subcmd__help__subcmd__shortcuts__subcmd__sync__subcmd__all"
                 ;;
-            n4n5__help__sync,settings)
-                cmd="n4n5__help__sync__settings"
+            n4n5__subcmd__help__subcmd__shortcuts,sync-git)
+                cmd="n4n5__subcmd__help__subcmd__shortcuts__subcmd__sync__subcmd__git"
                 ;;
-            n4n5__help__sync__settings,add)
-                cmd="n4n5__help__sync__settings__add"
+            n4n5__subcmd__movies,add)
+                cmd="n4n5__subcmd__movies__subcmd__add"
                 ;;
-            n4n5__help__sync__settings,all)
-                cmd="n4n5__help__sync__settings__all"
+            n4n5__subcmd__movies,help)
+                cmd="n4n5__subcmd__movies__subcmd__help"
                 ;;
-            n4n5__help__utils,list_crates)
-                cmd="n4n5__help__utils__list_crates"
+            n4n5__subcmd__movies,open)
+                cmd="n4n5__subcmd__movies__subcmd__open"
                 ;;
-            n4n5__helpers,completions)
-                cmd="n4n5__helpers__completions"
+            n4n5__subcmd__movies,show)
+                cmd="n4n5__subcmd__movies__subcmd__show"
                 ;;
-            n4n5__helpers,help)
-                cmd="n4n5__helpers__help"
+            n4n5__subcmd__movies,stats)
+                cmd="n4n5__subcmd__movies__subcmd__stats"
                 ;;
-            n4n5__helpers,man)
-                cmd="n4n5__helpers__man"
+            n4n5__subcmd__movies,sync)
+                cmd="n4n5__subcmd__movies__subcmd__sync"
                 ;;
-            n4n5__helpers__help,completions)
-                cmd="n4n5__helpers__help__completions"
+            n4n5__subcmd__movies__subcmd__help,add)
+                cmd="n4n5__subcmd__movies__subcmd__help__subcmd__add"
                 ;;
-            n4n5__helpers__help,help)
-                cmd="n4n5__helpers__help__help"
+            n4n5__subcmd__movies__subcmd__help,help)
+                cmd="n4n5__subcmd__movies__subcmd__help__subcmd__help"
                 ;;
-            n4n5__helpers__help,man)
-                cmd="n4n5__helpers__help__man"
+            n4n5__subcmd__movies__subcmd__help,open)
+                cmd="n4n5__subcmd__movies__subcmd__help__subcmd__open"
                 ;;
-            n4n5__movies,add)
-                cmd="n4n5__movies__add"
+            n4n5__subcmd__movies__subcmd__help,show)
+                cmd="n4n5__subcmd__movies__subcmd__help__subcmd__show"
                 ;;
-            n4n5__movies,help)
-                cmd="n4n5__movies__help"
+            n4n5__subcmd__movies__subcmd__help,stats)
+                cmd="n4n5__subcmd__movies__subcmd__help__subcmd__stats"
                 ;;
-            n4n5__movies,open)
-                cmd="n4n5__movies__open"
+            n4n5__subcmd__movies__subcmd__help,sync)
+                cmd="n4n5__subcmd__movies__subcmd__help__subcmd__sync"
                 ;;
-            n4n5__movies,show)
-                cmd="n4n5__movies__show"
+            n4n5__subcmd__music,help)
+                cmd="n4n5__subcmd__music__subcmd__help"
                 ;;
-            n4n5__movies,stats)
-                cmd="n4n5__movies__stats"
+            n4n5__subcmd__music,open)
+                cmd="n4n5__subcmd__music__subcmd__open"
                 ;;
-            n4n5__movies,sync)
-                cmd="n4n5__movies__sync"
+            n4n5__subcmd__music,sync)
+                cmd="n4n5__subcmd__music__subcmd__sync"
                 ;;
-            n4n5__movies__help,add)
-                cmd="n4n5__movies__help__add"
+            n4n5__subcmd__music__subcmd__help,help)
+                cmd="n4n5__subcmd__music__subcmd__help__subcmd__help"
                 ;;
-            n4n5__movies__help,help)
-                cmd="n4n5__movies__help__help"
+            n4n5__subcmd__music__subcmd__help,open)
+                cmd="n4n5__subcmd__music__subcmd__help__subcmd__open"
                 ;;
-            n4n5__movies__help,open)
-                cmd="n4n5__movies__help__open"
+            n4n5__subcmd__music__subcmd__help,sync)
+                cmd="n4n5__subcmd__music__subcmd__help__subcmd__sync"
                 ;;
-            n4n5__movies__help,show)
-                cmd="n4n5__movies__help__show"
+            n4n5__subcmd__shortcuts,help)
+                cmd="n4n5__subcmd__shortcuts__subcmd__help"
                 ;;
-            n4n5__movies__help,stats)
-                cmd="n4n5__movies__help__stats"
+            n4n5__subcmd__shortcuts,sync-all)
+                cmd="n4n5__subcmd__shortcuts__subcmd__sync__subcmd__all"
                 ;;
-            n4n5__movies__help,sync)
-                cmd="n4n5__movies__help__sync"
+            n4n5__subcmd__shortcuts,sync-git)
+                cmd="n4n5__subcmd__shortcuts__subcmd__sync__subcmd__git"
                 ;;
-            n4n5__music,help)
-                cmd="n4n5__music__help"
+            n4n5__subcmd__shortcuts__subcmd__help,help)
+                cmd="n4n5__subcmd__shortcuts__subcmd__help__subcmd__help"
                 ;;
-            n4n5__music,open)
-                cmd="n4n5__music__open"
+            n4n5__subcmd__shortcuts__subcmd__help,sync-all)
+                cmd="n4n5__subcmd__shortcuts__subcmd__help__subcmd__sync__subcmd__all"
                 ;;
-            n4n5__music,sync)
-                cmd="n4n5__music__sync"
-                ;;
-            n4n5__music__help,help)
-                cmd="n4n5__music__help__help"
-                ;;
-            n4n5__music__help,open)
-                cmd="n4n5__music__help__open"
-                ;;
-            n4n5__music__help,sync)
-                cmd="n4n5__music__help__sync"
-                ;;
-            n4n5__sync,all)
-                cmd="n4n5__sync__all"
-                ;;
-            n4n5__sync,help)
-                cmd="n4n5__sync__help"
-                ;;
-            n4n5__sync,movies)
-                cmd="n4n5__sync__movies"
-                ;;
-            n4n5__sync,music)
-                cmd="n4n5__sync__music"
-                ;;
-            n4n5__sync,programs)
-                cmd="n4n5__sync__programs"
-                ;;
-            n4n5__sync,settings)
-                cmd="n4n5__sync__settings"
-                ;;
-            n4n5__sync__help,all)
-                cmd="n4n5__sync__help__all"
-                ;;
-            n4n5__sync__help,help)
-                cmd="n4n5__sync__help__help"
-                ;;
-            n4n5__sync__help,movies)
-                cmd="n4n5__sync__help__movies"
-                ;;
-            n4n5__sync__help,music)
-                cmd="n4n5__sync__help__music"
-                ;;
-            n4n5__sync__help,programs)
-                cmd="n4n5__sync__help__programs"
-                ;;
-            n4n5__sync__help,settings)
-                cmd="n4n5__sync__help__settings"
-                ;;
-            n4n5__sync__help__settings,add)
-                cmd="n4n5__sync__help__settings__add"
-                ;;
-            n4n5__sync__help__settings,all)
-                cmd="n4n5__sync__help__settings__all"
-                ;;
-            n4n5__sync__settings,add)
-                cmd="n4n5__sync__settings__add"
-                ;;
-            n4n5__sync__settings,all)
-                cmd="n4n5__sync__settings__all"
-                ;;
-            n4n5__sync__settings,help)
-                cmd="n4n5__sync__settings__help"
-                ;;
-            n4n5__sync__settings__help,add)
-                cmd="n4n5__sync__settings__help__add"
-                ;;
-            n4n5__sync__settings__help,all)
-                cmd="n4n5__sync__settings__help__all"
-                ;;
-            n4n5__sync__settings__help,help)
-                cmd="n4n5__sync__settings__help__help"
-                ;;
-            n4n5__utils,help)
-                cmd="n4n5__utils__help"
-                ;;
-            n4n5__utils,list_crates)
-                cmd="n4n5__utils__list_crates"
-                ;;
-            n4n5__utils__help,help)
-                cmd="n4n5__utils__help__help"
-                ;;
-            n4n5__utils__help,list_crates)
-                cmd="n4n5__utils__help__list_crates"
+            n4n5__subcmd__shortcuts__subcmd__help,sync-git)
+                cmd="n4n5__subcmd__shortcuts__subcmd__help__subcmd__sync__subcmd__git"
                 ;;
             *)
                 ;;
@@ -305,17 +233,13 @@ _n4n5() {
 
     case "${cmd}" in
         n4n5)
-            opts="-c -d -h --config --debug --help utils music config gh helpers movies sync help"
+            opts="-d -h -V --config --debug --use-input --help --version config gh movies completions shortcuts man list_crates git-mover music share watching help"
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 1 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
                 return 0
             fi
             case "${prev}" in
                 --config)
-                    COMPREPLY=($(compgen -f "${cur}"))
-                    return 0
-                    ;;
-                -c)
                     COMPREPLY=($(compgen -f "${cur}"))
                     return 0
                     ;;
@@ -326,7 +250,21 @@ _n4n5() {
             COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
             return 0
             ;;
-        n4n5__config)
+        n4n5__subcmd__completions)
+            opts="-h --help"
+            if [[ ${cur} == -* || ${COMP_CWORD} -eq 2 ]] ; then
+                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+                return 0
+            fi
+            case "${prev}" in
+                *)
+                    COMPREPLY=()
+                    ;;
+            esac
+            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+            return 0
+            ;;
+        n4n5__subcmd__config)
             opts="-h --help open help"
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 2 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
@@ -340,7 +278,7 @@ _n4n5() {
             COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
             return 0
             ;;
-        n4n5__config__help)
+        n4n5__subcmd__config__subcmd__help)
             opts="open help"
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
@@ -354,7 +292,7 @@ _n4n5() {
             COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
             return 0
             ;;
-        n4n5__config__help__help)
+        n4n5__subcmd__config__subcmd__help__subcmd__help)
             opts=""
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 4 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
@@ -368,7 +306,7 @@ _n4n5() {
             COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
             return 0
             ;;
-        n4n5__config__help__open)
+        n4n5__subcmd__config__subcmd__help__subcmd__open)
             opts=""
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 4 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
@@ -382,7 +320,7 @@ _n4n5() {
             COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
             return 0
             ;;
-        n4n5__config__open)
+        n4n5__subcmd__config__subcmd__open)
             opts="-p -h --path --help"
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
@@ -396,7 +334,7 @@ _n4n5() {
             COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
             return 0
             ;;
-        n4n5__gh)
+        n4n5__subcmd__gh)
             opts="-h --help pulls projects help"
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 2 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
@@ -410,7 +348,7 @@ _n4n5() {
             COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
             return 0
             ;;
-        n4n5__gh__help)
+        n4n5__subcmd__gh__subcmd__help)
             opts="pulls projects help"
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
@@ -424,7 +362,7 @@ _n4n5() {
             COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
             return 0
             ;;
-        n4n5__gh__help__help)
+        n4n5__subcmd__gh__subcmd__help__subcmd__help)
             opts=""
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 4 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
@@ -438,7 +376,7 @@ _n4n5() {
             COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
             return 0
             ;;
-        n4n5__gh__help__projects)
+        n4n5__subcmd__gh__subcmd__help__subcmd__projects)
             opts=""
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 4 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
@@ -452,7 +390,7 @@ _n4n5() {
             COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
             return 0
             ;;
-        n4n5__gh__help__pulls)
+        n4n5__subcmd__gh__subcmd__help__subcmd__pulls)
             opts=""
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 4 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
@@ -466,7 +404,7 @@ _n4n5() {
             COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
             return 0
             ;;
-        n4n5__gh__projects)
+        n4n5__subcmd__gh__subcmd__projects)
             opts="-j -h --json --help"
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
@@ -480,7 +418,7 @@ _n4n5() {
             COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
             return 0
             ;;
-        n4n5__gh__pulls)
+        n4n5__subcmd__gh__subcmd__pulls)
             opts="-j -h --json --help"
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
@@ -494,8 +432,42 @@ _n4n5() {
             COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
             return 0
             ;;
-        n4n5__help)
-            opts="utils music config gh helpers movies sync help"
+        n4n5__subcmd__git__subcmd__mover)
+            opts="-d -v -h --from --source --to --destination --no-forks --no-delete --resync --config --show-config-path --manual --verbose --help"
+            if [[ ${cur} == -* || ${COMP_CWORD} -eq 2 ]] ; then
+                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+                return 0
+            fi
+            case "${prev}" in
+                --source)
+                    COMPREPLY=($(compgen -f "${cur}"))
+                    return 0
+                    ;;
+                --from)
+                    COMPREPLY=($(compgen -f "${cur}"))
+                    return 0
+                    ;;
+                --destination)
+                    COMPREPLY=($(compgen -f "${cur}"))
+                    return 0
+                    ;;
+                --to)
+                    COMPREPLY=($(compgen -f "${cur}"))
+                    return 0
+                    ;;
+                --config)
+                    COMPREPLY=($(compgen -f "${cur}"))
+                    return 0
+                    ;;
+                *)
+                    COMPREPLY=()
+                    ;;
+            esac
+            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+            return 0
+            ;;
+        n4n5__subcmd__help)
+            opts="config gh movies completions shortcuts man list_crates git-mover music share watching help"
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 2 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
                 return 0
@@ -508,7 +480,21 @@ _n4n5() {
             COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
             return 0
             ;;
-        n4n5__help__config)
+        n4n5__subcmd__help__subcmd__completions)
+            opts=""
+            if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
+                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+                return 0
+            fi
+            case "${prev}" in
+                *)
+                    COMPREPLY=()
+                    ;;
+            esac
+            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+            return 0
+            ;;
+        n4n5__subcmd__help__subcmd__config)
             opts="open"
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
@@ -522,7 +508,7 @@ _n4n5() {
             COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
             return 0
             ;;
-        n4n5__help__config__open)
+        n4n5__subcmd__help__subcmd__config__subcmd__open)
             opts=""
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 4 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
@@ -536,7 +522,7 @@ _n4n5() {
             COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
             return 0
             ;;
-        n4n5__help__gh)
+        n4n5__subcmd__help__subcmd__gh)
             opts="pulls projects"
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
@@ -550,7 +536,7 @@ _n4n5() {
             COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
             return 0
             ;;
-        n4n5__help__gh__projects)
+        n4n5__subcmd__help__subcmd__gh__subcmd__projects)
             opts=""
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 4 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
@@ -564,7 +550,7 @@ _n4n5() {
             COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
             return 0
             ;;
-        n4n5__help__gh__pulls)
+        n4n5__subcmd__help__subcmd__gh__subcmd__pulls)
             opts=""
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 4 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
@@ -578,7 +564,7 @@ _n4n5() {
             COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
             return 0
             ;;
-        n4n5__help__help)
+        n4n5__subcmd__help__subcmd__git__subcmd__mover)
             opts=""
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
@@ -592,8 +578,8 @@ _n4n5() {
             COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
             return 0
             ;;
-        n4n5__help__helpers)
-            opts="completions man"
+        n4n5__subcmd__help__subcmd__help)
+            opts=""
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
                 return 0
@@ -606,9 +592,9 @@ _n4n5() {
             COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
             return 0
             ;;
-        n4n5__help__helpers__completions)
+        n4n5__subcmd__help__subcmd__list_crates)
             opts=""
-            if [[ ${cur} == -* || ${COMP_CWORD} -eq 4 ]] ; then
+            if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
                 return 0
             fi
@@ -620,9 +606,9 @@ _n4n5() {
             COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
             return 0
             ;;
-        n4n5__help__helpers__man)
+        n4n5__subcmd__help__subcmd__man)
             opts=""
-            if [[ ${cur} == -* || ${COMP_CWORD} -eq 4 ]] ; then
+            if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
                 return 0
             fi
@@ -634,7 +620,7 @@ _n4n5() {
             COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
             return 0
             ;;
-        n4n5__help__movies)
+        n4n5__subcmd__help__subcmd__movies)
             opts="add open stats show sync"
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
@@ -648,7 +634,7 @@ _n4n5() {
             COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
             return 0
             ;;
-        n4n5__help__movies__add)
+        n4n5__subcmd__help__subcmd__movies__subcmd__add)
             opts=""
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 4 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
@@ -662,7 +648,7 @@ _n4n5() {
             COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
             return 0
             ;;
-        n4n5__help__movies__open)
+        n4n5__subcmd__help__subcmd__movies__subcmd__open)
             opts=""
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 4 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
@@ -676,7 +662,7 @@ _n4n5() {
             COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
             return 0
             ;;
-        n4n5__help__movies__show)
+        n4n5__subcmd__help__subcmd__movies__subcmd__show)
             opts=""
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 4 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
@@ -690,7 +676,7 @@ _n4n5() {
             COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
             return 0
             ;;
-        n4n5__help__movies__stats)
+        n4n5__subcmd__help__subcmd__movies__subcmd__stats)
             opts=""
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 4 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
@@ -704,7 +690,7 @@ _n4n5() {
             COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
             return 0
             ;;
-        n4n5__help__movies__sync)
+        n4n5__subcmd__help__subcmd__movies__subcmd__sync)
             opts=""
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 4 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
@@ -718,7 +704,7 @@ _n4n5() {
             COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
             return 0
             ;;
-        n4n5__help__music)
+        n4n5__subcmd__help__subcmd__music)
             opts="sync open"
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
@@ -732,7 +718,7 @@ _n4n5() {
             COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
             return 0
             ;;
-        n4n5__help__music__open)
+        n4n5__subcmd__help__subcmd__music__subcmd__open)
             opts=""
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 4 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
@@ -746,7 +732,7 @@ _n4n5() {
             COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
             return 0
             ;;
-        n4n5__help__music__sync)
+        n4n5__subcmd__help__subcmd__music__subcmd__sync)
             opts=""
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 4 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
@@ -760,8 +746,8 @@ _n4n5() {
             COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
             return 0
             ;;
-        n4n5__help__sync)
-            opts="settings movies programs music all"
+        n4n5__subcmd__help__subcmd__share)
+            opts=""
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
                 return 0
@@ -774,106 +760,8 @@ _n4n5() {
             COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
             return 0
             ;;
-        n4n5__help__sync__all)
-            opts=""
-            if [[ ${cur} == -* || ${COMP_CWORD} -eq 4 ]] ; then
-                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-                return 0
-            fi
-            case "${prev}" in
-                *)
-                    COMPREPLY=()
-                    ;;
-            esac
-            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-            return 0
-            ;;
-        n4n5__help__sync__movies)
-            opts=""
-            if [[ ${cur} == -* || ${COMP_CWORD} -eq 4 ]] ; then
-                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-                return 0
-            fi
-            case "${prev}" in
-                *)
-                    COMPREPLY=()
-                    ;;
-            esac
-            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-            return 0
-            ;;
-        n4n5__help__sync__music)
-            opts=""
-            if [[ ${cur} == -* || ${COMP_CWORD} -eq 4 ]] ; then
-                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-                return 0
-            fi
-            case "${prev}" in
-                *)
-                    COMPREPLY=()
-                    ;;
-            esac
-            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-            return 0
-            ;;
-        n4n5__help__sync__programs)
-            opts=""
-            if [[ ${cur} == -* || ${COMP_CWORD} -eq 4 ]] ; then
-                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-                return 0
-            fi
-            case "${prev}" in
-                *)
-                    COMPREPLY=()
-                    ;;
-            esac
-            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-            return 0
-            ;;
-        n4n5__help__sync__settings)
-            opts="add all"
-            if [[ ${cur} == -* || ${COMP_CWORD} -eq 4 ]] ; then
-                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-                return 0
-            fi
-            case "${prev}" in
-                *)
-                    COMPREPLY=()
-                    ;;
-            esac
-            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-            return 0
-            ;;
-        n4n5__help__sync__settings__add)
-            opts=""
-            if [[ ${cur} == -* || ${COMP_CWORD} -eq 5 ]] ; then
-                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-                return 0
-            fi
-            case "${prev}" in
-                *)
-                    COMPREPLY=()
-                    ;;
-            esac
-            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-            return 0
-            ;;
-        n4n5__help__sync__settings__all)
-            opts=""
-            if [[ ${cur} == -* || ${COMP_CWORD} -eq 5 ]] ; then
-                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-                return 0
-            fi
-            case "${prev}" in
-                *)
-                    COMPREPLY=()
-                    ;;
-            esac
-            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-            return 0
-            ;;
-        n4n5__help__utils)
-            opts="list_crates"
+        n4n5__subcmd__help__subcmd__shortcuts)
+            opts="sync-git sync-all"
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
                 return 0
@@ -886,7 +774,7 @@ _n4n5() {
             COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
             return 0
             ;;
-        n4n5__help__utils__list_crates)
+        n4n5__subcmd__help__subcmd__shortcuts__subcmd__sync__subcmd__all)
             opts=""
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 4 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
@@ -900,9 +788,9 @@ _n4n5() {
             COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
             return 0
             ;;
-        n4n5__helpers)
-            opts="-h --help completions man help"
-            if [[ ${cur} == -* || ${COMP_CWORD} -eq 2 ]] ; then
+        n4n5__subcmd__help__subcmd__shortcuts__subcmd__sync__subcmd__git)
+            opts=""
+            if [[ ${cur} == -* || ${COMP_CWORD} -eq 4 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
                 return 0
             fi
@@ -914,8 +802,8 @@ _n4n5() {
             COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
             return 0
             ;;
-        n4n5__helpers__completions)
-            opts="-h --help"
+        n4n5__subcmd__help__subcmd__watching)
+            opts=""
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
                 return 0
@@ -928,709 +816,9 @@ _n4n5() {
             COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
             return 0
             ;;
-        n4n5__helpers__help)
-            opts="completions man help"
-            if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
-                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-                return 0
-            fi
-            case "${prev}" in
-                *)
-                    COMPREPLY=()
-                    ;;
-            esac
-            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-            return 0
-            ;;
-        n4n5__helpers__help__completions)
-            opts=""
-            if [[ ${cur} == -* || ${COMP_CWORD} -eq 4 ]] ; then
-                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-                return 0
-            fi
-            case "${prev}" in
-                *)
-                    COMPREPLY=()
-                    ;;
-            esac
-            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-            return 0
-            ;;
-        n4n5__helpers__help__help)
-            opts=""
-            if [[ ${cur} == -* || ${COMP_CWORD} -eq 4 ]] ; then
-                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-                return 0
-            fi
-            case "${prev}" in
-                *)
-                    COMPREPLY=()
-                    ;;
-            esac
-            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-            return 0
-            ;;
-        n4n5__helpers__help__man)
-            opts=""
-            if [[ ${cur} == -* || ${COMP_CWORD} -eq 4 ]] ; then
-                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-                return 0
-            fi
-            case "${prev}" in
-                *)
-                    COMPREPLY=()
-                    ;;
-            esac
-            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-            return 0
-            ;;
-        n4n5__helpers__man)
-            opts="-h --help"
-            if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
-                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-                return 0
-            fi
-            case "${prev}" in
-                *)
-                    COMPREPLY=()
-                    ;;
-            esac
-            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-            return 0
-            ;;
-        n4n5__movies)
-            opts="-h --help add open stats show sync help"
-            if [[ ${cur} == -* || ${COMP_CWORD} -eq 2 ]] ; then
-                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-                return 0
-            fi
-            case "${prev}" in
-                *)
-                    COMPREPLY=()
-                    ;;
-            esac
-            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-            return 0
-            ;;
-        n4n5__movies__add)
-            opts="-h --help"
-            if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
-                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-                return 0
-            fi
-            case "${prev}" in
-                *)
-                    COMPREPLY=()
-                    ;;
-            esac
-            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-            return 0
-            ;;
-        n4n5__movies__help)
-            opts="add open stats show sync help"
-            if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
-                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-                return 0
-            fi
-            case "${prev}" in
-                *)
-                    COMPREPLY=()
-                    ;;
-            esac
-            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-            return 0
-            ;;
-        n4n5__movies__help__add)
-            opts=""
-            if [[ ${cur} == -* || ${COMP_CWORD} -eq 4 ]] ; then
-                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-                return 0
-            fi
-            case "${prev}" in
-                *)
-                    COMPREPLY=()
-                    ;;
-            esac
-            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-            return 0
-            ;;
-        n4n5__movies__help__help)
-            opts=""
-            if [[ ${cur} == -* || ${COMP_CWORD} -eq 4 ]] ; then
-                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-                return 0
-            fi
-            case "${prev}" in
-                *)
-                    COMPREPLY=()
-                    ;;
-            esac
-            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-            return 0
-            ;;
-        n4n5__movies__help__open)
-            opts=""
-            if [[ ${cur} == -* || ${COMP_CWORD} -eq 4 ]] ; then
-                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-                return 0
-            fi
-            case "${prev}" in
-                *)
-                    COMPREPLY=()
-                    ;;
-            esac
-            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-            return 0
-            ;;
-        n4n5__movies__help__show)
-            opts=""
-            if [[ ${cur} == -* || ${COMP_CWORD} -eq 4 ]] ; then
-                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-                return 0
-            fi
-            case "${prev}" in
-                *)
-                    COMPREPLY=()
-                    ;;
-            esac
-            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-            return 0
-            ;;
-        n4n5__movies__help__stats)
-            opts=""
-            if [[ ${cur} == -* || ${COMP_CWORD} -eq 4 ]] ; then
-                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-                return 0
-            fi
-            case "${prev}" in
-                *)
-                    COMPREPLY=()
-                    ;;
-            esac
-            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-            return 0
-            ;;
-        n4n5__movies__help__sync)
-            opts=""
-            if [[ ${cur} == -* || ${COMP_CWORD} -eq 4 ]] ; then
-                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-                return 0
-            fi
-            case "${prev}" in
-                *)
-                    COMPREPLY=()
-                    ;;
-            esac
-            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-            return 0
-            ;;
-        n4n5__movies__open)
-            opts="-p -h --path --help"
-            if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
-                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-                return 0
-            fi
-            case "${prev}" in
-                *)
-                    COMPREPLY=()
-                    ;;
-            esac
-            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-            return 0
-            ;;
-        n4n5__movies__show)
-            opts="-r -f -c -h --reverse --full --comment --help"
-            if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
-                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-                return 0
-            fi
-            case "${prev}" in
-                *)
-                    COMPREPLY=()
-                    ;;
-            esac
-            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-            return 0
-            ;;
-        n4n5__movies__stats)
-            opts="-j -h --json --help"
-            if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
-                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-                return 0
-            fi
-            case "${prev}" in
-                *)
-                    COMPREPLY=()
-                    ;;
-            esac
-            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-            return 0
-            ;;
-        n4n5__movies__sync)
-            opts="-j -h --json --help"
-            if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
-                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-                return 0
-            fi
-            case "${prev}" in
-                *)
-                    COMPREPLY=()
-                    ;;
-            esac
-            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-            return 0
-            ;;
-        n4n5__music)
-            opts="-h --help sync open help"
-            if [[ ${cur} == -* || ${COMP_CWORD} -eq 2 ]] ; then
-                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-                return 0
-            fi
-            case "${prev}" in
-                *)
-                    COMPREPLY=()
-                    ;;
-            esac
-            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-            return 0
-            ;;
-        n4n5__music__help)
-            opts="sync open help"
-            if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
-                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-                return 0
-            fi
-            case "${prev}" in
-                *)
-                    COMPREPLY=()
-                    ;;
-            esac
-            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-            return 0
-            ;;
-        n4n5__music__help__help)
-            opts=""
-            if [[ ${cur} == -* || ${COMP_CWORD} -eq 4 ]] ; then
-                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-                return 0
-            fi
-            case "${prev}" in
-                *)
-                    COMPREPLY=()
-                    ;;
-            esac
-            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-            return 0
-            ;;
-        n4n5__music__help__open)
-            opts=""
-            if [[ ${cur} == -* || ${COMP_CWORD} -eq 4 ]] ; then
-                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-                return 0
-            fi
-            case "${prev}" in
-                *)
-                    COMPREPLY=()
-                    ;;
-            esac
-            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-            return 0
-            ;;
-        n4n5__music__help__sync)
-            opts=""
-            if [[ ${cur} == -* || ${COMP_CWORD} -eq 4 ]] ; then
-                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-                return 0
-            fi
-            case "${prev}" in
-                *)
-                    COMPREPLY=()
-                    ;;
-            esac
-            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-            return 0
-            ;;
-        n4n5__music__open)
-            opts="-p -h --path --help"
-            if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
-                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-                return 0
-            fi
-            case "${prev}" in
-                *)
-                    COMPREPLY=()
-                    ;;
-            esac
-            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-            return 0
-            ;;
-        n4n5__music__sync)
-            opts="-h --help"
-            if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
-                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-                return 0
-            fi
-            case "${prev}" in
-                *)
-                    COMPREPLY=()
-                    ;;
-            esac
-            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-            return 0
-            ;;
-        n4n5__sync)
-            opts="-h --help settings movies programs music all help"
-            if [[ ${cur} == -* || ${COMP_CWORD} -eq 2 ]] ; then
-                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-                return 0
-            fi
-            case "${prev}" in
-                *)
-                    COMPREPLY=()
-                    ;;
-            esac
-            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-            return 0
-            ;;
-        n4n5__sync__all)
-            opts="-h --help"
-            if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
-                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-                return 0
-            fi
-            case "${prev}" in
-                *)
-                    COMPREPLY=()
-                    ;;
-            esac
-            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-            return 0
-            ;;
-        n4n5__sync__help)
-            opts="settings movies programs music all help"
-            if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
-                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-                return 0
-            fi
-            case "${prev}" in
-                *)
-                    COMPREPLY=()
-                    ;;
-            esac
-            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-            return 0
-            ;;
-        n4n5__sync__help__all)
-            opts=""
-            if [[ ${cur} == -* || ${COMP_CWORD} -eq 4 ]] ; then
-                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-                return 0
-            fi
-            case "${prev}" in
-                *)
-                    COMPREPLY=()
-                    ;;
-            esac
-            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-            return 0
-            ;;
-        n4n5__sync__help__help)
-            opts=""
-            if [[ ${cur} == -* || ${COMP_CWORD} -eq 4 ]] ; then
-                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-                return 0
-            fi
-            case "${prev}" in
-                *)
-                    COMPREPLY=()
-                    ;;
-            esac
-            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-            return 0
-            ;;
-        n4n5__sync__help__movies)
-            opts=""
-            if [[ ${cur} == -* || ${COMP_CWORD} -eq 4 ]] ; then
-                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-                return 0
-            fi
-            case "${prev}" in
-                *)
-                    COMPREPLY=()
-                    ;;
-            esac
-            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-            return 0
-            ;;
-        n4n5__sync__help__music)
-            opts=""
-            if [[ ${cur} == -* || ${COMP_CWORD} -eq 4 ]] ; then
-                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-                return 0
-            fi
-            case "${prev}" in
-                *)
-                    COMPREPLY=()
-                    ;;
-            esac
-            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-            return 0
-            ;;
-        n4n5__sync__help__programs)
-            opts=""
-            if [[ ${cur} == -* || ${COMP_CWORD} -eq 4 ]] ; then
-                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-                return 0
-            fi
-            case "${prev}" in
-                *)
-                    COMPREPLY=()
-                    ;;
-            esac
-            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-            return 0
-            ;;
-        n4n5__sync__help__settings)
-            opts="add all"
-            if [[ ${cur} == -* || ${COMP_CWORD} -eq 4 ]] ; then
-                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-                return 0
-            fi
-            case "${prev}" in
-                *)
-                    COMPREPLY=()
-                    ;;
-            esac
-            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-            return 0
-            ;;
-        n4n5__sync__help__settings__add)
-            opts=""
-            if [[ ${cur} == -* || ${COMP_CWORD} -eq 5 ]] ; then
-                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-                return 0
-            fi
-            case "${prev}" in
-                *)
-                    COMPREPLY=()
-                    ;;
-            esac
-            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-            return 0
-            ;;
-        n4n5__sync__help__settings__all)
-            opts=""
-            if [[ ${cur} == -* || ${COMP_CWORD} -eq 5 ]] ; then
-                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-                return 0
-            fi
-            case "${prev}" in
-                *)
-                    COMPREPLY=()
-                    ;;
-            esac
-            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-            return 0
-            ;;
-        n4n5__sync__movies)
-            opts="-j -h --json --help"
-            if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
-                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-                return 0
-            fi
-            case "${prev}" in
-                *)
-                    COMPREPLY=()
-                    ;;
-            esac
-            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-            return 0
-            ;;
-        n4n5__sync__music)
-            opts="-h --help"
-            if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
-                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-                return 0
-            fi
-            case "${prev}" in
-                *)
-                    COMPREPLY=()
-                    ;;
-            esac
-            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-            return 0
-            ;;
-        n4n5__sync__programs)
-            opts="-h --help"
-            if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
-                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-                return 0
-            fi
-            case "${prev}" in
-                *)
-                    COMPREPLY=()
-                    ;;
-            esac
-            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-            return 0
-            ;;
-        n4n5__sync__settings)
-            opts="-h --help add all help"
-            if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
-                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-                return 0
-            fi
-            case "${prev}" in
-                *)
-                    COMPREPLY=()
-                    ;;
-            esac
-            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-            return 0
-            ;;
-        n4n5__sync__settings__add)
-            opts="-h --help"
-            if [[ ${cur} == -* || ${COMP_CWORD} -eq 4 ]] ; then
-                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-                return 0
-            fi
-            case "${prev}" in
-                *)
-                    COMPREPLY=()
-                    ;;
-            esac
-            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-            return 0
-            ;;
-        n4n5__sync__settings__all)
-            opts="-h --help"
-            if [[ ${cur} == -* || ${COMP_CWORD} -eq 4 ]] ; then
-                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-                return 0
-            fi
-            case "${prev}" in
-                *)
-                    COMPREPLY=()
-                    ;;
-            esac
-            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-            return 0
-            ;;
-        n4n5__sync__settings__help)
-            opts="add all help"
-            if [[ ${cur} == -* || ${COMP_CWORD} -eq 4 ]] ; then
-                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-                return 0
-            fi
-            case "${prev}" in
-                *)
-                    COMPREPLY=()
-                    ;;
-            esac
-            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-            return 0
-            ;;
-        n4n5__sync__settings__help__add)
-            opts=""
-            if [[ ${cur} == -* || ${COMP_CWORD} -eq 5 ]] ; then
-                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-                return 0
-            fi
-            case "${prev}" in
-                *)
-                    COMPREPLY=()
-                    ;;
-            esac
-            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-            return 0
-            ;;
-        n4n5__sync__settings__help__all)
-            opts=""
-            if [[ ${cur} == -* || ${COMP_CWORD} -eq 5 ]] ; then
-                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-                return 0
-            fi
-            case "${prev}" in
-                *)
-                    COMPREPLY=()
-                    ;;
-            esac
-            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-            return 0
-            ;;
-        n4n5__sync__settings__help__help)
-            opts=""
-            if [[ ${cur} == -* || ${COMP_CWORD} -eq 5 ]] ; then
-                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-                return 0
-            fi
-            case "${prev}" in
-                *)
-                    COMPREPLY=()
-                    ;;
-            esac
-            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-            return 0
-            ;;
-        n4n5__utils)
-            opts="-h --help list_crates help"
-            if [[ ${cur} == -* || ${COMP_CWORD} -eq 2 ]] ; then
-                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-                return 0
-            fi
-            case "${prev}" in
-                *)
-                    COMPREPLY=()
-                    ;;
-            esac
-            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-            return 0
-            ;;
-        n4n5__utils__help)
-            opts="list_crates help"
-            if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
-                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-                return 0
-            fi
-            case "${prev}" in
-                *)
-                    COMPREPLY=()
-                    ;;
-            esac
-            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-            return 0
-            ;;
-        n4n5__utils__help__help)
-            opts=""
-            if [[ ${cur} == -* || ${COMP_CWORD} -eq 4 ]] ; then
-                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-                return 0
-            fi
-            case "${prev}" in
-                *)
-                    COMPREPLY=()
-                    ;;
-            esac
-            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-            return 0
-            ;;
-        n4n5__utils__help__list_crates)
-            opts=""
-            if [[ ${cur} == -* || ${COMP_CWORD} -eq 4 ]] ; then
-                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-                return 0
-            fi
-            case "${prev}" in
-                *)
-                    COMPREPLY=()
-                    ;;
-            esac
-            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-            return 0
-            ;;
-        n4n5__utils__list_crates)
+        n4n5__subcmd__list_crates)
             opts="-h --username --user-agent --output-markdown --output-list --output-list-full --delay --filtered --verbose --specials --help"
-            if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
+            if [[ ${cur} == -* || ${COMP_CWORD} -eq 2 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
                 return 0
             fi
@@ -1667,6 +855,426 @@ _n4n5() {
                     COMPREPLY=($(compgen -f "${cur}"))
                     return 0
                     ;;
+                *)
+                    COMPREPLY=()
+                    ;;
+            esac
+            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+            return 0
+            ;;
+        n4n5__subcmd__man)
+            opts="-h --help"
+            if [[ ${cur} == -* || ${COMP_CWORD} -eq 2 ]] ; then
+                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+                return 0
+            fi
+            case "${prev}" in
+                *)
+                    COMPREPLY=()
+                    ;;
+            esac
+            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+            return 0
+            ;;
+        n4n5__subcmd__movies)
+            opts="-h --help add open stats show sync help"
+            if [[ ${cur} == -* || ${COMP_CWORD} -eq 2 ]] ; then
+                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+                return 0
+            fi
+            case "${prev}" in
+                *)
+                    COMPREPLY=()
+                    ;;
+            esac
+            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+            return 0
+            ;;
+        n4n5__subcmd__movies__subcmd__add)
+            opts="-h --help"
+            if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
+                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+                return 0
+            fi
+            case "${prev}" in
+                *)
+                    COMPREPLY=()
+                    ;;
+            esac
+            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+            return 0
+            ;;
+        n4n5__subcmd__movies__subcmd__help)
+            opts="add open stats show sync help"
+            if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
+                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+                return 0
+            fi
+            case "${prev}" in
+                *)
+                    COMPREPLY=()
+                    ;;
+            esac
+            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+            return 0
+            ;;
+        n4n5__subcmd__movies__subcmd__help__subcmd__add)
+            opts=""
+            if [[ ${cur} == -* || ${COMP_CWORD} -eq 4 ]] ; then
+                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+                return 0
+            fi
+            case "${prev}" in
+                *)
+                    COMPREPLY=()
+                    ;;
+            esac
+            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+            return 0
+            ;;
+        n4n5__subcmd__movies__subcmd__help__subcmd__help)
+            opts=""
+            if [[ ${cur} == -* || ${COMP_CWORD} -eq 4 ]] ; then
+                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+                return 0
+            fi
+            case "${prev}" in
+                *)
+                    COMPREPLY=()
+                    ;;
+            esac
+            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+            return 0
+            ;;
+        n4n5__subcmd__movies__subcmd__help__subcmd__open)
+            opts=""
+            if [[ ${cur} == -* || ${COMP_CWORD} -eq 4 ]] ; then
+                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+                return 0
+            fi
+            case "${prev}" in
+                *)
+                    COMPREPLY=()
+                    ;;
+            esac
+            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+            return 0
+            ;;
+        n4n5__subcmd__movies__subcmd__help__subcmd__show)
+            opts=""
+            if [[ ${cur} == -* || ${COMP_CWORD} -eq 4 ]] ; then
+                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+                return 0
+            fi
+            case "${prev}" in
+                *)
+                    COMPREPLY=()
+                    ;;
+            esac
+            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+            return 0
+            ;;
+        n4n5__subcmd__movies__subcmd__help__subcmd__stats)
+            opts=""
+            if [[ ${cur} == -* || ${COMP_CWORD} -eq 4 ]] ; then
+                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+                return 0
+            fi
+            case "${prev}" in
+                *)
+                    COMPREPLY=()
+                    ;;
+            esac
+            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+            return 0
+            ;;
+        n4n5__subcmd__movies__subcmd__help__subcmd__sync)
+            opts=""
+            if [[ ${cur} == -* || ${COMP_CWORD} -eq 4 ]] ; then
+                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+                return 0
+            fi
+            case "${prev}" in
+                *)
+                    COMPREPLY=()
+                    ;;
+            esac
+            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+            return 0
+            ;;
+        n4n5__subcmd__movies__subcmd__open)
+            opts="-p -h --path --help"
+            if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
+                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+                return 0
+            fi
+            case "${prev}" in
+                *)
+                    COMPREPLY=()
+                    ;;
+            esac
+            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+            return 0
+            ;;
+        n4n5__subcmd__movies__subcmd__show)
+            opts="-r -f -c -h --reverse --full --comment --help"
+            if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
+                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+                return 0
+            fi
+            case "${prev}" in
+                *)
+                    COMPREPLY=()
+                    ;;
+            esac
+            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+            return 0
+            ;;
+        n4n5__subcmd__movies__subcmd__stats)
+            opts="-j -h --json --help"
+            if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
+                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+                return 0
+            fi
+            case "${prev}" in
+                *)
+                    COMPREPLY=()
+                    ;;
+            esac
+            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+            return 0
+            ;;
+        n4n5__subcmd__movies__subcmd__sync)
+            opts="-j -h --json --help"
+            if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
+                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+                return 0
+            fi
+            case "${prev}" in
+                *)
+                    COMPREPLY=()
+                    ;;
+            esac
+            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+            return 0
+            ;;
+        n4n5__subcmd__music)
+            opts="-h --help sync open help"
+            if [[ ${cur} == -* || ${COMP_CWORD} -eq 2 ]] ; then
+                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+                return 0
+            fi
+            case "${prev}" in
+                *)
+                    COMPREPLY=()
+                    ;;
+            esac
+            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+            return 0
+            ;;
+        n4n5__subcmd__music__subcmd__help)
+            opts="sync open help"
+            if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
+                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+                return 0
+            fi
+            case "${prev}" in
+                *)
+                    COMPREPLY=()
+                    ;;
+            esac
+            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+            return 0
+            ;;
+        n4n5__subcmd__music__subcmd__help__subcmd__help)
+            opts=""
+            if [[ ${cur} == -* || ${COMP_CWORD} -eq 4 ]] ; then
+                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+                return 0
+            fi
+            case "${prev}" in
+                *)
+                    COMPREPLY=()
+                    ;;
+            esac
+            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+            return 0
+            ;;
+        n4n5__subcmd__music__subcmd__help__subcmd__open)
+            opts=""
+            if [[ ${cur} == -* || ${COMP_CWORD} -eq 4 ]] ; then
+                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+                return 0
+            fi
+            case "${prev}" in
+                *)
+                    COMPREPLY=()
+                    ;;
+            esac
+            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+            return 0
+            ;;
+        n4n5__subcmd__music__subcmd__help__subcmd__sync)
+            opts=""
+            if [[ ${cur} == -* || ${COMP_CWORD} -eq 4 ]] ; then
+                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+                return 0
+            fi
+            case "${prev}" in
+                *)
+                    COMPREPLY=()
+                    ;;
+            esac
+            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+            return 0
+            ;;
+        n4n5__subcmd__music__subcmd__open)
+            opts="-p -h --path --help"
+            if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
+                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+                return 0
+            fi
+            case "${prev}" in
+                *)
+                    COMPREPLY=()
+                    ;;
+            esac
+            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+            return 0
+            ;;
+        n4n5__subcmd__music__subcmd__sync)
+            opts="-h --help"
+            if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
+                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+                return 0
+            fi
+            case "${prev}" in
+                *)
+                    COMPREPLY=()
+                    ;;
+            esac
+            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+            return 0
+            ;;
+        n4n5__subcmd__share)
+            opts="-h --help"
+            if [[ ${cur} == -* || ${COMP_CWORD} -eq 2 ]] ; then
+                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+                return 0
+            fi
+            case "${prev}" in
+                *)
+                    COMPREPLY=()
+                    ;;
+            esac
+            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+            return 0
+            ;;
+        n4n5__subcmd__shortcuts)
+            opts="-h --help sync-git sync-all help"
+            if [[ ${cur} == -* || ${COMP_CWORD} -eq 2 ]] ; then
+                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+                return 0
+            fi
+            case "${prev}" in
+                *)
+                    COMPREPLY=()
+                    ;;
+            esac
+            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+            return 0
+            ;;
+        n4n5__subcmd__shortcuts__subcmd__help)
+            opts="sync-git sync-all help"
+            if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
+                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+                return 0
+            fi
+            case "${prev}" in
+                *)
+                    COMPREPLY=()
+                    ;;
+            esac
+            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+            return 0
+            ;;
+        n4n5__subcmd__shortcuts__subcmd__help__subcmd__help)
+            opts=""
+            if [[ ${cur} == -* || ${COMP_CWORD} -eq 4 ]] ; then
+                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+                return 0
+            fi
+            case "${prev}" in
+                *)
+                    COMPREPLY=()
+                    ;;
+            esac
+            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+            return 0
+            ;;
+        n4n5__subcmd__shortcuts__subcmd__help__subcmd__sync__subcmd__all)
+            opts=""
+            if [[ ${cur} == -* || ${COMP_CWORD} -eq 4 ]] ; then
+                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+                return 0
+            fi
+            case "${prev}" in
+                *)
+                    COMPREPLY=()
+                    ;;
+            esac
+            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+            return 0
+            ;;
+        n4n5__subcmd__shortcuts__subcmd__help__subcmd__sync__subcmd__git)
+            opts=""
+            if [[ ${cur} == -* || ${COMP_CWORD} -eq 4 ]] ; then
+                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+                return 0
+            fi
+            case "${prev}" in
+                *)
+                    COMPREPLY=()
+                    ;;
+            esac
+            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+            return 0
+            ;;
+        n4n5__subcmd__shortcuts__subcmd__sync__subcmd__all)
+            opts="-h --help"
+            if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
+                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+                return 0
+            fi
+            case "${prev}" in
+                *)
+                    COMPREPLY=()
+                    ;;
+            esac
+            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+            return 0
+            ;;
+        n4n5__subcmd__shortcuts__subcmd__sync__subcmd__git)
+            opts="-h --help"
+            if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
+                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+                return 0
+            fi
+            case "${prev}" in
+                *)
+                    COMPREPLY=()
+                    ;;
+            esac
+            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+            return 0
+            ;;
+        n4n5__subcmd__watching)
+            opts="-h --help"
+            if [[ ${cur} == -* || ${COMP_CWORD} -eq 2 ]] ; then
+                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+                return 0
+            fi
+            case "${prev}" in
                 *)
                     COMPREPLY=()
                     ;;

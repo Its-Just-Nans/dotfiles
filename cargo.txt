@@ -53,6 +53,7 @@ tarsier
 termpic
 tokei
 tramex
+tree-sitter-cli
 trunk
 typos-cli
 typst-cli

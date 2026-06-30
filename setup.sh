@@ -92,6 +92,15 @@ setup() {
     else
         echo "${red}rustup is not installed${reset}"
     fi
+
+    if command -v n4n5 &>/dev/null; then
+        echo -n "Setting up '${grey}n4n5 completions${reset}'..."
+        n4n5 completions
+        sleep "$sleep_time"
+        echo "${green}done${reset}"
+    else
+        echo "${red}n4n5 is not installed${reset}"
+    fi
 }
 
 save(){
@@ -100,6 +109,10 @@ save(){
     dconf dump /org/gnome/terminal/ > gterminal.preferences
     # sync-cargo
     cargo install --list | grep -E '^[a-zA-Z0-9_-]+ v' | awk '{print $1}' > cargo.txt
+
+    # nix-env --query | cut -d'-' -f 1
+    # code --list-extensions
+
     dconf dump /org/gnome/settings-daemon/plugins/media-keys/ > media-keys.txt
 }
 

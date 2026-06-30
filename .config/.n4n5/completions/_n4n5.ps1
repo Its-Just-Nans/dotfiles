@@ -21,87 +21,26 @@ Register-ArgumentCompleter -Native -CommandName 'n4n5' -ScriptBlock {
 
     $completions = @(switch ($command) {
         'n4n5' {
-            [CompletionResult]::new('-c', '-c', [CompletionResultType]::ParameterName, 'Sets a custom config file')
             [CompletionResult]::new('--config', '--config', [CompletionResultType]::ParameterName, 'Sets a custom config file')
             [CompletionResult]::new('-d', '-d', [CompletionResultType]::ParameterName, 'Turn debugging information on')
             [CompletionResult]::new('--debug', '--debug', [CompletionResultType]::ParameterName, 'Turn debugging information on')
+            [CompletionResult]::new('--use-input', '--use-input', [CompletionResultType]::ParameterName, 'whether to use input for configuration')
             [CompletionResult]::new('-h', '-h', [CompletionResultType]::ParameterName, 'Print help')
             [CompletionResult]::new('--help', '--help', [CompletionResultType]::ParameterName, 'Print help')
-            [CompletionResult]::new('utils', 'utils', [CompletionResultType]::ParameterValue, 'utils subcommand')
-            [CompletionResult]::new('music', 'music', [CompletionResultType]::ParameterValue, 'music subcommand')
+            [CompletionResult]::new('-V', '-V ', [CompletionResultType]::ParameterName, 'Print version')
+            [CompletionResult]::new('--version', '--version', [CompletionResultType]::ParameterName, 'Print version')
             [CompletionResult]::new('config', 'config', [CompletionResultType]::ParameterValue, 'config subcommand')
             [CompletionResult]::new('gh', 'gh', [CompletionResultType]::ParameterValue, 'gh subcommand')
-            [CompletionResult]::new('helpers', 'helpers', [CompletionResultType]::ParameterValue, 'helpers subcommand')
             [CompletionResult]::new('movies', 'movies', [CompletionResultType]::ParameterValue, 'movies subcommand')
-            [CompletionResult]::new('sync', 'sync', [CompletionResultType]::ParameterValue, 'sync subcommand')
+            [CompletionResult]::new('completions', 'completions', [CompletionResultType]::ParameterValue, 'generate completions')
+            [CompletionResult]::new('shortcuts', 'shortcuts', [CompletionResultType]::ParameterValue, 'Shortcuts subcommand')
+            [CompletionResult]::new('man', 'man', [CompletionResultType]::ParameterValue, 'generate man')
+            [CompletionResult]::new('list_crates', 'list_crates', [CompletionResultType]::ParameterValue, 'list crates subcommand')
+            [CompletionResult]::new('git-mover', 'git-mover', [CompletionResultType]::ParameterValue, 'Launch git-mover cli')
+            [CompletionResult]::new('music', 'music', [CompletionResultType]::ParameterValue, 'music subcommand')
+            [CompletionResult]::new('share', 'share', [CompletionResultType]::ParameterValue, 'Quick http server share')
+            [CompletionResult]::new('watching', 'watching', [CompletionResultType]::ParameterValue, 'List watching repos')
             [CompletionResult]::new('help', 'help', [CompletionResultType]::ParameterValue, 'Print this message or the help of the given subcommand(s)')
-            break
-        }
-        'n4n5;utils' {
-            [CompletionResult]::new('-h', '-h', [CompletionResultType]::ParameterName, 'Print help')
-            [CompletionResult]::new('--help', '--help', [CompletionResultType]::ParameterName, 'Print help')
-            [CompletionResult]::new('list_crates', 'list_crates', [CompletionResultType]::ParameterValue, 'list_crates subcommand')
-            [CompletionResult]::new('help', 'help', [CompletionResultType]::ParameterValue, 'Print this message or the help of the given subcommand(s)')
-            break
-        }
-        'n4n5;utils;list_crates' {
-            [CompletionResult]::new('--username', '--username', [CompletionResultType]::ParameterName, 'Specify username')
-            [CompletionResult]::new('--user-agent', '--user-agent', [CompletionResultType]::ParameterName, 'Specify user agent')
-            [CompletionResult]::new('--output-markdown', '--output-markdown', [CompletionResultType]::ParameterName, 'Output markdown')
-            [CompletionResult]::new('--output-list', '--output-list', [CompletionResultType]::ParameterName, 'Output list')
-            [CompletionResult]::new('--output-list-full', '--output-list-full', [CompletionResultType]::ParameterName, 'Output list long/full')
-            [CompletionResult]::new('--delay', '--delay', [CompletionResultType]::ParameterName, 'Request delay (in seconds)')
-            [CompletionResult]::new('--filtered', '--filtered', [CompletionResultType]::ParameterName, 'Filter crates')
-            [CompletionResult]::new('--specials', '--specials', [CompletionResultType]::ParameterName, 'Filter crates')
-            [CompletionResult]::new('--verbose', '--verbose', [CompletionResultType]::ParameterName, 'Filter crates')
-            [CompletionResult]::new('-h', '-h', [CompletionResultType]::ParameterName, 'Print help')
-            [CompletionResult]::new('--help', '--help', [CompletionResultType]::ParameterName, 'Print help')
-            break
-        }
-        'n4n5;utils;help' {
-            [CompletionResult]::new('list_crates', 'list_crates', [CompletionResultType]::ParameterValue, 'list_crates subcommand')
-            [CompletionResult]::new('help', 'help', [CompletionResultType]::ParameterValue, 'Print this message or the help of the given subcommand(s)')
-            break
-        }
-        'n4n5;utils;help;list_crates' {
-            break
-        }
-        'n4n5;utils;help;help' {
-            break
-        }
-        'n4n5;music' {
-            [CompletionResult]::new('-h', '-h', [CompletionResultType]::ParameterName, 'Print help')
-            [CompletionResult]::new('--help', '--help', [CompletionResultType]::ParameterName, 'Print help')
-            [CompletionResult]::new('sync', 'sync', [CompletionResultType]::ParameterValue, 'Save music')
-            [CompletionResult]::new('open', 'open', [CompletionResultType]::ParameterValue, 'Open music file')
-            [CompletionResult]::new('help', 'help', [CompletionResultType]::ParameterValue, 'Print this message or the help of the given subcommand(s)')
-            break
-        }
-        'n4n5;music;sync' {
-            [CompletionResult]::new('-h', '-h', [CompletionResultType]::ParameterName, 'Print help')
-            [CompletionResult]::new('--help', '--help', [CompletionResultType]::ParameterName, 'Print help')
-            break
-        }
-        'n4n5;music;open' {
-            [CompletionResult]::new('-p', '-p', [CompletionResultType]::ParameterName, 'Print the path only')
-            [CompletionResult]::new('--path', '--path', [CompletionResultType]::ParameterName, 'Print the path only')
-            [CompletionResult]::new('-h', '-h', [CompletionResultType]::ParameterName, 'Print help')
-            [CompletionResult]::new('--help', '--help', [CompletionResultType]::ParameterName, 'Print help')
-            break
-        }
-        'n4n5;music;help' {
-            [CompletionResult]::new('sync', 'sync', [CompletionResultType]::ParameterValue, 'Save music')
-            [CompletionResult]::new('open', 'open', [CompletionResultType]::ParameterValue, 'Open music file')
-            [CompletionResult]::new('help', 'help', [CompletionResultType]::ParameterValue, 'Print this message or the help of the given subcommand(s)')
-            break
-        }
-        'n4n5;music;help;sync' {
-            break
-        }
-        'n4n5;music;help;open' {
-            break
-        }
-        'n4n5;music;help;help' {
             break
         }
         'n4n5;config' {
@@ -164,39 +103,6 @@ Register-ArgumentCompleter -Native -CommandName 'n4n5' -ScriptBlock {
             break
         }
         'n4n5;gh;help;help' {
-            break
-        }
-        'n4n5;helpers' {
-            [CompletionResult]::new('-h', '-h', [CompletionResultType]::ParameterName, 'Print help')
-            [CompletionResult]::new('--help', '--help', [CompletionResultType]::ParameterName, 'Print help')
-            [CompletionResult]::new('completions', 'completions', [CompletionResultType]::ParameterValue, 'generate completions')
-            [CompletionResult]::new('man', 'man', [CompletionResultType]::ParameterValue, 'generate man')
-            [CompletionResult]::new('help', 'help', [CompletionResultType]::ParameterValue, 'Print this message or the help of the given subcommand(s)')
-            break
-        }
-        'n4n5;helpers;completions' {
-            [CompletionResult]::new('-h', '-h', [CompletionResultType]::ParameterName, 'Print help')
-            [CompletionResult]::new('--help', '--help', [CompletionResultType]::ParameterName, 'Print help')
-            break
-        }
-        'n4n5;helpers;man' {
-            [CompletionResult]::new('-h', '-h', [CompletionResultType]::ParameterName, 'Print help')
-            [CompletionResult]::new('--help', '--help', [CompletionResultType]::ParameterName, 'Print help')
-            break
-        }
-        'n4n5;helpers;help' {
-            [CompletionResult]::new('completions', 'completions', [CompletionResultType]::ParameterValue, 'generate completions')
-            [CompletionResult]::new('man', 'man', [CompletionResultType]::ParameterValue, 'generate man')
-            [CompletionResult]::new('help', 'help', [CompletionResultType]::ParameterValue, 'Print this message or the help of the given subcommand(s)')
-            break
-        }
-        'n4n5;helpers;help;completions' {
-            break
-        }
-        'n4n5;helpers;help;man' {
-            break
-        }
-        'n4n5;helpers;help;help' {
             break
         }
         'n4n5;movies' {
@@ -274,134 +180,139 @@ Register-ArgumentCompleter -Native -CommandName 'n4n5' -ScriptBlock {
         'n4n5;movies;help;help' {
             break
         }
-        'n4n5;sync' {
+        'n4n5;completions' {
             [CompletionResult]::new('-h', '-h', [CompletionResultType]::ParameterName, 'Print help')
             [CompletionResult]::new('--help', '--help', [CompletionResultType]::ParameterName, 'Print help')
-            [CompletionResult]::new('settings', 'settings', [CompletionResultType]::ParameterValue, 'save settings')
-            [CompletionResult]::new('movies', 'movies', [CompletionResultType]::ParameterValue, 'sync movies')
-            [CompletionResult]::new('programs', 'programs', [CompletionResultType]::ParameterValue, 'sync programs')
-            [CompletionResult]::new('music', 'music', [CompletionResultType]::ParameterValue, 'sync music')
-            [CompletionResult]::new('all', 'all', [CompletionResultType]::ParameterValue, 'sync all')
+            break
+        }
+        'n4n5;shortcuts' {
+            [CompletionResult]::new('-h', '-h', [CompletionResultType]::ParameterName, 'Print help')
+            [CompletionResult]::new('--help', '--help', [CompletionResultType]::ParameterName, 'Print help')
+            [CompletionResult]::new('sync-git', 'sync-git', [CompletionResultType]::ParameterValue, 'Sync git repos between GitHub and Codeberg')
+            [CompletionResult]::new('sync-all', 'sync-all', [CompletionResultType]::ParameterValue, 'Sync all')
             [CompletionResult]::new('help', 'help', [CompletionResultType]::ParameterValue, 'Print this message or the help of the given subcommand(s)')
             break
         }
-        'n4n5;sync;settings' {
+        'n4n5;shortcuts;sync-git' {
             [CompletionResult]::new('-h', '-h', [CompletionResultType]::ParameterName, 'Print help')
             [CompletionResult]::new('--help', '--help', [CompletionResultType]::ParameterName, 'Print help')
-            [CompletionResult]::new('add', 'add', [CompletionResultType]::ParameterValue, 'add a file to save')
-            [CompletionResult]::new('all', 'all', [CompletionResultType]::ParameterValue, 'add all files to save')
+            break
+        }
+        'n4n5;shortcuts;sync-all' {
+            [CompletionResult]::new('-h', '-h', [CompletionResultType]::ParameterName, 'Print help')
+            [CompletionResult]::new('--help', '--help', [CompletionResultType]::ParameterName, 'Print help')
+            break
+        }
+        'n4n5;shortcuts;help' {
+            [CompletionResult]::new('sync-git', 'sync-git', [CompletionResultType]::ParameterValue, 'Sync git repos between GitHub and Codeberg')
+            [CompletionResult]::new('sync-all', 'sync-all', [CompletionResultType]::ParameterValue, 'Sync all')
             [CompletionResult]::new('help', 'help', [CompletionResultType]::ParameterValue, 'Print this message or the help of the given subcommand(s)')
             break
         }
-        'n4n5;sync;settings;add' {
+        'n4n5;shortcuts;help;sync-git' {
+            break
+        }
+        'n4n5;shortcuts;help;sync-all' {
+            break
+        }
+        'n4n5;shortcuts;help;help' {
+            break
+        }
+        'n4n5;man' {
             [CompletionResult]::new('-h', '-h', [CompletionResultType]::ParameterName, 'Print help')
             [CompletionResult]::new('--help', '--help', [CompletionResultType]::ParameterName, 'Print help')
             break
         }
-        'n4n5;sync;settings;all' {
+        'n4n5;list_crates' {
+            [CompletionResult]::new('--username', '--username', [CompletionResultType]::ParameterName, 'Specify username')
+            [CompletionResult]::new('--user-agent', '--user-agent', [CompletionResultType]::ParameterName, 'Specify user agent')
+            [CompletionResult]::new('--output-markdown', '--output-markdown', [CompletionResultType]::ParameterName, 'Output markdown')
+            [CompletionResult]::new('--output-list', '--output-list', [CompletionResultType]::ParameterName, 'Output list')
+            [CompletionResult]::new('--output-list-full', '--output-list-full', [CompletionResultType]::ParameterName, 'Output list long/full')
+            [CompletionResult]::new('--delay', '--delay', [CompletionResultType]::ParameterName, 'Request delay (in milliseconds)')
+            [CompletionResult]::new('--filtered', '--filtered', [CompletionResultType]::ParameterName, 'Filter crates')
+            [CompletionResult]::new('--specials', '--specials', [CompletionResultType]::ParameterName, 'Specials crates')
+            [CompletionResult]::new('--verbose', '--verbose', [CompletionResultType]::ParameterName, 'Verbose')
             [CompletionResult]::new('-h', '-h', [CompletionResultType]::ParameterName, 'Print help')
             [CompletionResult]::new('--help', '--help', [CompletionResultType]::ParameterName, 'Print help')
             break
         }
-        'n4n5;sync;settings;help' {
-            [CompletionResult]::new('add', 'add', [CompletionResultType]::ParameterValue, 'add a file to save')
-            [CompletionResult]::new('all', 'all', [CompletionResultType]::ParameterValue, 'add all files to save')
+        'n4n5;git-mover' {
+            [CompletionResult]::new('--source', '--source', [CompletionResultType]::ParameterName, 'The source platform (github, gitlab, codeberg)')
+            [CompletionResult]::new('--from', '--from', [CompletionResultType]::ParameterName, 'The source platform (github, gitlab, codeberg)')
+            [CompletionResult]::new('--destination', '--destination', [CompletionResultType]::ParameterName, 'The destination platform (github, gitlab, codeberg)')
+            [CompletionResult]::new('--to', '--to', [CompletionResultType]::ParameterName, 'The destination platform (github, gitlab, codeberg)')
+            [CompletionResult]::new('--config', '--config', [CompletionResultType]::ParameterName, 'Custom configuration file path')
+            [CompletionResult]::new('--no-forks', '--no-forks', [CompletionResultType]::ParameterName, 'Don''t sync forked repositories')
+            [CompletionResult]::new('--no-delete', '--no-delete', [CompletionResultType]::ParameterName, 'Don''t delete repositories')
+            [CompletionResult]::new('--resync', '--resync', [CompletionResultType]::ParameterName, 'Resync all repositories')
+            [CompletionResult]::new('--show-config-path', '--show-config-path', [CompletionResultType]::ParameterName, 'Show the current config path and exit')
+            [CompletionResult]::new('--manual', '--manual', [CompletionResultType]::ParameterName, 'Sync manually')
+            [CompletionResult]::new('-v', '-v', [CompletionResultType]::ParameterName, 'Verbose mode')
+            [CompletionResult]::new('-d', '-d', [CompletionResultType]::ParameterName, 'Verbose mode')
+            [CompletionResult]::new('--verbose', '--verbose', [CompletionResultType]::ParameterName, 'Verbose mode')
+            [CompletionResult]::new('-h', '-h', [CompletionResultType]::ParameterName, 'Print help')
+            [CompletionResult]::new('--help', '--help', [CompletionResultType]::ParameterName, 'Print help')
+            break
+        }
+        'n4n5;music' {
+            [CompletionResult]::new('-h', '-h', [CompletionResultType]::ParameterName, 'Print help')
+            [CompletionResult]::new('--help', '--help', [CompletionResultType]::ParameterName, 'Print help')
+            [CompletionResult]::new('sync', 'sync', [CompletionResultType]::ParameterValue, 'Save music')
+            [CompletionResult]::new('open', 'open', [CompletionResultType]::ParameterValue, 'Open music file')
             [CompletionResult]::new('help', 'help', [CompletionResultType]::ParameterValue, 'Print this message or the help of the given subcommand(s)')
             break
         }
-        'n4n5;sync;settings;help;add' {
-            break
-        }
-        'n4n5;sync;settings;help;all' {
-            break
-        }
-        'n4n5;sync;settings;help;help' {
-            break
-        }
-        'n4n5;sync;movies' {
-            [CompletionResult]::new('-j', '-j', [CompletionResultType]::ParameterName, 'print as json')
-            [CompletionResult]::new('--json', '--json', [CompletionResultType]::ParameterName, 'print as json')
+        'n4n5;music;sync' {
             [CompletionResult]::new('-h', '-h', [CompletionResultType]::ParameterName, 'Print help')
             [CompletionResult]::new('--help', '--help', [CompletionResultType]::ParameterName, 'Print help')
             break
         }
-        'n4n5;sync;programs' {
+        'n4n5;music;open' {
+            [CompletionResult]::new('-p', '-p', [CompletionResultType]::ParameterName, 'Print the path only')
+            [CompletionResult]::new('--path', '--path', [CompletionResultType]::ParameterName, 'Print the path only')
             [CompletionResult]::new('-h', '-h', [CompletionResultType]::ParameterName, 'Print help')
             [CompletionResult]::new('--help', '--help', [CompletionResultType]::ParameterName, 'Print help')
             break
         }
-        'n4n5;sync;music' {
-            [CompletionResult]::new('-h', '-h', [CompletionResultType]::ParameterName, 'Print help')
-            [CompletionResult]::new('--help', '--help', [CompletionResultType]::ParameterName, 'Print help')
-            break
-        }
-        'n4n5;sync;all' {
-            [CompletionResult]::new('-h', '-h', [CompletionResultType]::ParameterName, 'Print help')
-            [CompletionResult]::new('--help', '--help', [CompletionResultType]::ParameterName, 'Print help')
-            break
-        }
-        'n4n5;sync;help' {
-            [CompletionResult]::new('settings', 'settings', [CompletionResultType]::ParameterValue, 'save settings')
-            [CompletionResult]::new('movies', 'movies', [CompletionResultType]::ParameterValue, 'sync movies')
-            [CompletionResult]::new('programs', 'programs', [CompletionResultType]::ParameterValue, 'sync programs')
-            [CompletionResult]::new('music', 'music', [CompletionResultType]::ParameterValue, 'sync music')
-            [CompletionResult]::new('all', 'all', [CompletionResultType]::ParameterValue, 'sync all')
+        'n4n5;music;help' {
+            [CompletionResult]::new('sync', 'sync', [CompletionResultType]::ParameterValue, 'Save music')
+            [CompletionResult]::new('open', 'open', [CompletionResultType]::ParameterValue, 'Open music file')
             [CompletionResult]::new('help', 'help', [CompletionResultType]::ParameterValue, 'Print this message or the help of the given subcommand(s)')
             break
         }
-        'n4n5;sync;help;settings' {
-            [CompletionResult]::new('add', 'add', [CompletionResultType]::ParameterValue, 'add a file to save')
-            [CompletionResult]::new('all', 'all', [CompletionResultType]::ParameterValue, 'add all files to save')
+        'n4n5;music;help;sync' {
             break
         }
-        'n4n5;sync;help;settings;add' {
+        'n4n5;music;help;open' {
             break
         }
-        'n4n5;sync;help;settings;all' {
+        'n4n5;music;help;help' {
             break
         }
-        'n4n5;sync;help;movies' {
+        'n4n5;share' {
+            [CompletionResult]::new('-h', '-h', [CompletionResultType]::ParameterName, 'Print help')
+            [CompletionResult]::new('--help', '--help', [CompletionResultType]::ParameterName, 'Print help')
             break
         }
-        'n4n5;sync;help;programs' {
-            break
-        }
-        'n4n5;sync;help;music' {
-            break
-        }
-        'n4n5;sync;help;all' {
-            break
-        }
-        'n4n5;sync;help;help' {
+        'n4n5;watching' {
+            [CompletionResult]::new('-h', '-h', [CompletionResultType]::ParameterName, 'Print help')
+            [CompletionResult]::new('--help', '--help', [CompletionResultType]::ParameterName, 'Print help')
             break
         }
         'n4n5;help' {
-            [CompletionResult]::new('utils', 'utils', [CompletionResultType]::ParameterValue, 'utils subcommand')
-            [CompletionResult]::new('music', 'music', [CompletionResultType]::ParameterValue, 'music subcommand')
             [CompletionResult]::new('config', 'config', [CompletionResultType]::ParameterValue, 'config subcommand')
             [CompletionResult]::new('gh', 'gh', [CompletionResultType]::ParameterValue, 'gh subcommand')
-            [CompletionResult]::new('helpers', 'helpers', [CompletionResultType]::ParameterValue, 'helpers subcommand')
             [CompletionResult]::new('movies', 'movies', [CompletionResultType]::ParameterValue, 'movies subcommand')
-            [CompletionResult]::new('sync', 'sync', [CompletionResultType]::ParameterValue, 'sync subcommand')
+            [CompletionResult]::new('completions', 'completions', [CompletionResultType]::ParameterValue, 'generate completions')
+            [CompletionResult]::new('shortcuts', 'shortcuts', [CompletionResultType]::ParameterValue, 'Shortcuts subcommand')
+            [CompletionResult]::new('man', 'man', [CompletionResultType]::ParameterValue, 'generate man')
+            [CompletionResult]::new('list_crates', 'list_crates', [CompletionResultType]::ParameterValue, 'list crates subcommand')
+            [CompletionResult]::new('git-mover', 'git-mover', [CompletionResultType]::ParameterValue, 'Launch git-mover cli')
+            [CompletionResult]::new('music', 'music', [CompletionResultType]::ParameterValue, 'music subcommand')
+            [CompletionResult]::new('share', 'share', [CompletionResultType]::ParameterValue, 'Quick http server share')
+            [CompletionResult]::new('watching', 'watching', [CompletionResultType]::ParameterValue, 'List watching repos')
             [CompletionResult]::new('help', 'help', [CompletionResultType]::ParameterValue, 'Print this message or the help of the given subcommand(s)')
-            break
-        }
-        'n4n5;help;utils' {
-            [CompletionResult]::new('list_crates', 'list_crates', [CompletionResultType]::ParameterValue, 'list_crates subcommand')
-            break
-        }
-        'n4n5;help;utils;list_crates' {
-            break
-        }
-        'n4n5;help;music' {
-            [CompletionResult]::new('sync', 'sync', [CompletionResultType]::ParameterValue, 'Save music')
-            [CompletionResult]::new('open', 'open', [CompletionResultType]::ParameterValue, 'Open music file')
-            break
-        }
-        'n4n5;help;music;sync' {
-            break
-        }
-        'n4n5;help;music;open' {
             break
         }
         'n4n5;help;config' {
@@ -420,17 +331,6 @@ Register-ArgumentCompleter -Native -CommandName 'n4n5' -ScriptBlock {
             break
         }
         'n4n5;help;gh;projects' {
-            break
-        }
-        'n4n5;help;helpers' {
-            [CompletionResult]::new('completions', 'completions', [CompletionResultType]::ParameterValue, 'generate completions')
-            [CompletionResult]::new('man', 'man', [CompletionResultType]::ParameterValue, 'generate man')
-            break
-        }
-        'n4n5;help;helpers;completions' {
-            break
-        }
-        'n4n5;help;helpers;man' {
             break
         }
         'n4n5;help;movies' {
@@ -456,35 +356,44 @@ Register-ArgumentCompleter -Native -CommandName 'n4n5' -ScriptBlock {
         'n4n5;help;movies;sync' {
             break
         }
-        'n4n5;help;sync' {
-            [CompletionResult]::new('settings', 'settings', [CompletionResultType]::ParameterValue, 'save settings')
-            [CompletionResult]::new('movies', 'movies', [CompletionResultType]::ParameterValue, 'sync movies')
-            [CompletionResult]::new('programs', 'programs', [CompletionResultType]::ParameterValue, 'sync programs')
-            [CompletionResult]::new('music', 'music', [CompletionResultType]::ParameterValue, 'sync music')
-            [CompletionResult]::new('all', 'all', [CompletionResultType]::ParameterValue, 'sync all')
+        'n4n5;help;completions' {
             break
         }
-        'n4n5;help;sync;settings' {
-            [CompletionResult]::new('add', 'add', [CompletionResultType]::ParameterValue, 'add a file to save')
-            [CompletionResult]::new('all', 'all', [CompletionResultType]::ParameterValue, 'add all files to save')
+        'n4n5;help;shortcuts' {
+            [CompletionResult]::new('sync-git', 'sync-git', [CompletionResultType]::ParameterValue, 'Sync git repos between GitHub and Codeberg')
+            [CompletionResult]::new('sync-all', 'sync-all', [CompletionResultType]::ParameterValue, 'Sync all')
             break
         }
-        'n4n5;help;sync;settings;add' {
+        'n4n5;help;shortcuts;sync-git' {
             break
         }
-        'n4n5;help;sync;settings;all' {
+        'n4n5;help;shortcuts;sync-all' {
             break
         }
-        'n4n5;help;sync;movies' {
+        'n4n5;help;man' {
             break
         }
-        'n4n5;help;sync;programs' {
+        'n4n5;help;list_crates' {
             break
         }
-        'n4n5;help;sync;music' {
+        'n4n5;help;git-mover' {
             break
         }
-        'n4n5;help;sync;all' {
+        'n4n5;help;music' {
+            [CompletionResult]::new('sync', 'sync', [CompletionResultType]::ParameterValue, 'Save music')
+            [CompletionResult]::new('open', 'open', [CompletionResultType]::ParameterValue, 'Open music file')
+            break
+        }
+        'n4n5;help;music;sync' {
+            break
+        }
+        'n4n5;help;music;open' {
+            break
+        }
+        'n4n5;help;share' {
+            break
+        }
+        'n4n5;help;watching' {
             break
         }
         'n4n5;help;help' {
