@@ -818,7 +818,7 @@ changeCommitDate() {
 
 golb() {
     g golb
-    cd Its-Just-Nans/golb-articles/ || ( echo "Cannot cd to gold" && exit )
+    cd Its-Just-Nans/golb-articles/ || { echo "Cannot cd to gold"; exit 1; }
     yazi
 }
 
