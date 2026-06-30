@@ -830,6 +830,9 @@ r() {
     test=false
     all=false
     web=false
+
+    run_args=()
+
     for arg in "$@"; do
         if [ "$arg" = "n" ]; then
             nightly=true
@@ -843,6 +846,8 @@ r() {
             test=true
         elif [ "$arg" = "w" ]; then
             web=true
+        else
+            run_args+=("$arg")
         fi
     done
     cargo clippy
@@ -873,7 +878,7 @@ r() {
         fi
     fi
     if [ "$run" = "true" ]; then
-        cargo run
+        cargo run -- "${run_args[@]}"
     fi
 }
 
