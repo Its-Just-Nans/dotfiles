@@ -40,14 +40,15 @@ _is_fd=false
 if command -v fd &>/dev/null && command -v fd-find &>/dev/null && command -v fdfind &>/dev/null; then
     # all good
     _is_fd=true
+elif command -v fd &>/dev/null; then
+    alias fd-find="fd"
+    _is_fd=true
 elif command -v fd-find &>/dev/null; then
     alias fd="fd-find"
     _is_fd=true
 elif command -v fdfind &>/dev/null; then
+    # last resort - use from apt - may be outdated
     alias fd="fdfind"
-    _is_fd=true
-elif command -v fd &>/dev/null; then
-    alias fd-find="fd"
     _is_fd=true
 fi
 
@@ -762,11 +763,12 @@ addkeys() {
         ssh-add "${oneFile}"
     done
 }
-
-if [ "$_is_fd" == "true" ]; then
+if command -v fd &>/dev/null; then
     if [ -n "$BASH_VERSION" ]; then
-        _addkeys_options=$(fd . "$HOME/.ssh/" -t f --format '{/}' -E "*.pub" -E 'agent-environment' -E 'known_hosts*' -E 'config')
-        complete -W "${_addkeys_options}" 'addkeys'
+        if [ -d "$HOME/.ssh/" ]; then
+            _addkeys_options=$(fd . "$HOME/.ssh/" -t f --format '{/}' -E "*.pub" -E 'agent-environment' -E 'known_hosts*' -E 'config')
+            complete -W "${_addkeys_options}" 'addkeys'
+        fi
     fi
 fi
 
@@ -1122,6 +1124,8 @@ setup_check() {
         sleep "$sleep_time"
     else
         echo "${red}fc-list is not installed${reset}"
+        echo "Install fontconfig package"
+        echo ""
     fi
 }
 
