@@ -1061,8 +1061,9 @@ setup_check() {
             cmd_test="$cmd_test seems installed but not loaed"
             printf "%s %s ${green}[OK]${reset}\n" "$cmd_test" "${spacing:${#cmd_test}}"
         else
-            echo "node and/or npm are not installed"
+            echo "${red}node and/or npm are not installed${reset}"
             echo "https://github.com/nvm-sh/nvm/"
+            echo ""
         fi
     else
         printf "%s %s ${green}[OK]${reset}\n" "$cmd_test" "${spacing:${#cmd_test}}"
