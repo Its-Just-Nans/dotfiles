@@ -47,8 +47,6 @@ local toggle_terminal = function()
 			local filename = vim.api.nvim_buf_get_name(0)
 			if filename ~= "" then
 				vim.cmd("write")
-			else
-				return
 			end
 		end
 		state.floating = create_floating_window({ buf = state.floating.buf })
@@ -63,9 +61,9 @@ end
 
 -- Example usage:
 -- Create a floating window with default dimensions
-vim.api.nvim_create_user_command("Floaterminal", toggle_terminal, {})
-vim.keymap.set({ "n", "t" }, "ù", toggle_terminal)
-vim.keymap.set({ "n", "t" }, "<leader>g", toggle_terminal)
+vim.api.nvim_create_user_command("Floaterminal", toggle_terminal, { desc = "Toggle terminal" })
+vim.keymap.set({ "n", "t" }, "ù", toggle_terminal, { desc = "Toggle terminal" })
+vim.keymap.set("n", "<leader>g", toggle_terminal, { desc = "Toggle terminal" })
 vim.keymap.set("t", "<Esc><Esc>", function()
 	vim.cmd("stopinsert") -- leave terminal mode
 	toggle_terminal()
