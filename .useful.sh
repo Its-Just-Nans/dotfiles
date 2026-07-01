@@ -1161,11 +1161,6 @@ setup_add() {
 
 
 setup() {
-    if [ $# -eq 0 ]; then
-        echo "please specify argument: setup, save, check, install, meta, add"
-        return 1
-    fi
-
     current_pwd="$(pwd)"
     dotfiles_path="$HOME/Documents/github/dotfiles/"
     if [ -d "$dotfiles_path" ]; then
@@ -1200,7 +1195,10 @@ setup() {
             [ -z "$2" ] && { echo "add requires an argument"; return 1; }
             setup_add "$2"
             ;;
-        *)       echo "no arg $1" ;;
+        *)
+            # cd to the dotfiles and return
+            return 0
+            ;;
     esac
 
     cd "$current_pwd" || { echo "Failed to cd to $dotfiles_path"; return 1; }
