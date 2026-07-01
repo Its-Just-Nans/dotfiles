@@ -261,7 +261,7 @@ g() {
     # check if onefetch is installed
     if [ "$folder" != "" ]; then
         if command -v onefetch &>/dev/null; then
-            onefetch .
+            onefetch --include-hidden .
         else
             echo "onefetch not installed :("
         fi
@@ -611,7 +611,7 @@ listGIT() {
                 current=$(git --git-dir="$x/.git" branch --show-current)
                 count2=$(git --git-dir="$x/.git" log "origin/$current..HEAD" | wc -l)
                 if [ "$show_onefetch" = true ]; then
-                    onefetch "$x" || echo "no language detected in $x"
+                    onefetch --include-hidden "$x" || echo "no language detected in $x"
                 fi
                 if [ "$count" != "0" ] || [ "$count2" != "0" ]; then
                     echo -e "${COLOR_NC}${COLOR_BACK_BLUE}******************$x*********************"
