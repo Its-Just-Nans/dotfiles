@@ -37,11 +37,14 @@ if [ -f "/opt/nvim-linux-x86_64/bin/nvim" ]; then
 fi
 
 _is_fd=false
-if command -v fd &>/dev/null && command -v fd-find &>/dev/null; then
+if command -v fd &>/dev/null && command -v fd-find &>/dev/null && command -v fdfind &>/dev/null; then
     # all good
     _is_fd=true
 elif command -v fd-find &>/dev/null; then
     alias fd="fd-find"
+    _is_fd=true
+elif command -v fdfind &>/dev/null; then
+    alias fd="fdfind"
     _is_fd=true
 elif command -v fd &>/dev/null; then
     alias fd-find="fd"
