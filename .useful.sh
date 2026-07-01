@@ -822,7 +822,7 @@ changeCommitDate() {
 
 golb() {
     g golb
-    cd Its-Just-Nans/golb-articles/ || { echo "Cannot cd to gold"; exit 1; }
+    cd Its-Just-Nans/golb-articles/ || { echo "Cannot cd to gold"; return 1; }
     yazi
 }
 
@@ -1158,10 +1158,10 @@ setup() {
     current_pwd="$(pwd)"
     dotfiles_path="$HOME/Documents/github/dotfiles/"
     if [ -d "$dotfiles_path" ]; then
-        cd "$dotfiles_path" || { echo "Failed to cd to $dotfiles_path"; exit 1; }
+        cd "$dotfiles_path" || { echo "Failed to cd to $dotfiles_path"; return 1; }
     else
         echo "Folder $dotfiles_path does not exist"
-        exit 1
+        return 1
     fi
 
     grey=$(tput setaf 244)
@@ -1186,13 +1186,13 @@ setup() {
         install) setup_install ;;
         meta)    setup_meta ;;
         add)
-            [ -z "$2" ] && { echo "add requires an argument"; exit 1; }
+            [ -z "$2" ] && { echo "add requires an argument"; return 1; }
             setup_add "$2"
             ;;
         *)       echo "no arg $1" ;;
     esac
 
-    cd "$current_pwd" || { echo "Failed to cd to $dotfiles_path"; exit 1; }
+    cd "$current_pwd" || { echo "Failed to cd to $dotfiles_path"; return 1; }
 }
 
 if [ -n "$BASH_VERSION" ]; then
