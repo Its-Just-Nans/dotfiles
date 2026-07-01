@@ -65,6 +65,7 @@ end
 -- Create a floating window with default dimensions
 vim.api.nvim_create_user_command("Floaterminal", toggle_terminal, {})
 vim.keymap.set({ "n", "t" }, "ù", toggle_terminal)
+vim.keymap.set({ "n", "t" }, "<leader>g", toggle_terminal)
 vim.keymap.set("t", "<Esc><Esc>", function()
 	vim.cmd("stopinsert") -- leave terminal mode
 	toggle_terminal()
