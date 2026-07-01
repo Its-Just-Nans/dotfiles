@@ -37,12 +37,10 @@ Licensed under MIT License. Note that some file have their own license, for exam
 ## Others programs
 
 ```sh
-ghex # hex editor
 fortune # quote of life
 sl # just a train
 libaa-bin # activate a little fire with `aafire`
 lolcat # download all ruby just to show rainbow
-https://hannahmontana.sourceforge.net/ # wish I knew this before
 screen # multiple terminal
 tmux # screen but better
 byobu # tmux but better
@@ -56,11 +54,9 @@ vlc # if not already present
 blender # 3D
 dos2unix # convert file
 golang # dev with go
-default-jdk # java
 docker
 clamav # virus scanner
 lynis # antivirus
-nextcloud-desktop # nextcloud desktop client
 curl # request
 yt-dlp # youtube-dl fork
 rclone # https://github.com/rclone/rclone
@@ -78,7 +74,6 @@ nmap # networking
 network-manager-openvpn-gnome openvpn # use openvpn
 phpmyadmin # or just clone the git repo!
 mediainfo # get info of a media
-visidata # https://github.com/saulpw/visidata
 gource # git visualization https://github.com/acaudwell/Gource
 pipewire # https://www.youtube.com/watch?v=5a7_2mA2LYQ
 qpwgraph # pipewire GUI
@@ -90,7 +85,6 @@ lmms # music
 ardour # music
 mixxx # dj
 sqlitebrowser # sqlite inspector
-ImHex # hex editor https://github.com/WerWolv/ImHex
 nvm # https://github.com/nvm-sh/nvm/
 arduino-cli # https://github.com/arduino/arduino-cli
 sysstat # https://github.com/sysstat/sysstat
@@ -107,10 +101,9 @@ binocle # https://github.com/sharkdp/binocle
 zizmor # Static analysis of GitHub Actions https://github.com/zizmorcore/zizmor
 lazygit # https://github.com/jesseduffield/lazygit
 sq # sequoia-sq https://gitlab.com/sequoia-pgp/sequoia
-rshell # remote shell for MicroPython - https://github.com/dhylands/rshell
 flameshot # screenshot https://flameshot.org/
 meld # diff viewer
-kooha # https://github.com/SeaDve/Kooha
+kooha # screen record - https://github.com/SeaDve/Kooha
 heaptrack # heap memory profiler https://github.com/KDE/heaptrack
 
 ## Old programs
@@ -124,5 +117,12 @@ exa # ls but newer
 https://github.com/pipeseroni/pipes.sh
 texlive-full # for latex
 peek # https://github.com/phw/peek/issues/1191
+ghex # hex editor
+rshell # remote shell for MicroPython - https://github.com/dhylands/rshell
+https://hannahmontana.sourceforge.net/ # wish I knew this before
+default-jdk # java
+nextcloud-desktop # nextcloud desktop client
+visidata # https://github.com/saulpw/visidata
+ImHex # hex editor https://github.com/WerWolv/ImHex
 ```
 
