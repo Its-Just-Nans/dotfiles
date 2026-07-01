@@ -1024,14 +1024,17 @@ setup_setup() {
 setup_save(){
     echo "Syncing files..."
     # sync-gnome
-    dconf dump /org/gnome/terminal/ > gterminal.preferences
-    # sync-cargo
-    cargo install --list | grep -E '^[a-zA-Z0-9_-]+ v' | awk '{print $1}' > cargo.txt
+    if command -v dconf &>/dev/null; then
+        dconf dump /org/gnome/terminal/ > gterminal.preferences
+        dconf dump /org/gnome/settings-daemon/plugins/media-keys/ > media-keys.txt
+    fi
 
+    # sync-cargo
+    if command -v dconf &>/dev/null; then
+        cargo install --list | grep -E '^[a-zA-Z0-9_-]+ v' | awk '{print $1}' > cargo.txt
+    fi
     # nix-env --query | cut -d'-' -f 1
     # code --list-extensions
-
-    dconf dump /org/gnome/settings-daemon/plugins/media-keys/ > media-keys.txt
 }
 
 
