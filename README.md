@@ -6,7 +6,7 @@ dotfiles. It's about ownership.
 
 ```sh
 # install git rustup and fd
-git clone https://github.com/Its-Just-Nans/dotfiles.git && cd dotfiles && ./setup.sh setup
+git clone https://github.com/Its-Just-Nans/dotfiles.git && cd dotfiles && . .useful.sh && setup setup
 ```
 
 ## Others
@@ -17,17 +17,17 @@ apt install pkg-config gcc clang make cmake git curl libssl-dev xclip python-is-
 
 # setup SSH key and GPG
 
-apt install $(./setup.sh install)
+apt install $(setup install)
 cargo install $(cat cargo.txt)
 
 # check installed programs
-./setup.sh check
+setup check
 ```
 
 ## Save settings
 
 ```sh
-./setup.sh save
+setup save
 ```
 
 ## License

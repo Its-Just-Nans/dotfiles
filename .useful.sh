@@ -139,7 +139,11 @@ export GIT_PS1_SHOWDIRTYSTATE=1
 export GIT_PS1_SHOWSTASHSTATE=1
 export GIT_PS1_SHOWUNTRACKEDFILES=1
 
-_PS1_GIT="\[\033[01;33m\]\$(__git_ps1 '(%s%u)')\[\033[00m\]"
+if [ -f "$HOME/.git-prompt.sh" ]; then
+    _PS1_GIT="\[\033[01;33m\]\$(__git_ps1 '(%s%u)')\[\033[00m\]"
+else
+    _PS1_GIT="\[\033[01;33m\]()\[\033[00m\]"
+fi
 PS1="$_PS1_CHROOT$_PS1_USER@$_PS1_HOST:$_PS1_DIR$_PS1_GIT\$ "
 
 startAgent() {
@@ -1157,6 +1161,7 @@ setup() {
         cd "$dotfiles_path" || { echo "Failed to cd to $dotfiles_path"; exit 1; }
     else
         echo "Folder $dotfiles_path does not exist"
+        exit 1
     fi
 
     grey=$(tput setaf 244)
