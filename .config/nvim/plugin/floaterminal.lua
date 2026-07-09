@@ -59,11 +59,37 @@ local toggle_terminal = function()
 	end
 end
 
+local toggle_terminal_with_cmd = function()
+	-- Close the old window if it exists
+	if vim.api.nvim_win_is_valid(state.floating.win) then
+		vim.api.nvim_win_close(state.floating.win, true)
+	end
+
+	-- Delete the old terminal buffer (kills the terminal job)
+	if vim.api.nvim_buf_is_valid(state.floating.buf) then
+		vim.api.nvim_buf_delete(state.floating.buf, { force = true })
+	end
+
+	-- Create a fresh buffer/window
+	state.floating.buf = vim.api.nvim_create_buf(false, true)
+	state.floating = create_floating_window({ buf = state.floating.buf })
+	vim.notify("Should show up")
+	vim.api.nvim_set_current_win(state.floating.win)
+
+	if vim.bo[state.floating.buf].buftype ~= "terminal" then
+		vim.cmd.terminal()
+	end
+	local job_id = vim.api.nvim_buf_get_var(state.floating.buf, "terminal_job_id")
+	vim.api.nvim_chan_send(job_id, "r r\n")
+	vim.cmd("startinsert")
+end
+
 -- Example usage:
 -- Create a floating window with default dimensions
 vim.api.nvim_create_user_command("Floaterminal", toggle_terminal, { desc = "Toggle terminal" })
 vim.keymap.set({ "n", "t" }, "ù", toggle_terminal, { desc = "Toggle terminal" })
 vim.keymap.set("n", "<leader>g", toggle_terminal, { desc = "Toggle terminal" })
+vim.keymap.set("n", "<leader>r", toggle_terminal_with_cmd, { desc = "Toggle terminal and [R]un" })
 vim.keymap.set("t", "<Esc><Esc>", function()
 	vim.cmd("stopinsert") -- leave terminal mode
 	toggle_terminal()
