@@ -909,7 +909,7 @@ open() {
                 ;;
             # Fonts
             *.ttf|*.otf|*.woff|*.woff2) fontforge "$f" & ;;
-            *.sqlite|*.db) sqlitebrowser "$f" & ;;
+            *.sqlite3|*.sqlite|*.db) sqlitebrowser "$f" & ;;
             *.stl) meshlab "$f" ;;
             *.xcf) gimp "$f" & ;;
             *.svg) galago "$f" & ;;
