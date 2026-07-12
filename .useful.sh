@@ -1212,4 +1212,9 @@ fi
 
 # The line beneath this is called `modeline`. See `:help modeline`
 # vim: ts=4 sts=4 sw=4 et
+# ts = tab is 4 space
+# sts = tab move 4 columns
+# sw = indent use 4 columns
+# et = expandtab = insert spaces instead of tab
+# noexpandtab = insert tab instead of space
 

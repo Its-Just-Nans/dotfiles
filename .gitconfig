@@ -12,9 +12,16 @@
 	rebase = false
 [push]
 	followTags = true
-	autoSetupRemote = true
+    autoSetupRemote = true
+
 [filter "lfs"]
 	required = true
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
+    process = git-lfs filter-process
+
+[alias]
+	pus = "push"
+	pul = "pull"
+
+# vim: ts=8 sts=4 sw=4 noexpandtab
