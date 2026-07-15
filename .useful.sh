@@ -932,6 +932,14 @@ mou() {
 
 }
 
+listImages() {
+    # not svg
+    fd -t f \
+        -e png -e jpg -e jpeg -e gif -e webp -e bmp \
+        -e tif -e tiff -e ico -e avif \
+        -e heic -e heif -e jfif \
+        -e raw -e cr2 -e nef -e arw -e dng -e orf -e rw2
+}
 
 setup_setup() {
     if ! command -v fd &>/dev/null; then
