@@ -1056,18 +1056,20 @@ setup_install() {
 }
 
 setup_check() {
-    spacing='                                      '
+    spacing='                                             '
     cmd_test="nvim"
+    software="https://neovim.io/doc/install/"
     if ! command -v "$cmd_test" &>/dev/null; then
         echo "${red}$cmd_test is not installed${reset}"
-        echo "https://neovim.io/doc/install/"
+        echo "$software"
         echo ""
     else
-        printf "%s %s ${green}[OK]${reset}\n" "$cmd_test" "${spacing:${#cmd_test}}"
+        printf "%s %s ${green}[OK]${reset}\n" "$software" "${spacing:${#software}}"
     fi
     sleep "$sleep_time"
 
     cmd_test="nvm"
+    software="https://github.com/nvm-sh/nvm/"
     if ! command -v node &>/dev/null || ! command -v npm &>/dev/null; then
         if [ -d "$HOME/.nvm" ]; then
             # nvm seems present but not loaded
@@ -1075,45 +1077,47 @@ setup_check() {
             printf "%s %s ${green}[OK]${reset}\n" "$cmd_test" "${spacing:${#cmd_test}}"
         else
             echo "${red}node and/or npm are not installed${reset}"
-            echo "https://github.com/nvm-sh/nvm/"
+            echo "$software"
             echo ""
         fi
     else
-        printf "%s %s ${green}[OK]${reset}\n" "$cmd_test" "${spacing:${#cmd_test}}"
+        printf "%s %s ${green}[OK]${reset}\n" "$software" "${spacing:${#software}}"
     fi
     sleep "$sleep_time"
 
     cmd_test="go"
+    software="https://go.dev/doc/install"
     if ! command -v "$cmd_test" &>/dev/null; then
         echo "${red}$cmd_test is not installed${reset}"
-        echo "https://go.dev/doc/install"
-        echo ""
+        echo "$software"
     else
-        printf "%s %s ${green}[OK]${reset}\n" "$cmd_test" "${spacing:${#cmd_test}}"
+        printf "%s %s ${green}[OK]${reset}\n" "$software" "${spacing:${#software}}"
     fi
     sleep "$sleep_time"
 
     cmd_test="lazygit"
+    repo="github.com/jesseduffield/lazygit"
+    software="https://$repo"
     if ! command -v "$cmd_test" &>/dev/null; then
-        repo="github.com/jesseduffield/lazygit"
         echo "${red}$cmd_test is not installed${reset}"
-        echo "https://$repo"
+        echo "$software"
         echo "go install $repo@latest"
         echo ""
     else
-        printf "%s %s ${green}[OK]${reset}\n" "$cmd_test" "${spacing:${#cmd_test}}"
+        printf "%s %s ${green}[OK]${reset}\n" "$software" "${spacing:${#software}}"
     fi
     sleep "$sleep_time"
 
     cmd_test="fzf"
+    repo="github.com/junegunn/fzf"
+    software="https://$repo"
     if ! command -v "$cmd_test" &>/dev/null; then
-        repo="github.com/junegunn/fzf"
         echo "${red}$cmd_test is not installed${reset}"
-        echo "https://$repo"
+        echo "$software"
         echo "go install $repo@latest"
         echo ""
     else
-        printf "%s %s ${green}[OK]${reset}\n" "$cmd_test" "${spacing:${#cmd_test}}"
+        printf "%s %s ${green}[OK]${reset}\n" "$software" "${spacing:${#software}}"
     fi
     sleep "$sleep_time"
 
