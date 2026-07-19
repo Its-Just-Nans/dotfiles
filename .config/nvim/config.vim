@@ -34,3 +34,4 @@ if !exists('$I3SOCK')
 endif
 
 set expandtab "use only space
+set nowrap
