@@ -847,7 +847,7 @@ r() {
         :
     fi
     if [ "$is_rust" = "true" ]; then
-        echo "Rust detected"
+        # echo "Rust detected"
         r_rust "$@"
     else
         if [ -f "package.json" ]; then
