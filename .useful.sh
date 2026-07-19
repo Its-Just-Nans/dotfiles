@@ -833,6 +833,34 @@ golb() {
 
 r() {
     clear
+    is_rust=$([ -f Cargo.toml ] && echo true || echo false)
+    if [ "$is_rust" = "false" ]; then
+        current_dir="$PWD"
+        while [ "$current_dir" != "/" ]; do
+            if [ -f "$current_dir/Cargo.toml" ]; then
+                is_rust=true
+            fi
+            current_dir=$(dirname "$current_dir")
+        done
+    else
+        # already detected
+        :
+    fi
+    if [ "$is_rust" = "true" ]; then
+        echo "Rust detected"
+        r_rust "$@"
+    else
+        if [ -f "package.json" ]; then
+            echo "Maybe js/ts ?"
+            jq -r '.scripts.start // .scripts.dev' package.json
+            return 0
+        fi
+        echo "No language to launch"
+        return 0
+    fi
+}
+
+r_rust() {
     nightly=false
     build=false
     run=false
@@ -889,6 +917,7 @@ r() {
     if [ "$run" = "true" ]; then
         cargo run -- "${run_args[@]}"
     fi
+
 }
 
 battery() {
@@ -1223,10 +1252,9 @@ fi
 
 
 # The line beneath this is called `modeline`. See `:help modeline`
-# vim: ts=4 sts=4 sw=4 et
 # ts = tab is 4 space
 # sts = tab move 4 columns
 # sw = indent use 4 columns
 # et = expandtab = insert spaces instead of tab
 # noexpandtab = insert tab instead of space
-
+# vim: ts=4 sts=4 sw=4 et
