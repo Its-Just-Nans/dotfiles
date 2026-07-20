@@ -204,7 +204,7 @@ nvm() {
         # shellcheck disable=SC1091
         [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
         if [ $# -eq 0 ]; then
-            echo "No arguments provided. nvm is now loaded. You can try"
+            echo "nvm is now loaded"
             echo "nvm install node"
             echo "nvm use node"
         else
