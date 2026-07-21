@@ -538,7 +538,10 @@ do
 		--
 		-- But for many setups, the LSP (`ts_ls`) will work just fine
 		-- ts_ls = {},
+		-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#astro
+		astro = {},
 
+		-- lua
 		stylua = {}, -- Used to format Lua code
 
 		-- Special Lua Config, as recommended by neovim help docs
