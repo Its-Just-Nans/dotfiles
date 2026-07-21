@@ -537,8 +537,13 @@ do
 		--    https://github.com/pmizio/typescript-tools.nvim
 		--
 		-- But for many setups, the LSP (`ts_ls`) will work just fine
-		-- ts_ls = {},
+    -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#ts_ls
+    -- npm install -g typescript typescript-language-server
+		ts_ls = {},
 
+    -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#ruff
+    -- python -m pip install ruff
+    ruff = {},
 		-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#astro
 		-- npm install -g @astrojs/language-server
 		astro = {},
