@@ -1056,6 +1056,7 @@ setup_setup() {
     else
         echo "${red}n4n5 is not installed${reset}"
     fi
+    setup_check
 }
 
 setup_save(){
