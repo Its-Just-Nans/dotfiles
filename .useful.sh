@@ -1087,6 +1087,16 @@ setup_install() {
 
 setup_check() {
     spacing='                                             '
+
+    software="n4n5"
+    if ! command -v "$software" &>/dev/null; then
+        echo "${red}$software is not installed${reset}"
+        echo "cargo install $software"
+        echo ""
+    else
+        printf "%s %s ${green}[OK]${reset}\n" "$software" "${spacing:${#software}}"
+    fi
+
     cmd_test="nvim"
     software="https://neovim.io/doc/install/"
     if ! command -v "$cmd_test" &>/dev/null; then
