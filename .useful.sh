@@ -1204,12 +1204,15 @@ setup_add() {
 
 setup() {
     current_pwd="$(pwd)"
-    dotfiles_path="$HOME/Documents/github/dotfiles/"
-    if [ -d "$dotfiles_path" ]; then
-        cd "$dotfiles_path" || { echo "Failed to cd to $dotfiles_path"; return 1; }
-    else
-        echo "Folder $dotfiles_path does not exist"
-        return 1
+    current_folder_name="$(basename "$current_pwd")"
+    if [ "$current_folder_name" != "dotfiles" ]; then
+        dotfiles_path="$HOME/Documents/github/dotfiles/"
+        if [ -d "$dotfiles_path" ]; then
+            cd "$dotfiles_path" || { echo "Failed to cd to $dotfiles_path"; return 1; }
+        else
+            echo "Folder $dotfiles_path does not exist"
+            return 1
+        fi
     fi
 
     grey=$(tput setaf 244)
