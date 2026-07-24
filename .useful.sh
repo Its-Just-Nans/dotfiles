@@ -1151,6 +1151,16 @@ setup_check() {
     fi
     sleep "$sleep_time"
 
+    cmd_test="tree-sitter"
+    software="tree-sitter-cli"
+    if ! command -v "$cmd_test" &>/dev/null; then
+        echo "${red}$software is not installed${reset}"
+        echo "cargo install $software"
+        echo ""
+    else
+        printf "%s %s ${green}[OK]${reset}\n" "$software" "${spacing:${#software}}"
+    fi
+
     if command -v fc-list &>/dev/null; then
         cmd_test="Font Ubuntu Mono"
         if fc-list | grep "Ubuntu Mono" &> /dev/null; then
