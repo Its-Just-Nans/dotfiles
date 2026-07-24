@@ -6,7 +6,7 @@ dotfiles. It's about ownership.
 
 ```sh
 # install git curl rustup and fd
-git clone https://github.com/Its-Just-Nans/dotfiles.git && cd dotfiles && . .useful.sh && setup setup
+git clone https://github.com/Its-Just-Nans/dotfiles.git && cd dotfiles && . .useful.sh && setup install
 ```
 
 ## Others

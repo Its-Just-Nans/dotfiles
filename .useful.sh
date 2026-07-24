@@ -970,7 +970,7 @@ listImages() {
         -e raw -e cr2 -e nef -e arw -e dng -e orf -e rw2
 }
 
-setup_setup() {
+setup_install() {
     if ! command -v fd &>/dev/null; then
         echo "${red}fd is not installed${reset}"
         echo "cargo install fd-find"
@@ -1076,7 +1076,7 @@ setup_save(){
 }
 
 
-setup_install() {
+setup_packages() {
     echo "git-crypt shellcheck thunar flameshot\
  imagemagick libimage-exiftool-perl gimp inkscape\
  byobu tmux screen\
@@ -1231,6 +1231,7 @@ setup() {
             cd "$dotfiles_path" || { echo "Failed to cd to $dotfiles_path"; return 1; }
         else
             echo "Folder $dotfiles_path does not exist"
+            echo "Move manually to the dotfiles folder"
             return 1
         fi
     fi
@@ -1251,10 +1252,10 @@ setup() {
 
 
     case "$1" in
-        setup)   setup_setup ;;
+        install)   setup_install ;;
         save)    setup_save ;;
         check)   setup_check ;;
-        install) setup_install ;;
+        packages) setup_packages ;;
         meta)    setup_meta ;;
         add)
             [ -z "$2" ] && { echo "add requires an argument"; return 1; }
@@ -1270,7 +1271,7 @@ setup() {
 }
 
 if [ -n "$BASH_VERSION" ]; then
-    _setup_options="setup save check install meta add"
+    _setup_options="save check packages install meta add"
     complete -W "${_setup_options}" 'setup'
 fi
 
