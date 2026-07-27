@@ -1027,7 +1027,7 @@ setup_install() {
     fi
 
     if command -v dconf &>/dev/null; then
-        echo -n "Setting up '${grey}shortcuts${reset}'..."
+        echo -n "Setting up '${grey}dconf keyboard shortcuts${reset}'..."
         dconf reset -f /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/
         dconf reset /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings
         dconf load /org/gnome/settings-daemon/plugins/media-keys/ < media-keys.txt
