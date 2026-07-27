@@ -700,10 +700,13 @@ start_agent() {
 
 addkeys() {
     should_push=false
+    load_only=false
     search=""
     for arg in "$@"; do
         if [ "$arg" = "p" ]; then
             should_push=true
+        elif [ "$arg" = "l" ]; then
+            load_only=true
         else
             search="$arg"
         fi
@@ -753,6 +756,9 @@ addkeys() {
         git push
         return
     fi
+    if [ "$load_only" = "true" ]; then
+        return
+    fi
     if [ "$search" ]; then
         toSearch="${search}*"
     else
@@ -772,6 +778,9 @@ if command -v fd &>/dev/null; then
     fi
 fi
 
+laz() {
+    addkeys l && lazygit
+}
 
 mkd() {
     mkdir "$1" && cd "$1" || return
