@@ -103,6 +103,7 @@ alias ll='l'
 alias la='l'
 alias ll="l"
 alias lla="l"
+alias ncal="ncal -M -b" # start on monday, old style
 
 alias sl="sl | lolcat"
 alias p="python"
