@@ -1,12 +1,12 @@
 local toggle_explorer = function()
 	if vim.fn.mode() == "n" then
 		local filename = vim.api.nvim_buf_get_name(0)
-		if filename ~= "" then
+		if filename ~= "" and vim.bo.filetype ~= "netrw" then
 			vim.cmd("write")
 		end
 	end
 
-	vim.cmd("Explore")
+	vim.cmd("Lexplore")
 end
 
 vim.keymap.set("n", "<leader>e", toggle_explorer, { desc = "Explore" })
