@@ -913,9 +913,9 @@ r_rust() {
         fi
     fi
     if [ "$test" = "true" ]; then
-        cargo test
+        cargo test "${run_args[@]}"
         if [ "$all" = "true" ]; then
-            cargo test --all-targets --all-features
+            cargo test --all-targets --all-features "${run_args[@]}"
         fi
     fi
     if [ "$web" = "true" ]; then
