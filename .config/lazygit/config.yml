@@ -7,3 +7,5 @@ quitOnTopLevelReturn: true
 # https://github.com/jesseduffield/lazygit/issues/1576#issuecomment-1111690534
 promptToReturnFromSubprocess: false
 
+git:
+  overrideGpg: true
