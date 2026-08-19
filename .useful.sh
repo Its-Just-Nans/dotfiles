@@ -1123,7 +1123,7 @@ setup_check() {
     if ! command -v node &>/dev/null || ! command -v npm &>/dev/null; then
         if [ -d "$HOME/.nvm" ]; then
             # nvm seems present but not loaded
-            cmd_test="$cmd_test seems installed but not loaed"
+            cmd_test="$cmd_test seems installed but not loaded"
             printf "%s %s ${green}[OK]${reset}\n" "$cmd_test" "${spacing:${#cmd_test}}"
         else
             echo "${red}node and/or npm are not installed${reset}"
