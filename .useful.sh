@@ -1187,14 +1187,16 @@ setup_check() {
             printf "%s %s ${green}[OK]${reset}\n" "$cmd_test" "${spacing:${#cmd_test}}"
         else
             echo "${red}Font Ubuntu Mono is not installed${reset}"
+            echo "https://design.ubuntu.com/font"
         fi
         sleep "$sleep_time"
 
-        cmd_test="Font CommitMono"
-        if fc-list | grep "CommitMono" &> /dev/null; then
+        cmd_test="Font CommitMonoNerdFont"
+        if fc-list | grep "CommitMonoNerdFont" &> /dev/null; then
             printf "%s %s ${green}[OK]${reset}\n" "$cmd_test" "${spacing:${#cmd_test}}"
         else
-            echo "${red}Font CommitMono is not installed${reset}"
+            echo "${red}Font CommitMonoNerdFont is not installed${reset}"
+            echo "https://www.nerdfonts.com/font-downloads"
         fi
         sleep "$sleep_time"
     else
