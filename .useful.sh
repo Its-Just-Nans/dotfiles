@@ -780,6 +780,12 @@ if command -v fd &>/dev/null; then
 fi
 
 laz() {
+    red=$(tput setaf 1)
+    reset=$(tput sgr0)
+    if ! command -v lazygit &>/dev/null; then
+        echo "${red}lazygit is not installed${reset}"
+        return 1
+    fi
     addkeys l && lazygit
 }
 
