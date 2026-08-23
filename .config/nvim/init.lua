@@ -12,6 +12,10 @@ do
 	--  See `:help hlsearch`
 	vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
+	-- Normal mode
+	vim.keymap.set("n", "<leader><", "<<", { desc = "Shift line left" })
+	vim.keymap.set("n", "<leader>>", ">>", { desc = "Shift line right" })
+
 	-- Diagnostic Config & Keymaps
 	--  See `:help vim.diagnostic.Opts`
 	vim.diagnostic.config({
