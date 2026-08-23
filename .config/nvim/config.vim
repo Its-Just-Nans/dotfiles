@@ -19,7 +19,6 @@ vnoremap <Up> <NOP>
 vnoremap <Down> <NOP>
 vnoremap <Left> <NOP>
 vnoremap <Right> <NOP>
-
 " no mouse
 set mouse=
 
@@ -33,6 +32,8 @@ if !exists('$I3SOCK')
 " autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE
 endif
 
+set shiftwidth=4
+set tabstop=4 "tab is 4 spaces
 set expandtab "use only space
 
 set clipboard=unnamedplus
