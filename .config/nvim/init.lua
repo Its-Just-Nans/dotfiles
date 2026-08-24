@@ -13,8 +13,8 @@ do
 	vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
 	-- Normal mode
-	vim.keymap.set("n", "<leader><", "<<", { desc = "Shift line left" })
-	vim.keymap.set("n", "<leader>>", ">>", { desc = "Shift line right" })
+	vim.keymap.set("v", "<", "<gv", { desc = "Shift line left" })
+	vim.keymap.set("v", ">", ">gv", { desc = "Shift line right" })
 
 	-- Diagnostic Config & Keymaps
 	--  See `:help vim.diagnostic.Opts`
