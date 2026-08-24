@@ -12,9 +12,12 @@ do
 	--  See `:help hlsearch`
 	vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
-	-- Normal mode
+	-- Tab
 	vim.keymap.set("v", "<", "<gv", { desc = "Shift line left" })
 	vim.keymap.set("v", ">", ">gv", { desc = "Shift line right" })
+	-- Tab
+	vim.keymap.set("v", "<S-Tab>", "<gv", { desc = "Shift line left" })
+	vim.keymap.set("v", "<Tab>", ">gv", { desc = "Shift line right" })
 
 	-- Diagnostic Config & Keymaps
 	--  See `:help vim.diagnostic.Opts`
