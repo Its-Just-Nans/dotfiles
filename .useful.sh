@@ -767,7 +767,9 @@ addkeys() {
     fi
     list=$(fd "$toSearch" --full-path "$HOME/.ssh/" -t f -E "*.pub" -E 'agent-environment' -E 'known_hosts*' -E 'config')
     for oneFile in $list; do
-        ssh-add "${oneFile}"
+        if ! ssh-add -l | grep -q "$(ssh-keygen -lf "$oneFile" | awk '{print $2}')"; then
+            ssh-add "${oneFile}"
+        fi
     done
 }
 if command -v fd &>/dev/null; then
