@@ -1264,9 +1264,9 @@ setup_check() {
 setup_meta() {
     if ! command -v shellcheck &>/dev/null; then
         echo "shellcheck is not installed"
-    else
-        shellcheck .useful.sh
+        return 1
     fi
+    shellcheck .useful.sh
 }
 
 setup_add() {
