@@ -765,6 +765,13 @@ addkeys() {
     else
         toSearch="$HOME/.ssh/"
     fi
+    red=$(tput setaf 1)
+    reset=$(tput sgr0)
+    if ! command -v fd &>/dev/null; then
+        echo "${red}fd is not installed${reset}"
+        echo "cargo install fd-find"
+        return 1
+    fi
     list=$(fd "$toSearch" --full-path "$HOME/.ssh/" -t f -E "*.pub" -E 'agent-environment' -E 'known_hosts*' -E 'config')
     for oneFile in $list; do
         # only prompt for keys not in the agent
@@ -981,6 +988,13 @@ mou() {
 }
 
 listImages() {
+    red=$(tput setaf 1)
+    reset=$(tput sgr0)
+    if ! command -v fd &>/dev/null; then
+        echo "${red}fd is not installed${reset}"
+        echo "cargo install fd-find"
+        return 1
+    fi
     # not svg
     fd -t f \
         -e png -e jpg -e jpeg -e gif -e webp -e bmp \
@@ -990,10 +1004,10 @@ listImages() {
 }
 
 setup_install() {
-    red=$(tput setaf 1)
     green=$(tput setaf 2)
     blue=$(tput setaf 4)
     grey=$(tput setaf 244)
+    red=$(tput setaf 1)
     reset=$(tput sgr0)
     if ! command -v fd &>/dev/null; then
         echo "${red}fd is not installed${reset}"
