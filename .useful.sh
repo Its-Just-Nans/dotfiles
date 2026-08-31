@@ -1095,7 +1095,6 @@ setup_install() {
         echo "${red}n4n5 is not installed${reset}"
     fi
     setup_check
-    setup_packages
 }
 
 setup_save(){
@@ -1259,6 +1258,7 @@ setup_check() {
         echo "Install fontconfig package"
         echo ""
     fi
+    setup_packages
 }
 
 setup_meta() {
@@ -1317,7 +1317,6 @@ setup() {
         install)   setup_install ;;
         save)    setup_save ;;
         check)   setup_check ;;
-        packages) setup_packages ;;
         meta)    setup_meta ;;
         add)
             [ -z "$2" ] && { echo "add requires an argument"; return 1; }
@@ -1333,7 +1332,7 @@ setup() {
 }
 
 if [ -n "$BASH_VERSION" ]; then
-    _setup_options="save check packages install meta add"
+    _setup_options="save check install meta add"
     complete -W "${_setup_options}" 'setup'
 fi
 
