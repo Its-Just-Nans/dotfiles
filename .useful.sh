@@ -1273,7 +1273,7 @@ setup() {
         fi
     fi
 
-    sleep_time="0.08"
+    sleep_time="0.02"
 
     # https://stackoverflow.com/a/4774063
     SCRIPT_PATH="$(
