@@ -990,6 +990,11 @@ listImages() {
 }
 
 setup_install() {
+    red=$(tput setaf 1)
+    green=$(tput setaf 2)
+    blue=$(tput setaf 4)
+    grey=$(tput setaf 244)
+    reset=$(tput sgr0)
     if ! command -v fd &>/dev/null; then
         echo "${red}fd is not installed${reset}"
         echo "cargo install fd-find"
@@ -1107,7 +1112,7 @@ setup_packages() {
         if dpkg -s "$pkg" &>/dev/null; then
             printf "%s %s ${green}[OK]${reset}\n" "$pkg" "${spacing:${#pkg}}"
         else
-            printf "%s %s ${green}[KO]${reset}\n" "$pkg" "${spacing:${#pkg}}"
+            printf "%s %s ${red}[KO]${reset}\n" "$pkg" "${spacing:${#pkg}}"
         fi
     done
 }
@@ -1268,11 +1273,6 @@ setup() {
         fi
     fi
 
-    grey=$(tput setaf 244)
-    blue=$(tput setaf 4)
-    green=$(tput setaf 2)
-    red=$(tput setaf 1)
-    reset=$(tput sgr0)
     sleep_time="0.08"
 
     # https://stackoverflow.com/a/4774063
