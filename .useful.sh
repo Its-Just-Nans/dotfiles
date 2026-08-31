@@ -719,14 +719,14 @@ addkeys() {
     fi
     r=$(tput setaf 1)
     g=$(tput setaf 2)
-    rs=$(tput sgr0)
+    reset=$(tput sgr0)
     if [ -z "$SSH_AGENT_PID" ]; then
         if [ -f "${SSH_ENV}" ]; then
             # shellcheck disable=SC1090
             . "${SSH_ENV}" >/dev/null
             # shellcheck disable=SC2009
             if ps -ef | grep "${SSH_AGENT_PID}" | grep 'ssh-agent$' >/dev/null; then
-                echo "ssh-agent is already ${g}running${rs} and is now ${g}loaded${rs}"
+                echo "ssh-agent is already ${g}running${reset} and is now ${g}loaded${reset}"
                 ssh-add -l
                 if [ "$should_push" = "true" ]; then
                     echo "git push"
@@ -735,17 +735,17 @@ addkeys() {
                 # return early
                 return
             else
-                echo "ssh-agent is ${r}not running${rs}, ${g}starting${rs} a new agent"
+                echo "ssh-agent is ${r}not running${reset}, ${g}starting${reset} a new agent"
                 start_agent
             fi
         else
-            echo "ssh-agent is already ${g}running${rs} but $SSH_ENV does not exists, starting a new agent"
+            echo "ssh-agent is already ${g}running${reset} but $SSH_ENV does not exists, starting a new agent"
             start_agent
         fi
     else
         # shellcheck disable=SC2009
         if ps -ef | grep "${SSH_AGENT_PID}" | grep 'ssh-agent$' >/dev/null; then
-            echo "ssh-agent is already ${g}running${rs} and already ${g}loaded${rs}"
+            echo "ssh-agent is already ${g}running${reset} and already ${g}loaded${reset}"
             ssh-add -l
         else
             echo "Agent PID present but not found, starting a new agent"
