@@ -7,6 +7,7 @@ bladvak-cli
 boa_cli
 cargo-afl
 cargo-bloat
+cargo-deny
 cargo-edit
 cargo-expand
 cargo-hack
@@ -21,6 +22,7 @@ cross
 czkawka_cli
 diskus
 du-dust
+emmylua_check
 eza
 fd-find
 flamegraph
@@ -46,9 +48,11 @@ resvg
 ripgrep
 ruget
 scooter
+sea-orm-cli
 sequoia-sq
 spust
 sqlx-cli
+stylua
 tarsier
 termpic
 tokei
@@ -61,6 +65,7 @@ usage-cli
 usvg
 wasm-bindgen-cli
 wasm-pack
+wasmtime-cli
 whatisthis
 wombat
 xbuild
