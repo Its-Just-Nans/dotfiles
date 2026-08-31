@@ -1076,6 +1076,7 @@ setup_install() {
         echo "${red}n4n5 is not installed${reset}"
     fi
     setup_check
+    setup_packages
 }
 
 setup_save(){
@@ -1096,15 +1097,25 @@ setup_save(){
 
 
 setup_packages() {
-    echo "git-crypt shellcheck thunar flameshot\
- imagemagick libimage-exiftool-perl gimp inkscape\
- byobu tmux screen\
- wireshark ffmpeg\
- libaa-bin cmatrix\
- qemu-system libvirt-daemon-system virt-manager"
+    red=$(tput setaf 1)
+    green=$(tput setaf 2)
+    reset=$(tput sgr0)
+    spacing='                                             '
+    for pkg in git-crypt shellcheck thunar flameshot imagemagick libimage-exiftool-perl gimp inkscape \
+               byobu tmux screen wireshark ffmpeg libaa-bin cmatrix \
+               qemu-system libvirt-daemon-system virt-manager; do
+        if dpkg -s "$pkg" &>/dev/null; then
+            printf "%s %s ${green}[OK]${reset}\n" "$pkg" "${spacing:${#pkg}}"
+        else
+            printf "%s %s ${green}[KO]${reset}\n" "$pkg" "${spacing:${#pkg}}"
+        fi
+    done
 }
 
 setup_check() {
+    red=$(tput setaf 1)
+    green=$(tput setaf 2)
+    reset=$(tput sgr0)
     spacing='                                             '
 
     software="n4n5"
