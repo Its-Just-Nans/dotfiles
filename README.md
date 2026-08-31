@@ -12,12 +12,7 @@ git clone https://github.com/Its-Just-Nans/dotfiles.git && cd dotfiles && . .use
 ## Others
 
 ```sh
-# install deps
-apt install pkg-config gcc clang make cmake git curl libssl-dev xclip python-is-python3 python3-pip
-
 # setup SSH key and GPG
-
-apt install $(setup install)
 cargo install $(cat cargo.txt)
 
 # check installed programs

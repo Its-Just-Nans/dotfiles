@@ -1062,7 +1062,7 @@ setup_install() {
     fi
 
     if command -v rustup &>/dev/null; then
-        echo -n "Setting up '${grey}rust completions${reset}'..."
+        echo -n "Setting up '${grey}rustup completions${reset}'..."
         mkdir -p ~/.local/share/bash-completion/completions
         rustup completions bash       > ~/.local/share/bash-completion/completions/rustup
         rustup completions bash cargo > ~/.local/share/bash-completion/completions/cargo
@@ -1106,8 +1106,9 @@ setup_packages() {
     green=$(tput setaf 2)
     reset=$(tput sgr0)
     spacing='                                             '
-    for pkg in git-crypt shellcheck thunar flameshot imagemagick libimage-exiftool-perl gimp inkscape \
-               byobu tmux screen wireshark ffmpeg libaa-bin cmatrix \
+    for pkg in pkg-config gcc clang make cmake git curl libssl-dev xclip python-is-python3 python3-pip\
+               git-crypt shellcheck thunar flameshot imagemagick libimage-exiftool-perl gimp inkscape \
+               byobu tmux screen wireshark ffmpeg libaa-bin cmatrix\
                qemu-system libvirt-daemon-system virt-manager; do
         if dpkg -s "$pkg" &>/dev/null; then
             printf "%s %s ${green}[OK]${reset}\n" "$pkg" "${spacing:${#pkg}}"
@@ -1196,15 +1197,30 @@ setup_check() {
     fi
     sleep "$sleep_time"
 
-    cmd_test="tree-sitter"
-    software="tree-sitter-cli"
-    if ! command -v "$cmd_test" &>/dev/null; then
-        echo "${red}$software is not installed${reset}"
-        echo "cargo install $software"
-        echo ""
-    else
-        printf "%s %s ${green}[OK]${reset}\n" "$software" "${spacing:${#software}}"
-    fi
+    rust_packages=(
+        "tree-sitter-cli|tree-sitter"
+        "du-dust|dust"
+        "hyperfine"
+        "bat"
+        "hexyl"
+        "fd-find|fd"
+        "wombat"
+        "tarsier"
+        "galago"
+        "baobab"
+    )
+
+    for pair in "${rust_packages[@]}"; do
+        IFS='|' read -r package cmd_test <<< "$pair"
+        cmd_test=${cmd_test:-$package}
+        if ! command -v "$cmd_test" &>/dev/null; then
+            echo "${red}$package is not installed${reset}"
+            echo "cargo install $package"
+            echo ""
+        else
+            printf "%s %s ${green}[OK]${reset}\n" "$package" "${spacing:${#package}}"
+        fi
+    done
 
     if command -v fc-list &>/dev/null; then
         cmd_test="Font Ubuntu Mono"
