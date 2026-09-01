@@ -1265,7 +1265,7 @@ setup_check() {
         >/dev/null; then
         printf "%s %s ${green}[OK]${reset}\n" "$package" "${spacing:${#package}}"
     else
-        printf "%s %s ${green}[KO]${reset}\n" "$package" "${spacing:${#package}}"
+        printf "%s %s ${red}[KO]${reset}\n" "$package" "${spacing:${#package}}"
     fi
     setup_packages
 }
