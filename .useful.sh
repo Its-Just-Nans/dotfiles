@@ -1128,6 +1128,7 @@ setup_packages() {
         else
             printf "%s %s ${red}[KO]${reset}\n" "$pkg" "${spacing:${#pkg}}"
         fi
+        sleep "$sleep_time"
     done
 }
 
@@ -1257,6 +1258,7 @@ setup_check() {
         else
             printf "%s %s ${green}[OK]${reset}\n" "$package" "${spacing:${#package}}"
         fi
+        sleep "$sleep_time"
     done
     package="rust packages from cargo.txt"
     if diff -q \
