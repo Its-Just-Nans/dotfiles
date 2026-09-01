@@ -1118,7 +1118,8 @@ setup_packages() {
     red=$(tput setaf 1)
     green=$(tput setaf 2)
     reset=$(tput sgr0)
-    spacing='                                             '
+    terminal_columns=$(tput cols)
+    spacing=$(printf '%*s' $((terminal_columns / 2)) '')
     for pkg in pkg-config gcc clang make cmake git curl libssl-dev xclip python-is-python3 python3-pip\
                git-crypt shellcheck thunar flameshot imagemagick libimage-exiftool-perl gimp inkscape \
                byobu tmux screen wireshark ffmpeg libaa-bin cmatrix\
@@ -1136,7 +1137,8 @@ setup_check() {
     red=$(tput setaf 1)
     green=$(tput setaf 2)
     reset=$(tput sgr0)
-    spacing='                                             '
+    terminal_columns=$(tput cols)
+    spacing=$(printf '%*s' $((terminal_columns / 2)) '') 
 
     software="n4n5"
     if ! command -v "$software" &>/dev/null; then
