@@ -1146,6 +1146,30 @@ setup_check() {
         printf "%s %s ${green}[OK]${reset}\n" "$software" "${spacing:${#software}}"
     fi
 
+    if command -v fc-list &>/dev/null; then
+        cmd_test="Font Ubuntu Mono"
+        if fc-list | grep "Ubuntu Mono" &> /dev/null; then
+            printf "%s %s ${green}[OK]${reset}\n" "$cmd_test" "${spacing:${#cmd_test}}"
+        else
+            echo "${red}Font Ubuntu Mono is not installed${reset}"
+            echo "https://design.ubuntu.com/font"
+        fi
+        sleep "$sleep_time"
+
+        cmd_test="Font CommitMonoNerdFont"
+        if fc-list | grep "CommitMonoNerdFont" &> /dev/null; then
+            printf "%s %s ${green}[OK]${reset}\n" "$cmd_test" "${spacing:${#cmd_test}}"
+        else
+            echo "${red}Font CommitMonoNerdFont is not installed${reset}"
+            echo "https://www.nerdfonts.com/font-downloads"
+        fi
+        sleep "$sleep_time"
+    else
+        echo "${red}fc-list is not installed${reset}"
+        echo "Install fontconfig package"
+        echo ""
+    fi
+
     cmd_test="nvim"
     software="https://neovim.io/doc/install/"
     if ! command -v "$cmd_test" &>/dev/null; then
@@ -1234,29 +1258,14 @@ setup_check() {
             printf "%s %s ${green}[OK]${reset}\n" "$package" "${spacing:${#package}}"
         fi
     done
-
-    if command -v fc-list &>/dev/null; then
-        cmd_test="Font Ubuntu Mono"
-        if fc-list | grep "Ubuntu Mono" &> /dev/null; then
-            printf "%s %s ${green}[OK]${reset}\n" "$cmd_test" "${spacing:${#cmd_test}}"
-        else
-            echo "${red}Font Ubuntu Mono is not installed${reset}"
-            echo "https://design.ubuntu.com/font"
-        fi
-        sleep "$sleep_time"
-
-        cmd_test="Font CommitMonoNerdFont"
-        if fc-list | grep "CommitMonoNerdFont" &> /dev/null; then
-            printf "%s %s ${green}[OK]${reset}\n" "$cmd_test" "${spacing:${#cmd_test}}"
-        else
-            echo "${red}Font CommitMonoNerdFont is not installed${reset}"
-            echo "https://www.nerdfonts.com/font-downloads"
-        fi
-        sleep "$sleep_time"
+    package="rust packages from cargo.txt"
+    if diff -q \
+        <(cargo install --list | grep -E '^[a-zA-Z0-9_-]+ v' | awk '{print $1}' | sort) \
+        <(sort cargo.txt) \
+        >/dev/null; then
+        printf "%s %s ${green}[OK]${reset}\n" "$package" "${spacing:${#package}}"
     else
-        echo "${red}fc-list is not installed${reset}"
-        echo "Install fontconfig package"
-        echo ""
+        printf "%s %s ${green}[KO]${reset}\n" "$package" "${spacing:${#package}}"
     fi
     setup_packages
 }
