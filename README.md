@@ -6,7 +6,7 @@ dotfiles. It's about ownership.
 
 ```sh
 # install git curl rustup and fd
-git clone https://github.com/Its-Just-Nans/dotfiles.git && cd dotfiles && . .useful.sh && setup install
+git clone https://github.com/Its-Just-Nans/dotfiles.git && cd dotfiles && . .useful.sh && dotfiles install
 ```
 
 ## Others
@@ -16,13 +16,13 @@ git clone https://github.com/Its-Just-Nans/dotfiles.git && cd dotfiles && . .use
 cargo install $(cat cargo.txt)
 
 # check installed programs
-setup check
+dotfiles check
 ```
 
 ## Save settings
 
 ```sh
-setup save
+dotfiles save
 ```
 
 ## License

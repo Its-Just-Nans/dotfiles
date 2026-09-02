@@ -1003,7 +1003,7 @@ listImages() {
         -e raw -e cr2 -e nef -e arw -e dng -e orf -e rw2
 }
 
-setup_install() {
+dotfiles_install() {
     green=$(tput setaf 2)
     blue=$(tput setaf 4)
     grey=$(tput setaf 244)
@@ -1094,10 +1094,10 @@ setup_install() {
     else
         echo "${red}n4n5 is not installed${reset}"
     fi
-    setup_check
+    dotfiles_check
 }
 
-setup_save(){
+dotfiles_save(){
     echo "Syncing files..."
     # sync-gnome
     if command -v dconf &>/dev/null; then
@@ -1114,7 +1114,7 @@ setup_save(){
 }
 
 
-setup_packages() {
+dotfiles_packages() {
     red=$(tput setaf 1)
     green=$(tput setaf 2)
     reset=$(tput sgr0)
@@ -1133,7 +1133,7 @@ setup_packages() {
     done
 }
 
-setup_check() {
+dotfiles_check() {
     red=$(tput setaf 1)
     green=$(tput setaf 2)
     reset=$(tput sgr0)
@@ -1271,18 +1271,10 @@ setup_check() {
     else
         printf "%s %s ${red}[KO]${reset}\n" "$package" "${spacing:${#package}}"
     fi
-    setup_packages
+    dotfiles_packages
 }
 
-setup_meta() {
-    if ! command -v shellcheck &>/dev/null; then
-        echo "shellcheck is not installed"
-        return 1
-    fi
-    shellcheck .useful.sh
-}
-
-setup_add() {
+dotfiles_add() {
     dir=$(dirname "$1")
     if [[ "$dir" == $HOME/* ]]; then
         dir="${dir#"$HOME"/}"
@@ -1302,7 +1294,7 @@ setup_add() {
 }
 
 
-setup() {
+dotfiles() {
     current_pwd="$(pwd)"
     current_folder_name="$(basename "$current_pwd")"
     if [ "$current_folder_name" != "dotfiles" ]; then
@@ -1327,13 +1319,23 @@ setup() {
 
 
     case "$1" in
-        install)   setup_install ;;
-        save)    setup_save ;;
-        check)   setup_check ;;
-        meta)    setup_meta ;;
+        install)   dotfiles_install ;;
+        save)    dotfiles_save ;;
+        check)   dotfiles_check ;;
+        meta) {
+                if ! command -v shellcheck &>/dev/null; then
+                    echo "shellcheck is not installed"
+                    return 1
+                fi
+                green=$(tput setaf 2)
+                reset=$(tput sgr0)
+                if shellcheck .useful.sh; then
+                    echo "${green}OK${reset}"
+                fi
+        } ;;
         add)
             [ -z "$2" ] && { echo "add requires an argument"; return 1; }
-            setup_add "$2"
+            dotfiles_add "$2"
             ;;
         *)
             # cd to the dotfiles and return
@@ -1345,8 +1347,8 @@ setup() {
 }
 
 if [ -n "$BASH_VERSION" ]; then
-    _setup_options="save check install meta add"
-    complete -W "${_setup_options}" 'setup'
+    _dotfiles_options="save check install meta add"
+    complete -W "${_dotfiles_options}" 'dotfiles'
 fi
 
 
