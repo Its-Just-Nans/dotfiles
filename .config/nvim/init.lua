@@ -547,7 +547,8 @@ do
 		-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#ts_ls
 		-- npm install -g typescript typescript-language-server
 		ts_ls = {},
-
+		--- typst
+		tinymist = {},
 		-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#ruff
 		-- python -m pip install ruff
 		ruff = {},
