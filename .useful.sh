@@ -295,7 +295,7 @@ mkt() {
     custom_tmp="$HOME/tmp/"
     mkdir -p "$custom_tmp"
     cd "$custom_tmp" || return
-    if [ "$1" ]; then
+    if [ -n "$1" ]; then
         filename=$(basename -- "$1")
         repo_name="${filename%.*}"
         random="$(tr -dc A-Za-z0-9 </dev/urandom | head -c 13)"
@@ -303,7 +303,7 @@ mkt() {
         if [ -d "$repo_name" ]; then
             repo_name="${repo_name}_${random}"
         fi
-        if git clone "$1" "$repo_name"; then
+        if git clone "$@" "$repo_name"; then
             cd "$repo_name" || return
             if command -v "$EDITOR" &>/dev/null; then
                 "$EDITOR" .
