@@ -6,7 +6,16 @@ local toggle_explorer = function()
 		end
 	end
 
-	vim.cmd("Lexplore")
+	for _, win in ipairs(vim.api.nvim_list_wins()) do
+		local buf = vim.api.nvim_win_get_buf(win)
+
+		if vim.bo[buf].filetype == "netrw" then
+			vim.api.nvim_win_close(win, true)
+			return
+		end
+	end
+
+	vim.cmd("Lexplore " .. vim.fn.fnameescape(vim.fn.expand("%:p:h")))
 end
 
 vim.keymap.set("n", "<leader>e", toggle_explorer, { desc = "Explore" })
