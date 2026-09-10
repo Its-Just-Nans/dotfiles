@@ -41,6 +41,7 @@ n4n5
 notox
 numbat-cli
 onefetch
+oxipng
 pastel
 pdf_to_text
 release-plz
