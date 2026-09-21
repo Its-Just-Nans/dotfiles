@@ -552,6 +552,7 @@ do
 		-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#ruff
 		-- python -m pip install ruff
 		ruff = {},
+		zuban = {},
 		-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#astro
 		-- npm install -g @astrojs/language-server
 		astro = {},
