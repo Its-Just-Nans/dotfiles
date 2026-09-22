@@ -162,7 +162,7 @@ server() {
         echo "This program requires python but it's not installed. Aborting." >&2
         return 1
     fi
-    python -m http.server
+    python -m http.server "$@"
 }
 
 phpserver() {
