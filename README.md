@@ -64,7 +64,6 @@ xscreensaver # screen saver!
 blueman # bluetooth gtk interface
 valgrind # detect leak errors
 tlp # battery management
-calligra # libreoffice alternative
 nmap # networking
 network-manager-openvpn-gnome openvpn # use openvpn
 phpmyadmin # or just clone the git repo!
@@ -119,5 +118,6 @@ default-jdk # java
 nextcloud-desktop # nextcloud desktop client
 visidata # https://github.com/saulpw/visidata
 ImHex # hex editor https://github.com/WerWolv/ImHex
+calligra # libreoffice alternative
 ```
 
