@@ -557,7 +557,8 @@ do
 		-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#astro
 		-- npm install -g @astrojs/language-server
 		astro = {},
-
+		-- c++ and c
+		clangd = {},
 		-- lua
 		stylua = {}, -- Used to format Lua code
 
