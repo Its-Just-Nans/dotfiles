@@ -98,7 +98,7 @@ fi
 
 # to list aliases do 'alias'
 # long - all - human size - sort natural - append indicator
-alias l='ls -lahvF'
+alias l='ls -lahvF --group-directories-first'
 alias ll='l'
 alias la='l'
 alias ll="l"
