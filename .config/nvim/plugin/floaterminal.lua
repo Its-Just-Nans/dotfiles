@@ -90,7 +90,7 @@ vim.api.nvim_create_user_command("Floaterminal", toggle_terminal, { desc = "Togg
 vim.keymap.set({ "n", "t" }, "ù", toggle_terminal, { desc = "Toggle terminal" })
 vim.keymap.set("n", "<leader>g", toggle_terminal, { desc = "Toggle terminal" })
 vim.keymap.set("n", "<leader>r", toggle_terminal_with_cmd, { desc = "Toggle terminal and [R]un" })
-vim.keymap.set("t", "<Esc><Esc>", function()
+vim.keymap.set("t", "<Esc><leader><Esc>", function()
 	vim.cmd("stopinsert") -- leave terminal mode
 	toggle_terminal()
 end)
