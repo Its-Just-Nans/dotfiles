@@ -552,6 +552,8 @@ do
 		-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#ruff
 		-- python -m pip install ruff
 		ruff = {},
+		-- https://taplo.tamasfe.dev/cli/usage/language-server.html
+		taplo = {},
 		-- https://github.com/zubanls/zuban
 		zuban = {},
 		-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#astro
