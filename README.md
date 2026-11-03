@@ -32,6 +32,7 @@ Licensed under MIT License. Note that some file have their own license, for exam
 ## Others programs
 
 ```sh
+https://github.com/JafarAkhondali/acer-predator-turbo-and-rgb-keyboard-linux-module # keyboard light
 fortune # quote of life
 sl # just a train
 libaa-bin # activate a little fire with `aafire`
