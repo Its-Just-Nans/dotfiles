@@ -22,6 +22,7 @@
 
 [alias]
 	pus = "push"
+	puh = "push"
 	pul = "pull"
 
 # vim: ts=8 sts=4 sw=4 noexpandtab
