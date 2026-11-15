@@ -1351,6 +1351,10 @@ if [ -n "$BASH_VERSION" ]; then
     complete -W "${_dotfiles_options}" 'dotfiles'
 fi
 
+rmLastBytes() {
+    truncate -s -1 "$1"
+}
+
 
 # The line beneath this is called `modeline`. See `:help modeline`
 # ts = tab is 4 space
