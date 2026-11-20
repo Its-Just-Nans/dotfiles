@@ -1351,10 +1351,16 @@ if [ -n "$BASH_VERSION" ]; then
     complete -W "${_dotfiles_options}" 'dotfiles'
 fi
 
+# remove last byte of file - useful for linefeed
 rmLastBytes() {
     truncate -s -1 "$1"
 }
 
+# setup double screen
+setupScreen() {
+    xrandr --query
+    xrandr --output HDMI-1-0 --auto --right-of eDP
+}
 
 # The line beneath this is called `modeline`. See `:help modeline`
 # ts = tab is 4 space
