@@ -104,6 +104,7 @@ alias la='l'
 alias ll="l"
 alias lla="l"
 alias ncal="ncal -M -b" # start on monday, old style
+alias tree="eza -a --git-ignore -T --tree"
 
 alias sl="sl | lolcat"
 alias p="python"
